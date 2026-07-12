@@ -1,0 +1,12 @@
+{
+  "name": "nextgovjob",
+  "version": "1.0.0",
+  "description": "Next Gov Job",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
