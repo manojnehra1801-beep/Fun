@@ -1,265 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Someone Special ❤️</title>
 
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
 
-<title>Next Gov Job</title>
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    overflow:hidden;
+}
 
-<link rel="stylesheet" href="style.css">
+.container{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.3);
+    max-width:500px;
+}
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+h1{
+    color:#ff2d55;
+    margin-bottom:15px;
+}
 
+p{
+    color:#444;
+    margin-bottom:25px;
+    font-size:18px;
+}
+
+button{
+    padding:12px 28px;
+    font-size:18px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    margin:10px;
+}
+
+#yes{
+    background:#ff2d55;
+    color:white;
+}
+
+#no{
+    background:#ddd;
+}
+
+#message{
+    display:none;
+    margin-top:25px;
+    color:#ff2d55;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.heart{
+    position:fixed;
+    color:red;
+    animation:fall 5s linear infinite;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-100px);
+    }
+    to{
+        transform:translateY(110vh);
+    }
+}
+</style>
 </head>
 
 <body>
 
-<div class="top-header">
+<div class="container">
+    <h1>❤️ Hey Beautiful ❤️</h1>
 
-<div class="logo">
+    <p>
+        Every moment with you feels special.<br><br>
+        I'd love to spend some time with you...
+    </p>
 
-<h1>Next Gov Job</h1>
+    <h2>Will you go for a Coffee ☕ and a Date 🌹 with me?</h2>
 
-<p>Latest Government Jobs | Results | Admit Card</p>
+    <br>
 
+    <button id="yes">YES ❤️</button>
+    <button id="no">NO 🙈</button>
+
+    <div id="message">
+        Yay!! ❤️<br><br>
+        I can't wait to see you. ☕🌹
+    </div>
 </div>
 
-</div>
-
-<div class="breaking">
-
-<marquee>
-
-🔥 SSC CGL 2026 Notification Coming Soon |
-
-🔥 Railway NTPC |
-
-🔥 Rajasthan Police |
-
-🔥 UPSC |
-
-🔥 Bank Jobs |
-
-🔥 Delhi Police Recruitment
-
-</marquee>
-
-</div>
-
-<div class="hero">
-
-<h2>Government Job Portal</h2>
-
-<p>
-
-Latest Jobs • Results • Admit Card • Answer Key • Syllabus
-
-</p>
-
-<div class="search">
-
-<input type="text" placeholder="Search Government Jobs...">
-
-<button>Search</button>
-
-</div>
-
-</div>
-
-<div class="menu">
-
-<a href="#">Home</a>
-
-<a href="#">Latest Jobs</a>
-
-<a href="#">Results</a>
-
-<a href="#">Admit Card</a>
-
-<a href="#">Answer Key</a>
-
-<a href="#">Syllabus</a>
-
-</div>
-
-<section class="home-grid">
-
-<div class="box">
-
-<div class="title">
-
-Latest Jobs
-
-</div>
-
-<ul>
-
-<li><a href="#">SSC CGL Recruitment 2026</a></li>
-
-<li><a href="#">Railway NTPC Online Form</a></li>
-
-<li><a href="#">UP Police Constable</a></li>
-
-<li><a href="#">Rajasthan Police</a></li>
-
-<li><a href="#">Delhi Police</a></li>
-
-<li><a href="#">IBPS PO</a></li>
-
-<li><a href="#">Army Agniveer</a></li>
-
-<li><a href="#">SSC CHSL</a></li>
-
-<li><a href="#">RRB ALP</a></li>
-
-<li><a href="#">View More...</a></li>
-
-</ul>
-
-</div>
-
-<div class="box">
-
-<div class="title">
-
-Results
-
-</div>
-
-<ul>
-
-<li><a href="#">SSC GD Result</a></li>
-
-<li><a href="#">SSC CGL Result</a></li>
-
-<li><a href="#">Railway Result</a></li>
-
-<li><a href="#">UPSC Result</a></li>
-
-<li><a href="#">Rajasthan CET Result</a></li>
-
-<li><a href="#">IBPS Clerk Result</a></li>
-
-<li><a href="#">CTET Result</a></li>
-
-<li><a href="#">UP Police Result</a></li>
-
-<li><a href="#">NEET Result</a></li>
-
-<li><a href="#">View More...</a></li>
-
-</ul>
-
-</div>
-<div class="box">
-
-<div class="title">
-
-Admit Card
-
-</div>
-
-<ul>
-
-<li><a href="#">SSC CGL Admit Card</a></li>
-
-<li><a href="#">SSC CHSL Admit Card</a></li>
-
-<li><a href="#">Railway NTPC Admit Card</a></li>
-
-<li><a href="#">Railway ALP Admit Card</a></li>
-
-<li><a href="#">IBPS PO Admit Card</a></li>
-
-<li><a href="#">IBPS Clerk Admit Card</a></li>
-
-<li><a href="#">UP Police Admit Card</a></li>
-
-<li><a href="#">CTET Admit Card</a></li>
-
-<li><a href="#">UPSC NDA Admit Card</a></li>
-
-<li><a href="#">View More...</a></li>
-
-</ul>
-
-</div>
-
-<div class="box">
-
-<div class="title">
-
-Answer Key
-
-</div>
-
-<ul>
-
-<li><a href="#">SSC GD Answer Key</a></li>
-
-<li><a href="#">SSC CHSL Answer Key</a></li>
-
-<li><a href="#">SSC CGL Answer Key</a></li>
-
-<li><a href="#">Railway ALP Answer Key</a></li>
-
-<li><a href="#">Railway Group D Answer Key</a></li>
-
-<li><a href="#">UP Police Answer Key</a></li>
-
-<li><a href="#">CTET Answer Key</a></li>
-
-<li><a href="#">Rajasthan CET Answer Key</a></li>
-
-<li><a href="#">UPSC Answer Key</a></li>
-
-<li><a href="#">View More...</a></li>
-
-</ul>
-
-</div>
-
-</section>
-
-<section class="important">
-
-<h2>Important Links</h2>
-
-<div class="imp-grid">
-
-<a href="#">Latest Jobs</a>
-
-<a href="#">Results</a>
-
-<a href="#">Admit Card</a>
-
-<a href="#">Answer Key</a>
-
-<a href="#">Syllabus</a>
-
-<a href="#">Current Affairs</a>
-
-<a href="#">Previous Papers</a>
-
-<a href="#">Mock Tests</a>
-
-</div>
-
-</section>
-
-<footer>
-
-<p>
-
-© 2026 Next Gov Job | All Rights Reserved
-
-</p>
-
-</footer>
+<script>
+const yes=document.getElementById("yes");
+const no=document.getElementById("no");
+const msg=document.getElementById("message");
+
+yes.onclick=()=>{
+    msg.style.display="block";
+    createHearts();
+}
+
+no.onmouseover=()=>{
+    no.style.position="absolute";
+    no.style.left=Math.random()*80+"%";
+    no.style.top=Math.random()*80+"%";
+}
+
+function createHearts(){
+    setInterval(()=>{
+        const heart=document.createElement("div");
+        heart.innerHTML="❤️";
+        heart.className="heart";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.fontSize=(20+Math.random()*30)+"px";
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },5000);
+    },200);
+}
+</script>
 
 </body>
-
 </html>
