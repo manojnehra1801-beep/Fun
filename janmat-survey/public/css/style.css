@@ -566,7 +566,174 @@ footer p {
     padding: 40px 6%;
   }
 }
+/* =========================
+   POTENTIAL CANDIDATES
+========================= */
 
+.potential-section {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  background: white;
+
+  border: 1px solid #e5e9f2;
+
+  border-radius: 18px;
+
+  padding: 22px;
+
+  margin: 20px 0;
+
+  box-shadow:
+    0 8px 25px rgba(20, 30, 60, 0.06);
+
+}
+
+
+.potential-icon {
+
+  min-width: 55px;
+
+  height: 55px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 15px;
+
+  background: #eef2ff;
+
+  font-size: 27px;
+
+}
+
+
+.potential-content {
+
+  flex: 1;
+
+}
+
+
+.potential-badge {
+
+  display: inline-block;
+
+  background: #fff4df;
+
+  color: #a66a00;
+
+  padding: 5px 9px;
+
+  border-radius: 20px;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  margin-bottom: 7px;
+
+}
+
+
+.potential-content h2 {
+
+  margin: 0 0 5px;
+
+  font-size: 20px;
+
+  line-height: 1.35;
+
+}
+
+
+.potential-content p {
+
+  margin: 0;
+
+  color: #737d8e;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+}
+
+
+.potential-info {
+
+  margin-top: 9px !important;
+
+}
+
+
+.potential-btn {
+
+  display: inline-block;
+
+  margin-top: 14px;
+
+  padding: 11px 15px;
+
+  background: #3155d8;
+
+  color: white;
+
+  text-decoration: none;
+
+  border-radius: 9px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 500px) {
+
+  .potential-section {
+
+    align-items: flex-start;
+
+    padding: 18px;
+
+  }
+
+  .potential-icon {
+
+    min-width: 45px;
+
+    height: 45px;
+
+    font-size: 22px;
+
+  }
+
+  .potential-content h2 {
+
+    font-size: 17px;
+
+  }
+
+  .potential-btn {
+
+    width: 100%;
+
+    text-align: center;
+
+  }
+
+}
 
 /* =========================
    SMALL PHONES
