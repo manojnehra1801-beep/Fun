@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Admin Dashboard | Janmat Survey</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+
+      font-family:
+        Arial,
+        "Noto Sans Devanagari",
+        sans-serif;
+
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+
+    /* HEADER */
+
+    .header {
+      background: #172554;
+      color: white;
+
+      padding: 16px 5%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .brand {
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .logout {
+      border: 1px solid rgba(255,255,255,0.3);
+      background: transparent;
+      color: white;
+
+      padding: 8px 13px;
+
+      border-radius: 8px;
+
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+
+    /* CONTAINER */
+
+    .container {
+      max-width: 1200px;
+
+      margin: auto;
+
+      padding: 25px 15px 50px;
+    }
+
+
+    /* TITLE */
+
+    .title {
+      margin-bottom: 22px;
+    }
+
+    .title h1 {
+      margin: 0;
+
+      font-size: 28px;
+      color: #172554;
+    }
+
+    .title p {
+      margin: 5px 0 0;
+
+      color: #64748b;
+      font-size: 13px;
+    }
+
+
+    /* STATS */
+
+    .stats {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 15px;
+
+      margin-bottom: 22px;
+    }
+
+    .stat {
+      background: white;
+
+      border: 1px solid #e8ebf2;
+
+      border-radius: 15px;
+
+      padding: 18px;
+
+      box-shadow:
+        0 5px 20px
+        rgba(15,23,42,0.04);
+    }
+
+    .stat-icon {
+      font-size: 25px;
+    }
+
+    .stat-number {
+      font-size: 27px;
+
+      font-weight: 900;
+
+      color: #3155d9;
+
+      margin-top: 5px;
+    }
+
+    .stat-label {
+      color: #64748b;
+
+      font-size: 12px;
+    }
+
+
+    /* TOOLBAR */
+
+    .toolbar {
+      background: white;
+
+      border: 1px solid #e8ebf2;
+
+      border-radius: 15px;
+
+      padding: 15px;
+
+      margin-bottom: 18px;
+
+      display: flex;
+
+      gap: 10px;
+
+      flex-wrap: wrap;
+    }
+
+    .search {
+      flex: 1;
+
+      min-width: 230px;
+
+      padding: 12px;
+
+      border: 1px solid #d8deea;
+
+      border-radius: 9px;
+
+      outline: none;
+
+      font-size: 13px;
+    }
+
+    .search:focus {
+      border-color: #3155d9;
+    }
+
+    .refresh {
+      border: none;
+
+      background: #3155d9;
+
+      color: white;
+
+      padding: 11px 16px;
+
+      border-radius: 9px;
+
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+
+    /* TABLE */
+
+    .table-card {
+      background: white;
+
+      border-radius: 15px;
+
+      border: 1px solid #e8ebf2;
+
+      overflow: hidden;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+
+      border-collapse: collapse;
+
+      min-width: 950px;
+    }
+
+    th {
+      background: #f8fafc;
+
+      color: #475569;
+
+      font-size: 11px;
+
+      text-align: left;
+
+      padding: 13px;
+
+      border-bottom:
+        1px solid #e8ebf2;
+
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 13px;
+
+      font-size: 12px;
+
+      border-bottom:
+        1px solid #eef1f5;
+
+      vertical-align: top;
+    }
+
+    tr:hover td {
+      background: #fafbff;
+    }
+
+
+    /* CANDIDATE */
+
+    .candidate-name {
+      font-weight: 700;
+
+      color: #172554;
+    }
+
+    .location {
+      line-height: 1.6;
+    }
+
+    .location strong {
+      color: #172033;
+    }
+
+    .muted {
+      color: #94a3b8;
+    }
+
+
+    /* STATUS */
+
+    .status {
+      display: inline-block;
+
+      padding: 5px 9px;
+
+      border-radius: 20px;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      background: #eef2ff;
+
+      color: #3155d9;
+    }
+
+
+    /* LOADING */
+
+    .loading {
+      text-align: center;
+
+      padding: 45px;
+
+      color: #64748b;
+    }
+
+
+    /* EMPTY */
+
+    .empty {
+      display: none;
+
+      text-align: center;
+
+      padding: 45px;
+
+      color: #64748b;
+    }
+
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .title h1 {
+        font-size: 24px;
+      }
+
+      .container {
+        padding:
+          20px 10px 40px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- HEADER -->
+
+  <header class="header">
+
+    <div class="brand">
+      🗳️ Janmat Survey — Admin
+    </div>
+
+    <button
+      class="logout"
+      onclick="logout()">
+
+      Logout
+
+    </button>
+
+  </header>
+
+
+
+  <!-- MAIN -->
+
+  <main class="container">
+
+
+    <div class="title">
+
+      <h1>
+        Admin Dashboard
+      </h1>
+
+      <p>
+        संभावित उम्मीदवारों की submitted जानकारी
+      </p>
+
+    </div>
+
+
+
+    <!-- STATS -->
+
+    <section class="stats">
+
+      <div class="stat">
+
+        <div class="stat-icon">
+          📋
+        </div>
+
+        <div
+          class="stat-number"
+          id="total">
+
+          0
+
+        </div>
+
+        <div class="stat-label">
+          Total Submissions
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-icon">
+          📍
+        </div>
+
+        <div
+          class="stat-number"
+          id="locations">
+
+          0
+
+        </div>
+
+        <div class="stat-label">
+          Unique Panchayats
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-icon">
+          👥
+        </div>
+
+        <div
+          class="stat-number"
+          id="candidateCount">
+
+          0
+
+        </div>
+
+        <div class="stat-label">
+          Candidate Names
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- TOOLBAR -->
+
+    <div class="toolbar">
+
+      <input
+        type="text"
+        id="search"
+        class="search"
+        placeholder="🔎 Search village, panchayat, district or candidate...">
+
+      <button
+        class="refresh"
+        onclick="loadData()">
+
+        ↻ Refresh
+
+      </button>
+
+    </div>
+
+
+
+    <!-- TABLE -->
+
+    <div class="table-card">
+
+      <div class="table-wrapper">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>
+                #
+              </th>
+
+              <th>
+                Location
+              </th>
+
+              <th>
+                Candidate 1
+              </th>
+
+              <th>
+                Candidate 2
+              </th>
+
+              <th>
+                Candidate 3
+              </th>
+
+              <th>
+                Candidate 4
+              </th>
+
+              <th>
+                Mobile
+              </th>
+
+              <th>
+                Likely
+              </th>
+
+              <th>
+                Submitted
+              </th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody id="tableBody">
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+
+      <div
+        class="loading"
+        id="loading">
+
+        Loading submissions...
+
+      </div>
+
+
+      <div
+        class="empty"
+        id="empty">
+
+        कोई submission नहीं मिला।
+
+      </div>
+
+    </div>
+
+
+  </main>
+
+
+
+  <script>
+
+    // ==========================================
+    // LOGIN CHECK
+    // ==========================================
+
+    if (
+      sessionStorage.getItem(
+        "janmatAdminLoggedIn"
+      ) !== "true"
+    ) {
+
+      window.location.href =
+        "/admin.html";
+
+    }
+
+
+    // ==========================================
+    // VARIABLES
+    // ==========================================
+
+    let allData = [];
+
+
+    // ==========================================
+    // LOAD DATA
+    // ==========================================
+
+    async function loadData() {
+
+      const loading =
+        document.getElementById("loading");
+
+      const empty =
+        document.getElementById("empty");
+
+      const tableBody =
+        document.getElementById("tableBody");
+
+
+      loading.style.display =
+        "block";
+
+      empty.style.display =
+        "none";
+
+      tableBody.innerHTML =
+        "";
+
+
+      try {
+
+        const response =
+          await fetch(
+            "/api/admin/candidates"
+          );
+
+
+        const result =
+          await response.json();
+
+
+        if (
+          !response.ok ||
+          !result.success
+        ) {
+
+          throw new Error(
+            result.message ||
+            "Could not load data"
+          );
+
+        }
+
+
+        allData =
+          result.data || [];
+
+
+        updateStats(
+          allData
+        );
+
+
+        renderTable(
+          allData
+        );
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        tableBody.innerHTML = "";
+
+        loading.textContent =
+          "Data load नहीं हो सका।";
+
+      }
+
+
+      loading.style.display =
+        "none";
+
+    }
+
+
+    // ==========================================
+    // STATS
+    // ==========================================
+
+    function updateStats(data) {
+
+      document.getElementById(
+        "total"
+      ).textContent =
+        data.length;
+
+
+      const locations =
+        new Set();
+
+
+      const candidates =
+        new Set();
+
+
+      data.forEach(row => {
+
+        locations.add(
+
+          `${row["State"] || ""}|` +
+          `${row["District"] || ""}|` +
+          `${row["Village"] || ""}|` +
+          `${row["Panchayat"] || ""}`
+
+        );
+
+
+        [
+
+          row["Candidate 1"],
+          row["Candidate 2"],
+          row["Candidate 3"],
+          row["Candidate 4"]
+
+        ].forEach(name => {
+
+          if (name) {
+
+            candidates.add(
+              name.trim()
+            );
+
+          }
+
+        });
+
+      });
+
+
+      document.getElementById(
+        "locations"
+      ).textContent =
+        locations.size;
+
+
+      document.getElementById(
+        "candidateCount"
+      ).textContent =
+        candidates.size;
+
+    }
+
+
+    // ==========================================
+    // RENDER TABLE
+    // ==========================================
+
+    function renderTable(data) {
+
+      const tableBody =
+        document.getElementById(
+          "tableBody"
+        );
+
+      const empty =
+        document.getElementById(
+          "empty"
+        );
+
+
+      tableBody.innerHTML =
+        "";
+
+
+      if (!data.length) {
+
+        empty.style.display =
+          "block";
+
+        return;
+
+      }
+
+
+      empty.style.display =
+        "none";
+
+
+      data.forEach(
+        (row, index) => {
+
+          const tr =
+            document.createElement(
+              "tr"
+            );
+
+
+          const submitted =
+            row["Created at"]
+              ? new Date(
+                  row["Created at"]
+                ).toLocaleString(
+                  "en-IN"
+                )
+              : "-";
+
+
+          tr.innerHTML = `
+
+            <td>
+              ${index + 1}
+            </td>
+
+            <td class="location">
+
+              <strong>
+                ${escapeHTML(
+                  row["Panchayat"] || "-"
+                )}
+              </strong>
+
+              <br>
+
+              ${escapeHTML(
+                row["Village"] || "-"
+              )}
+
+              <br>
+
+              ${escapeHTML(
+                row["District"] || "-"
+              )}
+
+              <br>
+
+              <span class="muted">
+                ${escapeHTML(
+                  row["State"] || "-"
+                )}
+              </span>
+
+            </td>
+
+
+            <td class="candidate-name">
+              ${escapeHTML(
+                row["Candidate 1"] || "-"
+              )}
+            </td>
+
+
+            <td>
+              ${escapeHTML(
+                row["Candidate 2"] || "-"
+              )}
+            </td>
+
+
+            <td>
+              ${escapeHTML(
+                row["Candidate 3"] || "-"
+              )}
+            </td>
+
+
+            <td>
+              ${escapeHTML(
+                row["Candidate 4"] || "-"
+              )}
+            </td>
+
+
+            <td>
+              ${escapeHTML(
+                row["Mobile"] || "-"
+              )}
+            </td>
+
+
+            <td>
+
+              <span class="status">
+
+                ${escapeHTML(
+                  row["Likely"] || "-"
+                )}
+
+              </span>
+
+            </td>
+
+
+            <td>
+              ${escapeHTML(
+                submitted
+              )}
+            </td>
+
+          `;
+
+
+          tableBody.appendChild(
+            tr
+          );
+
+        }
+      );
+
+    }
+
+
+    // ==========================================
+    // SEARCH
+    // ==========================================
+
+    document
+      .getElementById("search")
+      .addEventListener(
+        "input",
+        function() {
+
+          const query =
+            this.value
+              .toLowerCase()
+              .trim();
+
+
+          if (!query) {
+
+            renderTable(
+              allData
+            );
+
+            return;
+
+          }
+
+
+          const filtered =
+            allData.filter(row => {
+
+              const text = [
+
+                row["State"],
+                row["District"],
+                row["Village"],
+                row["Panchayat"],
+                row["Candidate 1"],
+                row["Candidate 2"],
+                row["Candidate 3"],
+                row["Candidate 4"],
+                row["Mobile"],
+                row["Likely"]
+
+              ]
+
+              .filter(Boolean)
+
+              .join(" ")
+
+              .toLowerCase();
+
+
+              return text.includes(
+                query
+              );
+
+            });
+
+
+          renderTable(
+            filtered
+          );
+
+        }
+      );
+
+
+    // ==========================================
+    // SECURITY
+    // ==========================================
+
+    function escapeHTML(value) {
+
+      const div =
+        document.createElement(
+          "div"
+        );
+
+      div.textContent =
+        String(value);
+
+      return div.innerHTML;
+
+    }
+
+
+    // ==========================================
+    // LOGOUT
+    // ==========================================
+
+    function logout() {
+
+      sessionStorage.removeItem(
+        "janmatAdminLoggedIn"
+      );
+
+      window.location.href =
+        "/admin.html";
+
+    }
+
+
+    // ==========================================
+    // LOAD ON START
+    // ==========================================
+
+    loadData();
+
+  </script>
+
+</body>
+
+</html>
