@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Latest Vacancies | Rajasthan Govt Vacancies</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:Arial,"Noto Sans Devanagari",sans-serif;
+background:#f5f7fb;
+color:#172033;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+
+/* HEADER */
+
+header{
+background:#172554;
+color:white;
+position:sticky;
+top:0;
+z-index:20;
+}
+
+.header-inner{
+max-width:1100px;
+margin:auto;
+padding:14px 16px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:18px;
+font-weight:900;
+color:white;
+}
+
+.back{
+border:1px solid rgba(255,255,255,.35);
+padding:8px 12px;
+border-radius:8px;
+font-size:11px;
+font-weight:800;
+color:white;
+}
+
+
+/* CONTAINER */
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:22px 14px 50px;
+}
+
+
+/* TITLE */
+
+.page-title{
+margin-bottom:18px;
+}
+
+.page-title h1{
+font-size:27px;
+color:#172554;
+margin-bottom:5px;
+}
+
+.page-title p{
+font-size:12px;
+color:#64748b;
+}
+
+
+/* SEARCH */
+
+.search-box{
+background:white;
+padding:12px;
+border-radius:15px;
+display:flex;
+gap:8px;
+margin-bottom:20px;
+box-shadow:0 6px 20px rgba(15,23,42,.05);
+}
+
+.search-box input{
+flex:1;
+border:1px solid #d8deea;
+border-radius:9px;
+padding:12px;
+font-size:13px;
+outline:none;
+}
+
+.search-box button{
+border:none;
+background:#3155d9;
+color:white;
+padding:0 18px;
+border-radius:9px;
+font-weight:800;
+}
+
+
+/* COUNT */
+
+.count{
+font-size:12px;
+color:#64748b;
+margin-bottom:12px;
+}
+
+
+/* JOBS */
+
+.jobs{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:14px;
+}
+
+
+/* CARD */
+
+.job-card{
+background:white;
+border:1px solid #e5e7eb;
+border-radius:17px;
+padding:18px;
+box-shadow:0 5px 18px rgba(15,23,42,.04);
+transition:.2s;
+}
+
+.job-card:hover{
+transform:translateY(-2px);
+border-color:#c7d2fe;
+}
+
+.job-top{
+display:flex;
+justify-content:space-between;
+gap:10px;
+margin-bottom:8px;
+}
+
+.job-title{
+font-size:16px;
+font-weight:900;
+color:#172554;
+line-height:1.4;
+}
+
+.job-title:hover{
+color:#3155d9;
+text-decoration:underline;
+}
+
+.badge{
+background:#ecfdf5;
+color:#047857;
+padding:5px 8px;
+border-radius:20px;
+font-size:8px;
+font-weight:900;
+height:max-content;
+white-space:nowrap;
+}
+
+.department{
+font-size:11px;
+color:#64748b;
+margin-bottom:14px;
+}
+
+.info-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px;
+margin-bottom:14px;
+}
+
+.info{
+background:#f8fafc;
+border-radius:9px;
+padding:9px;
+}
+
+.label{
+display:block;
+font-size:8px;
+color:#94a3b8;
+margin-bottom:3px;
+}
+
+.value{
+font-size:10px;
+font-weight:800;
+color:#334155;
+}
+
+.description{
+font-size:10px;
+line-height:1.6;
+color:#64748b;
+margin-bottom:14px;
+}
+
+.buttons{
+display:flex;
+gap:8px;
+}
+
+.btn{
+flex:1;
+text-align:center;
+padding:10px;
+border-radius:9px;
+font-size:10px;
+font-weight:900;
+}
+
+.apply{
+background:#3155d9;
+color:white;
+}
+
+.notification{
+background:#eef2ff;
+color:#3155d9;
+}
+
+
+/* LOADING */
+
+.loading,
+.empty{
+background:white;
+border:1px dashed #cbd5e1;
+border-radius:17px;
+padding:40px 20px;
+text-align:center;
+color:#64748b;
+font-size:12px;
+grid-column:1/-1;
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.jobs{
+grid-template-columns:1fr;
+}
+
+.page-title h1{
+font-size:24px;
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="header-inner">
+
+<a href="/" class="logo">
+RAJASTHAN GOVT VACANCIES
+</a>
+
+<a href="/" class="back">
+← Home
+</a>
+
+</div>
+
+</header>
+
+
+<main class="container">
+
+
+<div class="page-title">
+
+<h1>
+🔥 Latest Government Vacancies
+</h1>
+
+<p>
+राजस्थान की सभी latest government vacancies
+एक ही जगह।
+</p>
+
+</div>
+
+
+<div class="search-box">
+
+<input
+id="search"
+type="search"
+placeholder="🔎 Search vacancy, department, qualification...">
+
+<button onclick="searchJobs()">
+Search
+</button>
+
+</div>
+
+
+<div
+id="count"
+class="count">
+
+Loading vacancies...
+
+</div>
+
+
+<section
+id="jobs"
+class="jobs">
+
+<div class="loading">
+⏳ Loading latest vacancies...
+</div>
+
+</section>
+
+
+</main>
+
+
+<script>
+
+
+const API_URL =
+"https://rajasthangovtvacancie.onrender.com";
+
+
+let allVacancies = [];
+
+
+/* =========================
+LOAD
+========================= */
+
+async function loadVacancies(){
+
+const jobs =
+document.getElementById("jobs");
+
+try{
+
+const response =
+await fetch(
+API_URL + "/api/vacancies"
+);
+
+const result =
+await response.json();
+
+if(
+!response.ok ||
+!result.success
+){
+
+throw new Error(
+"Could not load vacancies"
+);
+
+}
+
+allVacancies =
+result.data || [];
+
+renderVacancies(
+allVacancies
+);
+
+}
+catch(error){
+
+console.error(error);
+
+jobs.innerHTML = `
+
+<div class="empty">
+
+⚠️ Vacancies load नहीं हो सकीं।
+
+<br><br>
+
+Please try again.
+
+</div>
+
+`;
+
+}
+
+}
+
+
+/* =========================
+RENDER
+========================= */
+
+function renderVacancies(data){
+
+const jobs =
+document.getElementById("jobs");
+
+const count =
+document.getElementById("count");
+
+
+count.textContent =
+data.length +
+(data.length === 1
+? " Vacancy"
+: " Vacancies");
+
+
+if(!data.length){
+
+jobs.innerHTML = `
+
+<div class="empty">
+
+📋
+
+<br><br>
+
+No vacancies found.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+jobs.innerHTML =
+data.map(
+(job,index)=>{
+
+
+const title =
+escapeHTML(
+job.title ||
+"Government Vacancy"
+);
+
+
+const department =
+escapeHTML(
+job.department ||
+"Rajasthan Government"
+);
+
+
+const posts =
+escapeHTML(
+job.total_posts ||
+"-"
+);
+
+
+const qualification =
+escapeHTML(
+job.qualification ||
+"-"
+);
+
+
+const age =
+escapeHTML(
+job.age_limit ||
+"-"
+);
+
+
+const salary =
+escapeHTML(
+job.salary ||
+"-"
+);
+
+
+const lastDate =
+formatDate(
+job.last_date
+);
+
+
+const description =
+escapeHTML(
+job.description ||
+"Latest Rajasthan Government vacancy."
+);
+
+
+const apply =
+safeURL(
+job.apply_link
+);
+
+
+const notification =
+safeURL(
+job.notification_link
+);
+
+
+return `
+
+<article class="job-card">
+
+
+<div class="job-top">
+
+<a
+href="/vacancy.html?id=${encodeURIComponent(job.id)}"
+class="job-title">
+
+${title}
+
+</a>
+
+<div class="badge">
+
+${index === 0
+? "LATEST"
+: "JOB"}
+
+</div>
+
+</div>
+
+
+<div class="department">
+
+🏛️ ${department}
+
+</div>
+
+
+<div class="info-grid">
+
+
+<div class="info">
+
+<span class="label">
+TOTAL POSTS
+</span>
+
+<span class="value">
+${posts}
+</span>
+
+</div>
+
+
+<div class="info">
+
+<span class="label">
+QUALIFICATION
+</span>
+
+<span class="value">
+${qualification}
+</span>
+
+</div>
+
+
+<div class="info">
+
+<span class="label">
+AGE LIMIT
+</span>
+
+<span class="value">
+${age}
+</span>
+
+</div>
+
+
+<div class="info">
+
+<span class="label">
+LAST DATE
+</span>
+
+<span class="value">
+${lastDate}
+</span>
+
+</div>
+
+
+<div class="info">
+
+<span class="label">
+SALARY
+</span>
+
+<span class="value">
+${salary}
+</span>
+
+</div>
+
+
+</div>
+
+
+<div class="description">
+
+${description}
+
+</div>
+
+
+<div class="buttons">
+
+
+${
+apply
+?
+`
+
+<a
+href="${apply}"
+target="_blank"
+rel="noopener noreferrer"
+class="btn apply">
+
+🚀 Apply Now
+
+</a>
+
+`
+:
+""
+}
+
+
+${
+notification
+?
+`
+
+<a
+href="${notification}"
+target="_blank"
+rel="noopener noreferrer"
+class="btn notification">
+
+📄 Notification
+
+</a>
+
+`
+:
+""
+}
+
+
+</div>
+
+
+</article>
+
+`;
+
+}
+).join("");
+
+}
+
+
+/* =========================
+SEARCH
+========================= */
+
+function searchJobs(){
+
+const query =
+document
+.getElementById("search")
+.value
+.trim()
+.toLowerCase();
+
+
+if(!query){
+
+renderVacancies(
+allVacancies
+);
+
+return;
+
+}
+
+
+const filtered =
+allVacancies.filter(
+job=>{
+
+const text = [
+
+job.title,
+job.department,
+job.qualification,
+job.age_limit,
+job.salary,
+job.job_type,
+job.description
+
+]
+.filter(Boolean)
+.join(" ")
+.toLowerCase();
+
+return text.includes(query);
+
+}
+);
+
+
+renderVacancies(
+filtered
+);
+
+}
+
+
+/* ENTER */
+
+document
+.getElementById("search")
+.addEventListener(
+"keydown",
+function(e){
+
+if(e.key === "Enter"){
+
+searchJobs();
+
+}
+
+}
+);
+
+
+/* =========================
+DATE
+========================= */
+
+function formatDate(value){
+
+if(!value)
+return "-";
+
+const date =
+new Date(value);
+
+if(
+isNaN(
+date.getTime()
+)
+)
+return value;
+
+return date.toLocaleDateString(
+"en-IN",
+{
+day:"2-digit",
+month:"2-digit",
+year:"numeric"
+}
+);
+
+}
+
+
+/* =========================
+URL
+========================= */
+
+function safeURL(value){
+
+if(!value)
+return "";
+
+try{
+
+const url =
+new URL(value);
+
+if(
+url.protocol === "http:" ||
+url.protocol === "https:"
+){
+
+return escapeHTML(
+url.href
+);
+
+}
+
+return "";
+
+}
+catch{
+
+return "";
+
+}
+
+}
+
+
+/* =========================
+ESCAPE
+========================= */
+
+function escapeHTML(value){
+
+const div =
+document.createElement("div");
+
+div.textContent =
+String(value);
+
+return div.innerHTML;
+
+}
+
+
+/* START */
+
+loadVacancies();
+
+</script>
+
+
+</body>
+
+</html>
