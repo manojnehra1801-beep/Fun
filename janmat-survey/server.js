@@ -1,29 +1,25 @@
+require("dotenv").config();
+
 const express = require("express");
 const path = require("path");
 const { createClient } = require("@supabase/supabase-js");
-require("dotenv").config();
 
 const app = express();
 
 
-// ===============================
+// =====================================================
 // MIDDLEWARE
-// ===============================
+// =====================================================
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
-// ===============================
-// PUBLIC FOLDER
-// ===============================
-
 app.use(express.static(path.join(__dirname, "public")));
 
 
-// ===============================
-// SUPABASE CONFIG
-// ===============================
+// =====================================================
+// SUPABASE
+// =====================================================
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 
@@ -31,7 +27,6 @@ const SUPABASE_KEY =
   process.env.SUPABASE_SECRET_KEY ||
   process.env.SUPABASE_KEY ||
   process.env.SUPABASE_SERVICE_ROLE_KEY;
-
 
 if (!SUPABASE_URL) {
   console.error("❌ SUPABASE_URL is missing");
@@ -41,16 +36,15 @@ if (!SUPABASE_KEY) {
   console.error("❌ SUPABASE KEY is missing");
 }
 
-
 const supabase =
   SUPABASE_URL && SUPABASE_KEY
     ? createClient(SUPABASE_URL, SUPABASE_KEY)
     : null;
 
 
-// ===============================
+// =====================================================
 // HOME PAGE
-// ===============================
+// =====================================================
 
 app.get("/", (req, res) => {
 
@@ -61,9 +55,9 @@ app.get("/", (req, res) => {
 });
 
 
-// ===============================
+// =====================================================
 // CANDIDATE PAGE
-// ===============================
+// =====================================================
 
 app.get("/candidate.html", (req, res) => {
 
@@ -74,22 +68,22 @@ app.get("/candidate.html", (req, res) => {
 });
 
 
-// ===============================
-// SURVEY PAGE
-// ===============================
+// =====================================================
+// ADMIN PAGE
+// =====================================================
 
-app.get("/survey.html", (req, res) => {
+app.get("/admin.html", (req, res) => {
 
   res.sendFile(
-    path.join(__dirname, "public", "survey.html")
+    path.join(__dirname, "public", "admin.html")
   );
 
 });
 
 
-// ===============================
-// API TEST
-// ===============================
+// =====================================================
+// BASIC API TEST
+// =====================================================
 
 app.get("/api", (req, res) => {
 
@@ -104,9 +98,9 @@ app.get("/api", (req, res) => {
 });
 
 
-// ===============================
+// =====================================================
 // SUPABASE TEST
-// ===============================
+// =====================================================
 
 app.get("/api/test", async (req, res) => {
 
@@ -126,15 +120,18 @@ app.get("/api/test", async (req, res) => {
 
 
     const { data, error } = await supabase
+
       .from("potential_candidates")
+
       .select("*")
+
       .limit(1);
 
 
     if (error) {
 
       console.error(
-        "SUPABASE TEST ERROR:",
+        "Supabase test error:",
         error
       );
 
@@ -164,11 +161,7 @@ app.get("/api/test", async (req, res) => {
 
   } catch (error) {
 
-    console.error(
-      "SUPABASE TEST ERROR:",
-      error
-    );
-
+    console.error(error);
 
     res.status(500).json({
 
@@ -185,11 +178,11 @@ app.get("/api/test", async (req, res) => {
 });
 
 
-// ===============================
-// SAVE POTENTIAL CANDIDATE DATA
-// ===============================
+// =====================================================
+// GET POTENTIAL CANDIDATES
+// =====================================================
 
-app.post("/api/candidates", async (req, res) => {
+app.get("/api/candidates", async (req, res) => {
 
   try {
 
@@ -206,9 +199,162 @@ app.post("/api/candidates", async (req, res) => {
     }
 
 
-    // ===========================
-    // GET FORM DATA
-    // ===========================
+    const {
+      state,
+      district,
+      village,
+      panchayat
+    } = req.query;
+
+
+    if (
+      !state ||
+      !district ||
+      !village ||
+      !panchayat
+    ) {
+
+      return res.status(400).json({
+
+        success: false,
+
+        message:
+          "Location information is required."
+
+      });
+
+    }
+
+
+    const { data, error } = await supabase
+
+      .from("potential_candidates")
+
+      .select(`
+        "Candidate 1",
+        "Candidate 2",
+        "Candidate 3",
+        "Candidate 4"
+      `)
+
+      .eq("State", state)
+
+      .eq("District", district)
+
+      .eq("Village", village)
+
+      .eq("Panchayat", panchayat);
+
+
+    if (error) {
+
+      console.error(
+        "Candidate fetch error:",
+        error
+      );
+
+      return res.status(500).json({
+
+        success: false,
+
+        message:
+          "Could not load candidates.",
+
+        error: error.message
+
+      });
+
+    }
+
+
+    // Remove duplicate candidate names
+
+    const candidates = [];
+
+
+    data.forEach(row => {
+
+      const names = [
+
+        row["Candidate 1"],
+
+        row["Candidate 2"],
+
+        row["Candidate 3"],
+
+        row["Candidate 4"]
+
+      ];
+
+
+      names.forEach(name => {
+
+        if (
+          name &&
+          name.trim() &&
+          !candidates.includes(name.trim())
+        ) {
+
+          candidates.push(
+            name.trim()
+          );
+
+        }
+
+      });
+
+    });
+
+
+    res.json({
+
+      success: true,
+
+      candidates: candidates
+
+    });
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    res.status(500).json({
+
+      success: false,
+
+      message: "Server error",
+
+      error: error.message
+
+    });
+
+  }
+
+});
+
+
+// =====================================================
+// SAVE POTENTIAL CANDIDATE
+// =====================================================
+
+app.post("/api/candidates", async (req, res) => {
+
+  try {
+
+    if (!supabase) {
+
+      return res.status(500).json({
+
+        success: false,
+
+        message:
+          "Supabase configuration is missing."
+
+      });
+
+    }
+
 
     const {
 
@@ -237,24 +383,15 @@ app.post("/api/candidates", async (req, res) => {
     } = req.body;
 
 
-    // ===========================
-    // REQUIRED CHECK
-    // ===========================
+    // Required fields
 
     if (
-
       !state ||
-
       !district ||
-
       !village ||
-
       !panchayat ||
-
       !candidate1 ||
-
       !likely
-
     ) {
 
       return res.status(400).json({
@@ -269,21 +406,22 @@ app.post("/api/candidates", async (req, res) => {
     }
 
 
-    // ===========================
-    // PREPARE DATA
-    // ===========================
-
     const candidateData = {
 
-      "State": state,
+      "State":
+        state,
 
-      "District": district,
+      "District":
+        district,
 
-      "Village": village,
+      "Village":
+        village,
 
-      "Panchayat": panchayat,
+      "Panchayat":
+        panchayat,
 
-      "Candidate 1": candidate1,
+      "Candidate 1":
+        candidate1,
 
       "Candidate 2":
         candidate2 || null,
@@ -297,7 +435,8 @@ app.post("/api/candidates", async (req, res) => {
       "Mobile":
         mobile || null,
 
-      "Likely": likely,
+      "Likely":
+        likely,
 
       "Extra info":
         extraInfo || null
@@ -311,16 +450,9 @@ app.post("/api/candidates", async (req, res) => {
     );
 
 
-    // ===========================
-    // INSERT INTO SUPABASE
-    // ===========================
-
     const {
-
       data,
-
       error
-
     } = await supabase
 
       .from("potential_candidates")
@@ -330,17 +462,12 @@ app.post("/api/candidates", async (req, res) => {
       .select();
 
 
-    // ===========================
-    // SUPABASE ERROR
-    // ===========================
-
     if (error) {
 
       console.error(
-        "❌ SUPABASE INSERT ERROR:",
+        "Supabase insert error:",
         error
       );
-
 
       return res.status(500).json({
 
@@ -357,16 +484,12 @@ app.post("/api/candidates", async (req, res) => {
     }
 
 
-    // ===========================
-    // SUCCESS
-    // ===========================
-
     console.log(
       "✅ Candidate saved successfully"
     );
 
 
-    res.json({
+    res.status(201).json({
 
       success: true,
 
@@ -381,17 +504,199 @@ app.post("/api/candidates", async (req, res) => {
   } catch (error) {
 
     console.error(
-      "❌ SERVER ERROR:",
+      "Candidate save error:",
       error
     );
 
+    res.status(500).json({
+
+      success: false,
+
+      message: "Server error",
+
+      error: error.message
+
+    });
+
+  }
+
+});
+
+
+// =====================================================
+// ADMIN LOGIN
+// =====================================================
+
+app.post("/api/admin/login", (req, res) => {
+
+  try {
+
+    const {
+      id,
+      password
+    } = req.body;
+
+
+    const adminId =
+      process.env.ADMIN_ID;
+
+    const adminPassword =
+      process.env.ADMIN_PASSWORD;
+
+
+    if (
+      !adminId ||
+      !adminPassword
+    ) {
+
+      console.error(
+        "❌ ADMIN_ID or ADMIN_PASSWORD is missing"
+      );
+
+      return res.status(500).json({
+
+        success: false,
+
+        message:
+          "Admin credentials are not configured."
+
+      });
+
+    }
+
+
+    if (
+      id === adminId &&
+      password === adminPassword
+    ) {
+
+      return res.json({
+
+        success: true,
+
+        message:
+          "Login successful"
+
+      });
+
+    }
+
+
+    return res.status(401).json({
+
+      success: false,
+
+      message:
+        "Invalid ID or password"
+
+    });
+
+
+  } catch (error) {
+
+    console.error(
+      "Admin login error:",
+      error
+    );
 
     res.status(500).json({
 
       success: false,
 
       message:
-        "Server error occurred.",
+        "Server error"
+
+    });
+
+  }
+
+});
+
+
+// =====================================================
+// ADMIN — GET ALL SUBMISSIONS
+// =====================================================
+
+app.get("/api/admin/candidates", async (req, res) => {
+
+  try {
+
+    if (!supabase) {
+
+      return res.status(500).json({
+
+        success: false,
+
+        message:
+          "Supabase configuration is missing"
+
+      });
+
+    }
+
+
+    const {
+      data,
+      error
+    } = await supabase
+
+      .from("potential_candidates")
+
+      .select("*")
+
+      .order(
+        "Created at",
+        {
+          ascending: false
+        }
+      );
+
+
+    if (error) {
+
+      console.error(
+        "Admin fetch error:",
+        error
+      );
+
+      return res.status(500).json({
+
+        success: false,
+
+        message:
+          "Could not load submissions.",
+
+        error:
+          error.message
+
+      });
+
+    }
+
+
+    res.json({
+
+      success: true,
+
+      count:
+        data.length,
+
+      data:
+        data
+
+    });
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    res.status(500).json({
+
+      success: false,
+
+      message:
+        "Server error",
 
       error:
         error.message
@@ -403,9 +708,9 @@ app.post("/api/candidates", async (req, res) => {
 });
 
 
-// ===============================
-// 404 HANDLER
-// ===============================
+// =====================================================
+// 404
+// =====================================================
 
 app.use((req, res) => {
 
@@ -421,18 +726,21 @@ app.use((req, res) => {
 });
 
 
-// ===============================
+// =====================================================
 // START SERVER
-// ===============================
+// =====================================================
 
 const PORT =
   process.env.PORT || 10000;
 
 
-app.listen(PORT, () => {
+app.listen(
+  PORT,
+  () => {
 
-  console.log(
-    `🚀 Janmat Survey server running on port ${PORT}`
-  );
+    console.log(
+      `🚀 Janmat Survey running on port ${PORT}`
+    );
 
-});
+  }
+);
