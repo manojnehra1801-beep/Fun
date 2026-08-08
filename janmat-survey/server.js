@@ -4,55 +4,77 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 
-const {
-  createClient
-} = require("@supabase/supabase-js");
+const { createClient } = require("@supabase/supabase-js");
 
 const app = express();
 
+
+// ==================================================
+// BASIC CONFIG
+// ==================================================
+
 app.use(cors());
+
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+
+app.use(express.urlencoded({
+  extended: true
+}));
 
 
-// ============================================
-// SUPABASE
-// ============================================
+// ==================================================
+// SUPABASE CONFIG
+// ==================================================
 
 const SUPABASE_URL =
   process.env.SUPABASE_URL;
 
 const SUPABASE_KEY =
   process.env.SUPABASE_SECRET_KEY ||
-  process.env.SUPABASE_KEY;
+  process.env.SUPABASE_SERVICE_ROLE_KEY ||
+  process.env.SUPABASE_KEY ||
+  process.env.SUPABASE_ANON_KEY;
+
 
 let supabase = null;
 
-if (
-  SUPABASE_URL &&
-  SUPABASE_KEY
-) {
 
-  supabase =
-    createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
+if (SUPABASE_URL && SUPABASE_KEY) {
+
+  supabase = createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
   console.log("✅ Supabase configured");
 
 } else {
 
   console.log(
-    "⚠️ Supabase environment variables are missing"
+    "⚠️ SUPABASE_URL or SUPABASE_KEY is missing"
   );
 
 }
 
 
-// ============================================
+// ==================================================
+// HOME
+// ==================================================
+
+app.get("/", (req, res) => {
+
+  res.json({
+    success: true,
+    message: "Rajasthan Govt Vacancies server is running",
+    api: "/api/health"
+  });
+
+});
+
+
+// ==================================================
 // HEALTH CHECK
-// ============================================
+// ==================================================
 
 app.get("/api/health", (req, res) => {
 
@@ -68,18 +90,37 @@ app.get("/api/health", (req, res) => {
 });
 
 
-// ============================================
-// ADMIN LOGIN
-// ============================================
+// ==================================================
+// ADMIN LOGIN - GET TEST
+// ==================================================
 
-app.post(
-  "/api/admin/login",
-  (req, res) => {
+app.get("/api/admin/login", (req, res) => {
 
-    const {
-      id,
-      password
-    } = req.body;
+  res.json({
+
+    success: true,
+
+    message:
+      "Admin login API is available. Use POST request."
+
+  });
+
+});
+
+
+// ==================================================
+// ADMIN LOGIN - POST
+// ==================================================
+
+app.post("/api/admin/login", (req, res) => {
+
+  try {
+
+    const id =
+      String(req.body.id || "").trim();
+
+    const password =
+      String(req.body.password || "");
 
 
     const adminId =
@@ -89,27 +130,43 @@ app.post(
       process.env.ADMIN_PASSWORD;
 
 
+    // ----------------------------------------------
+    // CHECK ENVIRONMENT VARIABLES
+    // ----------------------------------------------
+
     if (
       !adminId ||
       !adminPassword
     ) {
+
+      console.log(
+        "❌ ADMIN_ID or ADMIN_PASSWORD missing"
+      );
 
       return res.status(500).json({
 
         success: false,
 
         message:
-          "Admin credentials are not configured."
+          "Admin credentials are not configured on server."
 
       });
 
     }
 
 
+    // ----------------------------------------------
+    // CHECK LOGIN
+    // ----------------------------------------------
+
     if (
       id === adminId &&
       password === adminPassword
     ) {
+
+      console.log(
+        "✅ Admin login successful"
+      );
 
       return res.json({
 
@@ -123,6 +180,11 @@ app.post(
     }
 
 
+    console.log(
+      "❌ Invalid admin login"
+    );
+
+
     return res.status(401).json({
 
       success: false,
@@ -132,13 +194,347 @@ app.post(
 
     });
 
+
+  } catch (error) {
+
+    console.error(
+      "Admin login error:",
+      error
+    );
+
+
+    return res.status(500).json({
+
+      success: false,
+
+      message:
+        "Server error"
+
+    });
+
+  }
+
+});
+
+
+// ==================================================
+// ADMIN CANDIDATES
+// ==================================================
+
+app.get(
+  "/api/admin/candidates",
+  async (req, res) => {
+
+    try {
+
+      if (!supabase) {
+
+        return res.status(500).json({
+
+          success: false,
+
+          message:
+            "Supabase configuration is missing."
+
+        });
+
+      }
+
+
+      /*
+        IMPORTANT:
+
+        Change "submissions" below if your
+        Supabase table has another name.
+      */
+
+
+      const {
+        data,
+        error
+      } = await supabase
+
+        .from("submissions")
+
+        .select("*")
+
+        .order(
+          "created_at",
+          {
+            ascending: false
+          }
+        );
+
+
+      if (error) {
+
+        console.error(
+          "Supabase candidates error:",
+          error
+        );
+
+
+        return res.status(500).json({
+
+          success: false,
+
+          message:
+            "Could not load candidate data.",
+
+          error:
+            error.message
+
+        });
+
+      }
+
+
+      return res.json({
+
+        success: true,
+
+        count:
+          data.length,
+
+        data:
+          data
+
+      });
+
+
+    } catch (error) {
+
+      console.error(
+        "Candidates API error:",
+        error
+      );
+
+
+      return res.status(500).json({
+
+        success: false,
+
+        message:
+          "Server error",
+
+        error:
+          error.message
+
+      });
+
+    }
+
   }
 );
 
 
-// ============================================
+// ==================================================
+// SAVE CANDIDATE / SURVEY
+// ==================================================
+
+app.post(
+  "/api/submissions",
+  async (req, res) => {
+
+    try {
+
+      if (!supabase) {
+
+        return res.status(500).json({
+
+          success: false,
+
+          message:
+            "Supabase configuration is missing."
+
+        });
+
+      }
+
+
+      const submission =
+        req.body;
+
+
+      const {
+        data,
+        error
+      } = await supabase
+
+        .from("submissions")
+
+        .insert([
+          submission
+        ])
+
+        .select();
+
+
+      if (error) {
+
+        console.error(
+          "Submission error:",
+          error
+        );
+
+
+        return res.status(500).json({
+
+          success: false,
+
+          message:
+            "Data could not be saved.",
+
+          error:
+            error.message
+
+        });
+
+      }
+
+
+      return res.status(201).json({
+
+        success: true,
+
+        message:
+          "Data saved successfully.",
+
+        data:
+          data
+
+      });
+
+
+    } catch (error) {
+
+      console.error(
+        "Submission API error:",
+        error
+      );
+
+
+      return res.status(500).json({
+
+        success: false,
+
+        message:
+          "Server error",
+
+        error:
+          error.message
+
+      });
+
+    }
+
+  }
+);
+
+
+// ==================================================
+// GET VACANCIES
+// ==================================================
+
+app.get(
+  "/api/vacancies",
+  async (req, res) => {
+
+    try {
+
+      if (!supabase) {
+
+        return res.status(500).json({
+
+          success: false,
+
+          message:
+            "Supabase configuration is missing."
+
+        });
+
+      }
+
+
+      const {
+        data,
+        error
+      } = await supabase
+
+        .from("vacancies")
+
+        .select("*")
+
+        .order(
+          "created_at",
+          {
+            ascending: false
+          }
+        );
+
+
+      if (error) {
+
+        console.error(
+          "Vacancies fetch error:",
+          error
+        );
+
+
+        return res.status(500).json({
+
+          success: false,
+
+          message:
+            "Could not load vacancies.",
+
+          error:
+            error.message
+
+        });
+
+      }
+
+
+      return res.json({
+
+        success: true,
+
+        count:
+          data.length,
+
+        data:
+          data
+
+      });
+
+
+    } catch (error) {
+
+      console.error(error);
+
+
+      return res.status(500).json({
+
+        success: false,
+
+        message:
+          "Server error",
+
+        error:
+          error.message
+
+      });
+
+    }
+
+  }
+);
+
+
+// ==================================================
 // ADD VACANCY
-// ============================================
+// ==================================================
 
 app.post(
   "/api/vacancies",
@@ -240,7 +636,9 @@ app.post(
 
         .from("vacancies")
 
-        .insert([vacancy])
+        .insert([
+          vacancy
+        ])
 
         .select();
 
@@ -251,6 +649,7 @@ app.post(
           "Vacancy insert error:",
           error
         );
+
 
         return res.status(500).json({
 
@@ -267,7 +666,7 @@ app.post(
       }
 
 
-      res.status(201).json({
+      return res.status(201).json({
 
         success: true,
 
@@ -282,105 +681,13 @@ app.post(
 
     } catch (error) {
 
-      console.error(error);
-
-      res.status(500).json({
-
-        success: false,
-
-        message:
-          "Server error",
-
-        error:
-          error.message
-
-      });
-
-    }
-
-  }
-);
-
-
-// ============================================
-// GET VACANCIES
-// ============================================
-
-app.get(
-  "/api/vacancies",
-  async (req, res) => {
-
-    try {
-
-      if (!supabase) {
-
-        return res.status(500).json({
-
-          success: false,
-
-          message:
-            "Supabase configuration is missing."
-
-        });
-
-      }
-
-
-      const {
-        data,
+      console.error(
+        "Vacancy API error:",
         error
-      } = await supabase
-
-        .from("vacancies")
-
-        .select("*")
-
-        .order(
-          "created_at",
-          {
-            ascending: false
-          }
-        );
+      );
 
 
-      if (error) {
-
-        console.error(
-          "Vacancy fetch error:",
-          error
-        );
-
-        return res.status(500).json({
-
-          success: false,
-
-          message:
-            "Could not load vacancies.",
-
-          error:
-            error.message
-
-        });
-
-      }
-
-
-      res.json({
-
-        success: true,
-
-        count:
-          data.length,
-
-        data:
-          data
-
-      });
-
-
-    } catch (error) {
-
-      res.status(500).json({
+      return res.status(500).json({
 
         success: false,
 
@@ -398,9 +705,9 @@ app.get(
 );
 
 
-// ============================================
-// SERVE PUBLIC FILES
-// ============================================
+// ==================================================
+// PUBLIC FILES
+// ==================================================
 
 app.use(
   express.static(
@@ -412,9 +719,58 @@ app.use(
 );
 
 
-// ============================================
+// ==================================================
+// 404
+// ==================================================
+
+app.use(
+  (req, res) => {
+
+    res.status(404).json({
+
+      success: false,
+
+      message:
+        "Route not found",
+
+      path:
+        req.originalUrl
+
+    });
+
+  }
+);
+
+
+// ==================================================
+// ERROR HANDLER
+// ==================================================
+
+app.use(
+  (error, req, res, next) => {
+
+    console.error(
+      "Server error:",
+      error
+    );
+
+
+    res.status(500).json({
+
+      success: false,
+
+      message:
+        "Internal server error"
+
+    });
+
+  }
+);
+
+
+// ==================================================
 // START SERVER
-// ============================================
+// ==================================================
 
 const PORT =
   process.env.PORT || 10000;
@@ -422,10 +778,11 @@ const PORT =
 
 app.listen(
   PORT,
+  "0.0.0.0",
   () => {
 
     console.log(
-      `🚀 Server running on port ${PORT}`
+      `🚀 Rajasthan Govt Vacancies server running on port ${PORT}`
     );
 
   }
