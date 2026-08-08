@@ -525,8 +525,203 @@ app.get(
 // ADD VACANCY
 // ======================================================
 
+async function addVacancy(req, res) {
+
+  try {
+
+    if (!supabase) {
+
+      return res.status(500).json({
+
+        success: false,
+
+        message:
+          "Supabase configuration is missing."
+
+      });
+
+    }
+
+
+    const {
+
+      title,
+      department,
+      total_posts,
+      qualification,
+      age_limit,
+      salary,
+      start_date,
+      last_date,
+      job_type,
+      notification_link,
+      apply_link,
+      description
+
+    } = req.body;
+
+
+    if (!title || !title.trim()) {
+
+      return res.status(400).json({
+
+        success: false,
+
+        message:
+          "Job title is required."
+
+      });
+
+    }
+
+
+    const vacancy = {
+
+      title:
+        title.trim(),
+
+      department:
+        department || null,
+
+      total_posts:
+        total_posts || null,
+
+      qualification:
+        qualification || null,
+
+      age_limit:
+        age_limit || null,
+
+      salary:
+        salary || null,
+
+      start_date:
+        start_date || null,
+
+      last_date:
+        last_date || null,
+
+      job_type:
+        job_type || null,
+
+      notification_link:
+        notification_link || null,
+
+      apply_link:
+        apply_link || null,
+
+      description:
+        description || null
+
+    };
+
+
+    const {
+      data,
+      error
+    } = await supabase
+
+      .from("vacancies")
+
+      .insert([
+        vacancy
+      ])
+
+      .select();
+
+
+    if (error) {
+
+      console.error(
+        "Vacancy insert error:",
+        error
+      );
+
+
+      return res.status(500).json({
+
+        success: false,
+
+        message:
+          "Vacancy could not be saved.",
+
+        error:
+          error.message
+
+      });
+
+    }
+
+
+    console.log(
+      "✅ Vacancy added successfully"
+    );
+
+
+    return res.status(201).json({
+
+      success: true,
+
+      message:
+        "Vacancy published successfully.",
+
+      data:
+        data
+
+    });
+
+
+  } catch (error) {
+
+    console.error(
+      "Vacancy API error:",
+      error
+    );
+
+
+    return res.status(500).json({
+
+      success: false,
+
+      message:
+        "Server error",
+
+      error:
+        error.message
+
+    });
+
+  }
+
+}
+
+
+// ======================================================
+// ADD VACANCY - NORMAL API
+// ======================================================
+
 app.post(
   "/api/vacancies",
+  addVacancy
+);
+
+
+// ======================================================
+// ADD VACANCY - ADMIN API
+// ======================================================
+
+app.post(
+  "/api/admin/vacancies",
+  addVacancy
+);
+
+
+// ======================================================
+// ADMIN - GET VACANCIES
+// ======================================================
+
+app.get(
+  "/api/admin/vacancies",
   async (req, res) => {
 
     try {
@@ -546,106 +741,30 @@ app.post(
 
 
       const {
-
-        title,
-        department,
-        total_posts,
-        qualification,
-        age_limit,
-        salary,
-        start_date,
-        last_date,
-        job_type,
-        notification_link,
-        apply_link,
-        description
-
-      } = req.body;
-
-
-      if (!title) {
-
-        return res.status(400).json({
-
-          success: false,
-
-          message:
-            "Job title is required."
-
-        });
-
-      }
-
-
-      const vacancy = {
-
-        title:
-          title.trim(),
-
-        department:
-          department || null,
-
-        total_posts:
-          total_posts || null,
-
-        qualification:
-          qualification || null,
-
-        age_limit:
-          age_limit || null,
-
-        salary:
-          salary || null,
-
-        start_date:
-          start_date || null,
-
-        last_date:
-          last_date || null,
-
-        job_type:
-          job_type || null,
-
-        notification_link:
-          notification_link || null,
-
-        apply_link:
-          apply_link || null,
-
-        description:
-          description || null
-
-      };
-
-
-      const {
         data,
         error
       } = await supabase
 
         .from("vacancies")
 
-        .insert([
-          vacancy
-        ])
+        .select("*")
 
-        .select();
+        .order(
+          "created_at",
+          {
+            ascending: false
+          }
+        );
 
 
       if (error) {
-
-        console.error(
-          "Vacancy insert error:",
-          error
-        );
-
 
         return res.status(500).json({
 
           success: false,
 
           message:
-            "Vacancy could not be saved.",
+            "Could not load vacancies.",
 
           error:
             error.message
@@ -655,12 +774,12 @@ app.post(
       }
 
 
-      return res.status(201).json({
+      return res.json({
 
         success: true,
 
-        message:
-          "Vacancy published successfully.",
+        count:
+          data.length,
 
         data:
           data
@@ -671,7 +790,6 @@ app.post(
     } catch (error) {
 
       console.error(
-        "Vacancy API error:",
         error
       );
 
