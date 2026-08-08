@@ -6,352 +6,544 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+      content="width=device-width, initial-scale=1.0">
 
-<title>Admit Card Management | Rajasthan Govt Vacancies</title>
+<meta name="description"
+      content="Latest Rajasthan Government Exam Admit Cards">
+
+<title>Rajasthan Govt Admit Cards | Rajasthan Govt Vacancies</title>
+
 
 <style>
 
-*{
-box-sizing:border-box;
+/* =========================
+   BASIC
+========================= */
+
+* {
+  box-sizing: border-box;
 }
 
-body{
-margin:0;
-font-family:Arial,"Noto Sans Devanagari",sans-serif;
-background:#f5f7fb;
-color:#172033;
+body {
+  margin: 0;
+
+  font-family:
+    Arial,
+    "Noto Sans Devanagari",
+    sans-serif;
+
+  background: #f5f7fb;
+
+  color: #172033;
 }
 
-.header{
-background:#172554;
-color:white;
-padding:15px 18px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-position:sticky;
-top:0;
-z-index:10;
-}
-
-.brand{
-font-size:18px;
-font-weight:900;
-}
-
-.back{
-color:white;
-border:1px solid rgba(255,255,255,.3);
-padding:8px 11px;
-border-radius:8px;
-font-size:11px;
-font-weight:800;
-text-decoration:none;
-}
-
-.container{
-max-width:1100px;
-margin:auto;
-padding:24px 14px 50px;
-}
-
-.title{
-margin-bottom:20px;
-}
-
-.title h1{
-margin:0;
-color:#172554;
-font-size:26px;
-}
-
-.title p{
-margin:5px 0 0;
-color:#64748b;
-font-size:12px;
+a {
+  text-decoration: none;
 }
 
 
-/* FORM */
+/* =========================
+   HEADER
+========================= */
 
-.form-card{
-background:white;
-border:1px solid #e5e7eb;
-border-radius:17px;
-padding:20px;
-margin-bottom:25px;
-box-shadow:0 5px 18px rgba(15,23,42,.04);
+header {
+
+  background: #172554;
+
+  color: white;
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 100;
+
+  box-shadow:
+    0 3px 18px
+    rgba(0,0,0,.12);
 }
 
-.form-title{
-font-size:17px;
-font-weight:900;
-color:#172554;
-margin-bottom:17px;
+.header-inner {
+
+  max-width: 1150px;
+
+  margin: auto;
+
+  padding: 14px 16px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
 }
 
-.form-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:13px;
+.logo {
+
+  color: white;
+
+  font-size: 18px;
+
+  font-weight: 900;
+
+  line-height: 1.3;
 }
 
-.field{
-display:flex;
-flex-direction:column;
+.logo span {
+
+  display: block;
+
+  color: #fbbf24;
+
+  font-size: 9px;
+
+  margin-top: 3px;
 }
 
-.field.full{
-grid-column:1/-1;
-}
+.home-btn {
 
-label{
-font-size:10px;
-font-weight:800;
-color:#475569;
-margin-bottom:6px;
-}
+  color: white;
 
-input,
-textarea{
-width:100%;
-border:1px solid #d8deea;
-border-radius:9px;
-padding:11px;
-font-family:inherit;
-font-size:12px;
-outline:none;
-}
+  border:
+    1px solid
+    rgba(255,255,255,.35);
 
-textarea{
-min-height:100px;
-resize:vertical;
-}
+  padding: 8px 12px;
 
-input:focus,
-textarea:focus{
-border-color:#3155d9;
-box-shadow:0 0 0 3px #eef2ff;
-}
+  border-radius: 8px;
 
-.submit-btn{
-margin-top:15px;
-border:none;
-background:#3155d9;
-color:white;
-padding:12px 18px;
-border-radius:9px;
-font-size:11px;
-font-weight:900;
-cursor:pointer;
-}
+  font-size: 10px;
 
-.submit-btn:disabled{
-opacity:.6;
-cursor:not-allowed;
-}
-
-.message{
-display:none;
-margin-top:12px;
-padding:10px;
-border-radius:9px;
-font-size:11px;
-font-weight:700;
-}
-
-.success{
-display:block;
-background:#ecfdf5;
-color:#047857;
-}
-
-.error{
-display:block;
-background:#fff1f2;
-color:#be123c;
+  font-weight: 800;
 }
 
 
-/* LIST */
+/* =========================
+   CONTAINER
+========================= */
 
-.list-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:12px;
-gap:10px;
+.container {
+
+  max-width: 1150px;
+
+  margin: auto;
+
+  padding:
+    22px 14px 50px;
 }
 
-.list-header h2{
-margin:0;
-font-size:19px;
-color:#172554;
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+
+  background:
+    linear-gradient(
+      135deg,
+      #172554,
+      #3155d9
+    );
+
+  color: white;
+
+  border-radius: 20px;
+
+  padding:
+    27px 20px;
+
+  margin-bottom: 18px;
 }
 
-.search{
-width:250px;
-border:1px solid #d8deea;
-border-radius:9px;
-padding:10px;
-font-size:11px;
-outline:none;
+.hero-badge {
+
+  display: inline-block;
+
+  background:
+    rgba(255,255,255,.13);
+
+  padding: 6px 10px;
+
+  border-radius: 20px;
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  margin-bottom: 10px;
 }
 
-.cards{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:13px;
+.hero h1 {
+
+  margin: 0 0 8px;
+
+  font-size: 27px;
+
+  line-height: 1.3;
 }
 
-.card{
-background:white;
-border:1px solid #e5e7eb;
-border-radius:15px;
-padding:17px;
-box-shadow:0 5px 18px rgba(15,23,42,.04);
+.hero h1 span {
+
+  color: #fbbf24;
 }
 
-.card-top{
-display:flex;
-justify-content:space-between;
-gap:10px;
-margin-bottom:8px;
+.hero p {
+
+  margin: 0;
+
+  color: #dbeafe;
+
+  font-size: 12px;
+
+  line-height: 1.7;
 }
 
-.card h3{
-margin:0;
-color:#172554;
-font-size:15px;
-line-height:1.4;
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-card {
+
+  background: white;
+
+  padding: 12px;
+
+  border-radius: 14px;
+
+  margin-bottom: 18px;
+
+  box-shadow:
+    0 6px 20px
+    rgba(15,23,42,.05);
 }
 
-.badge{
-background:#eef2ff;
-color:#3155d9;
-padding:5px 8px;
-border-radius:20px;
-font-size:8px;
-font-weight:900;
-white-space:nowrap;
-height:max-content;
+.search {
+
+  width: 100%;
+
+  border:
+    1px solid #d8deea;
+
+  border-radius: 9px;
+
+  padding: 12px;
+
+  outline: none;
+
+  font-size: 12px;
 }
 
-.department{
-font-size:10px;
-color:#64748b;
-margin-bottom:13px;
+.search:focus {
+
+  border-color: #3155d9;
+
+  box-shadow:
+    0 0 0 3px #eef2ff;
 }
 
-.info-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:8px;
-margin-bottom:12px;
+
+/* =========================
+   SECTION HEADER
+========================= */
+
+.section-header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 12px;
+
+  gap: 10px;
 }
 
-.info{
-background:#f8fafc;
-border-radius:8px;
-padding:9px;
+.section-header h2 {
+
+  margin: 0;
+
+  color: #172554;
+
+  font-size: 19px;
 }
 
-.info-label{
-display:block;
-font-size:8px;
-color:#94a3b8;
-margin-bottom:3px;
+.count {
+
+  color: #64748b;
+
+  font-size: 10px;
+
+  white-space: nowrap;
 }
 
-.info-value{
-font-size:10px;
-font-weight:800;
-color:#334155;
+
+/* =========================
+   CARDS
+========================= */
+
+.cards {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 14px;
 }
 
-.description{
-font-size:10px;
-line-height:1.6;
-color:#64748b;
-margin-bottom:13px;
+.card {
+
+  background: white;
+
+  border:
+    1px solid #e5e7eb;
+
+  border-radius: 17px;
+
+  padding: 18px;
+
+  box-shadow:
+    0 5px 18px
+    rgba(15,23,42,.04);
 }
 
-.links{
-display:flex;
-gap:7px;
-margin-bottom:10px;
+.card-top {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  margin-bottom: 8px;
 }
 
-.link-btn{
-flex:1;
-text-align:center;
-padding:9px;
-border-radius:8px;
-font-size:9px;
-font-weight:900;
-text-decoration:none;
+.card-title {
+
+  color: #172554;
+
+  font-size: 16px;
+
+  font-weight: 900;
+
+  line-height: 1.4;
 }
 
-.notification{
-background:#eef2ff;
-color:#3155d9;
+.badge {
+
+  background: #eef2ff;
+
+  color: #3155d9;
+
+  padding: 5px 8px;
+
+  border-radius: 20px;
+
+  font-size: 8px;
+
+  font-weight: 900;
+
+  white-space: nowrap;
 }
 
-.download{
-background:#3155d9;
-color:white;
+.department {
+
+  color: #64748b;
+
+  font-size: 10px;
+
+  margin-bottom: 14px;
 }
 
-.delete-btn{
-width:100%;
-border:1px solid #fecdd3;
-background:#fff1f2;
-color:#be123c;
-padding:9px;
-border-radius:8px;
-font-size:9px;
-font-weight:900;
-cursor:pointer;
+
+/* =========================
+   INFO
+========================= */
+
+.info-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 8px;
+
+  margin-bottom: 13px;
 }
+
+.info {
+
+  background: #f8fafc;
+
+  border-radius: 9px;
+
+  padding: 10px;
+}
+
+.info-label {
+
+  display: block;
+
+  color: #94a3b8;
+
+  font-size: 8px;
+
+  margin-bottom: 4px;
+}
+
+.info-value {
+
+  color: #334155;
+
+  font-size: 10px;
+
+  font-weight: 800;
+}
+
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.description {
+
+  color: #64748b;
+
+  font-size: 10px;
+
+  line-height: 1.7;
+
+  margin-bottom: 14px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons {
+
+  display: flex;
+
+  gap: 8px;
+}
+
+.btn {
+
+  flex: 1;
+
+  text-align: center;
+
+  padding: 10px 8px;
+
+  border-radius: 9px;
+
+  font-size: 9px;
+
+  font-weight: 900;
+}
+
+.notification {
+
+  background: #eef2ff;
+
+  color: #3155d9;
+}
+
+.download {
+
+  background: #3155d9;
+
+  color: white;
+}
+
+
+/* =========================
+   EMPTY / LOADING
+========================= */
 
 .loading,
-.empty{
-grid-column:1/-1;
-background:white;
-border:1px dashed #cbd5e1;
-border-radius:15px;
-padding:35px;
-text-align:center;
-color:#64748b;
-font-size:12px;
+.empty {
+
+  grid-column: 1 / -1;
+
+  background: white;
+
+  border:
+    1px dashed #cbd5e1;
+
+  border-radius: 17px;
+
+  padding: 40px 20px;
+
+  text-align: center;
+
+  color: #64748b;
+
+  font-size: 12px;
 }
 
 
-/* MOBILE */
+/* =========================
+   FOOTER
+========================= */
 
-@media(max-width:700px){
+footer {
 
-.form-grid{
-grid-template-columns:1fr;
+  background: #0f172a;
+
+  color: #94a3b8;
+
+  text-align: center;
+
+  padding: 25px 15px;
+
+  font-size: 9px;
+
+  line-height: 1.7;
 }
 
-.field.full{
-grid-column:auto;
+footer strong {
+
+  color: white;
+
+  font-size: 13px;
 }
 
-.cards{
-grid-template-columns:1fr;
-}
 
-.list-header{
-align-items:stretch;
-flex-direction:column;
-}
+/* =========================
+   MOBILE
+========================= */
 
-.search{
-width:100%;
-}
+@media(max-width:700px) {
+
+  .cards {
+
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+
+    font-size: 24px;
+  }
+
+  .logo {
+
+    font-size: 16px;
+  }
+
+  .card {
+
+    padding: 16px;
+  }
 
 }
 
@@ -363,854 +555,657 @@ width:100%;
 <body>
 
 
-<header class="header">
+<!-- =========================
+     HEADER
+========================= -->
 
-<div class="brand">
-🎫 Admit Card Management
-</div>
+<header>
 
-<a
-href="/admin-dashboard.html"
-class="back">
+  <div class="header-inner">
 
-← Dashboard
+    <a
+      href="/"
+      class="logo">
 
-</a>
+      RAJASTHAN GOVT VACANCIES
+
+      <span>
+        Latest Govt Jobs & Exam Updates
+      </span>
+
+    </a>
+
+
+    <a
+      href="/"
+      class="home-btn">
+
+      ← Home
+
+    </a>
+
+  </div>
 
 </header>
 
 
+
+<!-- =========================
+     MAIN
+========================= -->
+
 <main class="container">
 
 
-<div class="title">
+  <!-- HERO -->
 
-<h1>
-🎫 Admit Card Management
-</h1>
+  <section class="hero">
 
-<p>
-Add and manage Rajasthan Government Exam Admit Cards
-</p>
+    <div class="hero-badge">
 
-</div>
+      🎫 RAJASTHAN GOVERNMENT EXAMS
 
+    </div>
 
-<!-- =========================
-ADD FORM
-========================= -->
 
-<section class="form-card">
+    <h1>
 
-<div class="form-title">
-➕ Add New Admit Card
-</div>
+      Latest
+      <span>Admit Cards</span>
 
+    </h1>
 
-<form id="admitForm">
 
+    <p>
 
-<div class="form-grid">
+      राजस्थान की सरकारी परीक्षाओं के
+      latest Admit Card, exam date,
+      notification और download links
+      एक ही जगह।
 
+    </p>
 
-<div class="field">
+  </section>
 
-<label>
-Exam Name *
-</label>
 
-<input
-id="examName"
-type="text"
-placeholder="Example: Rajasthan Police Constable"
-required>
 
-</div>
+  <!-- SEARCH -->
 
+  <div class="search-card">
 
-<div class="field">
+    <input
+      id="searchInput"
+      class="search"
+      type="search"
+      placeholder="🔎 Search exam, department, date...">
 
-<label>
-Department / Board
-</label>
+  </div>
 
-<input
-id="department"
-type="text"
-placeholder="Example: Rajasthan Police">
 
-</div>
 
+  <!-- SECTION -->
 
-<div class="field">
+  <div class="section-header">
 
-<label>
-Exam Date
-</label>
+    <h2>
+      🎫 Admit Cards
+    </h2>
 
-<input
-id="examDate"
-type="text"
-placeholder="Example: 15 August 2026">
+    <span
+      id="count"
+      class="count">
 
-</div>
+      Loading...
 
+    </span>
 
-<div class="field">
+  </div>
 
-<label>
-Admit Card Release Date
-</label>
 
-<input
-id="releaseDate"
-type="text"
-placeholder="Example: 05 August 2026">
 
-</div>
+  <!-- CARDS -->
 
+  <section
+    id="cards"
+    class="cards">
 
-<div class="field">
+    <div class="loading">
 
-<label>
-Official Notification Link
-</label>
+      ⏳ Loading Admit Cards...
 
-<input
-id="notificationLink"
-type="url"
-placeholder="https://...">
+    </div>
 
-</div>
-
-
-<div class="field">
-
-<label>
-Download Admit Card Link
-</label>
-
-<input
-id="admitCardLink"
-type="url"
-placeholder="https://...">
-
-</div>
-
-
-<div class="field full">
-
-<label>
-Description
-</label>
-
-<textarea
-id="description"
-placeholder="Enter important information about the admit card..."></textarea>
-
-</div>
-
-
-</div>
-
-
-<button
-id="submitBtn"
-type="submit"
-class="submit-btn">
-
-➕ Publish Admit Card
-
-</button>
-
-
-<div
-id="message"
-class="message">
-
-</div>
-
-
-</form>
-
-</section>
-
-
-<!-- =========================
-LIST
-========================= -->
-
-<div class="list-header">
-
-<h2>
-📋 Published Admit Cards
-</h2>
-
-<input
-id="search"
-class="search"
-type="search"
-placeholder="🔎 Search admit cards...">
-
-</div>
-
-
-<section
-id="cards"
-class="cards">
-
-<div class="loading">
-
-⏳ Loading admit cards...
-
-</div>
-
-</section>
+  </section>
 
 
 </main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+  <strong>
+    RAJASTHAN GOVT VACANCIES
+  </strong>
+
+  <br>
+
+  Latest Govt Jobs • Admit Card •
+  Results • Answer Key
+
+  <br>
+
+  © 2026 Rajasthan Govt Vacancies
+
+</footer>
+
 
 
 <script>
 
 
 /* =========================
-LOGIN CHECK
+   IMPORTANT
+   NO ADMIN LOGIN CHECK HERE
 ========================= */
 
-if(
-sessionStorage.getItem(
-"janmatAdminLoggedIn"
-)!=="true"
-){
 
-window.location.href =
-"/admin.html";
+/* =========================
+   VARIABLES
+========================= */
+
+let allCards = [];
+
+
+/* =========================
+   LOAD DATA
+========================= */
+
+async function loadCards() {
+
+  const cards =
+    document.getElementById(
+      "cards"
+    );
+
+
+  try {
+
+
+    const response =
+      await fetch(
+        "/api/admin/admit-cards"
+      );
+
+
+    const result =
+      await response.json();
+
+
+    if (
+      !response.ok ||
+      !result.success
+    ) {
+
+      throw new Error(
+        result.message ||
+        "Could not load Admit Cards"
+      );
+
+    }
+
+
+    allCards =
+      result.data || [];
+
+
+    renderCards(
+      allCards
+    );
+
+
+  }
+  catch (error) {
+
+    console.error(
+      "Admit Card error:",
+      error
+    );
+
+
+    cards.innerHTML = `
+
+      <div class="empty">
+
+        ⚠️ Admit Cards अभी load नहीं हो सके।
+
+        <br><br>
+
+        Please try again later.
+
+      </div>
+
+    `;
+
+  }
 
 }
 
 
 /* =========================
-FORM
+   RENDER CARDS
 ========================= */
 
-const form =
-document.getElementById(
-"admitForm"
-);
+function renderCards(
+  data
+) {
 
-const submitBtn =
-document.getElementById(
-"submitBtn"
-);
 
-const message =
-document.getElementById(
-"message"
-);
+  const cards =
+    document.getElementById(
+      "cards"
+    );
 
-const cards =
-document.getElementById(
-"cards"
-);
 
-const search =
-document.getElementById(
-"search"
-);
+  const count =
+    document.getElementById(
+      "count"
+    );
 
 
-let allCards=[];
+  count.textContent =
+    data.length +
+    (
+      data.length === 1
+      ? " Admit Card"
+      : " Admit Cards"
+    );
 
 
-/* =========================
-ADD ADMIT CARD
-========================= */
+  if (
+    !data.length
+  ) {
 
-form.addEventListener(
-"submit",
-async function(e){
+    cards.innerHTML = `
 
-e.preventDefault();
+      <div class="empty">
 
+        🎫
 
-submitBtn.disabled=true;
+        <br><br>
 
-submitBtn.textContent=
-"⏳ Publishing...";
+        अभी कोई Admit Card available नहीं है।
 
+      </div>
 
-message.className=
-"message";
+    `;
 
-message.textContent="";
+    return;
 
+  }
 
-try{
 
+  cards.innerHTML =
+    data.map(
+      card => {
 
-const data={
 
-exam_name:
-document.getElementById(
-"examName"
-).value.trim(),
+        const title =
+          escapeHTML(
+            card.exam_name ||
+            "Admit Card"
+          );
 
-department:
-document.getElementById(
-"department"
-).value.trim(),
 
-exam_date:
-document.getElementById(
-"examDate"
-).value.trim(),
+        const department =
+          escapeHTML(
+            card.department ||
+            "Rajasthan Government"
+          );
 
-release_date:
-document.getElementById(
-"releaseDate"
-).value.trim(),
 
-notification_link:
-document.getElementById(
-"notificationLink"
-).value.trim(),
+        const examDate =
+          escapeHTML(
+            card.exam_date ||
+            "-"
+          );
 
-admit_card_link:
-document.getElementById(
-"admitCardLink"
-).value.trim(),
 
-description:
-document.getElementById(
-"description"
-).value.trim()
+        const releaseDate =
+          escapeHTML(
+            card.release_date ||
+            "-"
+          );
 
-};
 
+        const description =
+          escapeHTML(
+            card.description ||
+            "Admit Card की महत्वपूर्ण जानकारी।"
+          );
 
-const response =
-await fetch(
-"/api/admin/admit-cards",
-{
 
-method:"POST",
+        const notification =
+          safeURL(
+            card.notification_link
+          );
 
-headers:{
-"Content-Type":
-"application/json"
-},
 
-body:
-JSON.stringify(data)
+        const download =
+          safeURL(
+            card.admit_card_link
+          );
 
-}
-);
 
+        return `
 
-const result =
-await response.json();
+          <article class="card">
 
 
-if(
-!response.ok ||
-!result.success
-){
+            <div class="card-top">
 
-throw new Error(
-result.message ||
-"Could not publish admit card"
-);
 
-}
+              <div class="card-title">
 
+                ${title}
 
-message.className=
-"message success";
+              </div>
 
-message.textContent=
-"✅ Admit Card published successfully.";
 
+              <div class="badge">
 
-form.reset();
+                ADMIT CARD
 
-loadCards();
+              </div>
 
 
-}
-catch(error){
+            </div>
 
-console.error(error);
 
-message.className=
-"message error";
 
-message.textContent=
-"❌ "+
-error.message;
+            <div class="department">
 
-}
+              🏛️ ${department}
 
+            </div>
 
-submitBtn.disabled=false;
 
-submitBtn.textContent=
-"➕ Publish Admit Card";
 
-});
+            <div class="info-grid">
 
 
-/* =========================
-LOAD CARDS
-========================= */
+              <div class="info">
 
-async function loadCards(){
+                <span class="info-label">
 
-cards.innerHTML=
-`<div class="loading">
-⏳ Loading admit cards...
-</div>`;
+                  EXAM DATE
 
+                </span>
 
-try{
+                <span class="info-value">
 
+                  ${examDate}
 
-const response =
-await fetch(
-"/api/admin/admit-cards"
-);
+                </span>
 
+              </div>
 
-const result =
-await response.json();
 
 
-if(
-!response.ok ||
-!result.success
-){
+              <div class="info">
 
-throw new Error(
-result.message ||
-"Could not load admit cards"
-);
+                <span class="info-label">
 
-}
+                  RELEASE DATE
 
+                </span>
 
-allCards =
-result.data || [];
+                <span class="info-value">
 
+                  ${releaseDate}
 
-renderCards(
-allCards
-);
+                </span>
 
+              </div>
 
-}
-catch(error){
 
-console.error(error);
+            </div>
 
-cards.innerHTML=
-`<div class="empty">
-⚠️ Admit cards load नहीं हो सके।
-</div>`;
 
-}
 
-}
+            <div class="description">
 
+              ${description}
 
-/* =========================
-RENDER
-========================= */
+            </div>
 
-function renderCards(data){
 
-if(!data.length){
 
-cards.innerHTML=
-`<div class="empty">
+            <div class="buttons">
 
-🎫
 
-<br><br>
+              ${
+                notification
+                ?
 
-No admit cards published yet.
+                `
 
-</div>`;
+                <a
+                  href="${notification}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn notification">
 
-return;
+                  📄 Notification
 
-}
+                </a>
 
+                `
 
-cards.innerHTML=
-data.map(
-card=>{
+                :
 
-const exam =
-escapeHTML(
-card.exam_name ||
-"Admit Card"
-);
+                ""
 
-const department =
-escapeHTML(
-card.department ||
-"Rajasthan Government"
-);
+              }
 
-const examDate =
-escapeHTML(
-card.exam_date ||
-"-"
-);
 
-const releaseDate =
-escapeHTML(
-card.release_date ||
-"-"
-);
 
-const description =
-escapeHTML(
-card.description ||
-"No description available."
-);
+              ${
+                download
+                ?
 
-const notification =
-safeURL(
-card.notification_link
-);
+                `
 
-const admitLink =
-safeURL(
-card.admit_card_link
-);
+                <a
+                  href="${download}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn download">
 
+                  ⬇️ Download Admit Card
 
-return `
+                </a>
 
-<article class="card">
+                `
 
+                :
 
-<div class="card-top">
+                ""
 
-<h3>
-${exam}
-</h3>
+              }
 
-<div class="badge">
-ADMIT CARD
-</div>
 
-</div>
+            </div>
 
 
-<div class="department">
+          </article>
 
-🏛️ ${department}
+        `;
 
-</div>
-
-
-<div class="info-grid">
-
-
-<div class="info">
-
-<span class="info-label">
-EXAM DATE
-</span>
-
-<span class="info-value">
-${examDate}
-</span>
-
-</div>
-
-
-<div class="info">
-
-<span class="info-label">
-RELEASE DATE
-</span>
-
-<span class="info-value">
-${releaseDate}
-</span>
-
-</div>
-
-
-</div>
-
-
-<div class="description">
-
-${description}
-
-</div>
-
-
-<div class="links">
-
-
-${
-notification
-?
-`
-
-<a
-href="${notification}"
-target="_blank"
-rel="noopener noreferrer"
-class="link-btn notification">
-
-📄 Notification
-
-</a>
-
-`
-:
-""
-}
-
-
-${
-admitLink
-?
-`
-
-<a
-href="${admitLink}"
-target="_blank"
-rel="noopener noreferrer"
-class="link-btn download">
-
-⬇️ Download
-
-</a>
-
-`
-:
-""
-}
-
-
-</div>
-
-
-<button
-class="delete-btn"
-onclick="deleteCard('${card.id}')">
-
-🗑️ Delete Admit Card
-
-</button>
-
-
-</article>
-
-`;
-
-}
-).join("");
+      }
+    ).join("");
 
 }
 
 
 /* =========================
-SEARCH
+   SEARCH
 ========================= */
 
-search.addEventListener(
-"input",
-function(){
-
-const query =
-this.value
-.toLowerCase()
-.trim();
-
-
-if(!query){
-
-renderCards(
-allCards
-);
-
-return;
-
-}
+document
+  .getElementById(
+    "searchInput"
+  )
+  .addEventListener(
+    "input",
+    function () {
 
 
-const filtered =
-allCards.filter(
-card=>{
-
-const text=[
-
-card.exam_name,
-card.department,
-card.exam_date,
-card.release_date,
-card.description
-
-]
-.filter(Boolean)
-.join(" ")
-.toLowerCase();
+      const query =
+        this.value
+          .toLowerCase()
+          .trim();
 
 
-return text.includes(
-query
-);
+      if (
+        !query
+      ) {
 
-});
+        renderCards(
+          allCards
+        );
+
+        return;
+
+      }
 
 
-renderCards(
-filtered
-);
+      const filtered =
+        allCards.filter(
+          card => {
 
-});
+
+            const text = [
+
+              card.exam_name,
+
+              card.department,
+
+              card.exam_date,
+
+              card.release_date,
+
+              card.description
+
+            ]
+            .filter(Boolean)
+            .join(" ")
+            .toLowerCase();
+
+
+            return text.includes(
+              query
+            );
+
+          }
+        );
+
+
+      renderCards(
+        filtered
+      );
+
+
+    }
+  );
 
 
 /* =========================
-DELETE
+   SAFE URL
 ========================= */
 
-async function deleteCard(id){
-
-const confirmed =
-confirm(
-"Are you sure you want to delete this Admit Card?"
-);
+function safeURL(
+  value
+) {
 
 
-if(!confirmed){
+  if (
+    !value
+  ) {
 
-return;
+    return "";
 
-}
-
-
-try{
-
-
-const response =
-await fetch(
-"/api/admin/admit-cards/"+id,
-{
-
-method:"DELETE"
-
-}
-);
+  }
 
 
-const result =
-await response.json();
+  try {
 
 
-if(
-!response.ok ||
-!result.success
-){
-
-throw new Error(
-result.message ||
-"Delete failed"
-);
-
-}
+    const url =
+      new URL(
+        value
+      );
 
 
-loadCards();
+    if (
+      url.protocol ===
+        "http:" ||
+
+      url.protocol ===
+        "https:"
+    ) {
+
+      return escapeHTML(
+        url.href
+      );
+
+    }
 
 
-}
-catch(error){
+    return "";
 
-console.error(error);
+  }
+  catch {
 
-alert(
-"❌ "+
-error.message
-);
+    return "";
 
-}
-
-}
-
-
-/* =========================
-URL
-========================= */
-
-function safeURL(value){
-
-if(!value){
-
-return "";
-
-}
-
-
-try{
-
-const url =
-new URL(value);
-
-
-if(
-url.protocol==="http:" ||
-url.protocol==="https:"
-){
-
-return escapeHTML(
-url.href
-);
-
-}
-
-
-return "";
-
-}
-catch{
-
-return "";
-
-}
+  }
 
 }
 
 
 /* =========================
-ESCAPE
+   ESCAPE HTML
 ========================= */
 
-function escapeHTML(value){
+function escapeHTML(
+  value
+) {
 
-const div =
-document.createElement(
-"div"
-);
 
-div.textContent =
-String(value);
+  const div =
+    document.createElement(
+      "div"
+    );
 
-return div.innerHTML;
+
+  div.textContent =
+    String(
+      value
+    );
+
+
+  return div.innerHTML;
 
 }
 
 
 /* =========================
-START
+   START
 ========================= */
 
 loadCards();
