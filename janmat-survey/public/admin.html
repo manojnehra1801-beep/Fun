@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Admin Login | Janmat Survey</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+
+      font-family:
+        Arial,
+        "Noto Sans Devanagari",
+        sans-serif;
+
+      background:
+        linear-gradient(
+          135deg,
+          #eef2ff,
+          #f8fafc
+        );
+
+      color: #172033;
+    }
+
+
+    .login-card {
+
+      width: 100%;
+      max-width: 410px;
+
+      background: white;
+
+      padding: 32px 25px;
+
+      border-radius: 22px;
+
+      box-shadow:
+        0 20px 50px
+        rgba(15, 23, 42, 0.10);
+
+      border: 1px solid #e8ebf2;
+
+    }
+
+
+    .logo {
+
+      width: 62px;
+      height: 62px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      margin: 0 auto 15px;
+
+      border-radius: 18px;
+
+      background: #eef2ff;
+
+      font-size: 30px;
+
+    }
+
+
+    h1 {
+
+      text-align: center;
+
+      margin: 0;
+
+      font-size: 25px;
+
+      color: #172554;
+
+    }
+
+
+    .subtitle {
+
+      text-align: center;
+
+      color: #64748b;
+
+      font-size: 13px;
+
+      margin:
+        8px 0 27px;
+
+    }
+
+
+    .group {
+
+      margin-bottom: 17px;
+
+    }
+
+
+    label {
+
+      display: block;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      margin-bottom: 7px;
+
+    }
+
+
+    input {
+
+      width: 100%;
+
+      padding: 14px;
+
+      border: 1px solid #d8deea;
+
+      border-radius: 11px;
+
+      outline: none;
+
+      font-size: 14px;
+
+    }
+
+
+    input:focus {
+
+      border-color: #3155d9;
+
+      box-shadow:
+        0 0 0 3px #eef2ff;
+
+    }
+
+
+    .login-btn {
+
+      width: 100%;
+
+      border: none;
+
+      border-radius: 11px;
+
+      padding: 14px;
+
+      background: #3155d9;
+
+      color: white;
+
+      font-size: 15px;
+
+      font-weight: 800;
+
+      cursor: pointer;
+
+      margin-top: 5px;
+
+    }
+
+
+    .login-btn:disabled {
+
+      opacity: 0.6;
+
+    }
+
+
+    .error {
+
+      display: none;
+
+      margin-top: 15px;
+
+      padding: 11px;
+
+      border-radius: 9px;
+
+      background: #fff1f2;
+
+      color: #be123c;
+
+      font-size: 12px;
+
+      text-align: center;
+
+    }
+
+
+    .back {
+
+      display: block;
+
+      text-align: center;
+
+      margin-top: 20px;
+
+      color: #64748b;
+
+      text-decoration: none;
+
+      font-size: 12px;
+
+    }
+
+
+    .security {
+
+      text-align: center;
+
+      margin-top: 22px;
+
+      color: #94a3b8;
+
+      font-size: 10px;
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <div class="login-card">
+
+
+    <div class="logo">
+      🔐
+    </div>
+
+
+    <h1>
+      Admin Panel
+    </h1>
+
+
+    <div class="subtitle">
+
+      Janmat Survey Administration
+
+    </div>
+
+
+    <form id="loginForm">
+
+
+      <div class="group">
+
+        <label>
+          Admin ID
+        </label>
+
+        <input
+          type="text"
+          id="adminId"
+          placeholder="Enter Admin ID"
+          autocomplete="username"
+          required>
+
+      </div>
+
+
+      <div class="group">
+
+        <label>
+          Password
+        </label>
+
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter Password"
+          autocomplete="current-password"
+          required>
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="login-btn"
+        id="loginBtn">
+
+        Login to Dashboard →
+
+      </button>
+
+
+      <div
+        class="error"
+        id="error">
+
+        Invalid Admin ID or Password.
+
+      </div>
+
+
+    </form>
+
+
+    <a
+      href="/"
+      class="back">
+
+      ← Back to Janmat Survey
+
+    </a>
+
+
+    <div class="security">
+
+      🔒 Authorized access only
+
+    </div>
+
+
+  </div>
+
+
+
+  <script>
+
+    const form =
+      document.getElementById("loginForm");
+
+    const loginBtn =
+      document.getElementById("loginBtn");
+
+    const error =
+      document.getElementById("error");
+
+
+    form.addEventListener(
+      "submit",
+      async function(event) {
+
+        event.preventDefault();
+
+
+        const id =
+          document
+            .getElementById("adminId")
+            .value
+            .trim();
+
+
+        const password =
+          document
+            .getElementById("password")
+            .value;
+
+
+        error.style.display =
+          "none";
+
+
+        loginBtn.disabled =
+          true;
+
+        loginBtn.textContent =
+          "Checking...";
+
+
+        try {
+
+          const response =
+            await fetch(
+              "/api/admin/login",
+              {
+
+                method: "POST",
+
+                headers: {
+
+                  "Content-Type":
+                    "application/json"
+
+                },
+
+                body:
+                  JSON.stringify({
+
+                    id: id,
+
+                    password:
+                      password
+
+                  })
+
+              }
+            );
+
+
+          const result =
+            await response.json();
+
+
+          if (
+            response.ok &&
+            result.success
+          ) {
+
+            // Temporary login state
+            sessionStorage.setItem(
+              "janmatAdminLoggedIn",
+              "true"
+            );
+
+
+            window.location.href =
+              "/admin-dashboard.html";
+
+
+            return;
+
+          }
+
+
+          error.textContent =
+            result.message ||
+            "Invalid Admin ID or Password.";
+
+          error.style.display =
+            "block";
+
+
+        } catch (err) {
+
+          console.error(err);
+
+          error.textContent =
+            "Server connection failed.";
+
+          error.style.display =
+            "block";
+
+        }
+
+
+        loginBtn.disabled =
+          false;
+
+        loginBtn.textContent =
+          "Login to Dashboard →";
+
+      });
+
+  </script>
+
+
+</body>
+
+</html>
