@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Admit Card Management | Rajasthan Govt Vacancies</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:Arial,"Noto Sans Devanagari",sans-serif;
+background:#f5f7fb;
+color:#172033;
+}
+
+.header{
+background:#172554;
+color:white;
+padding:15px 18px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+position:sticky;
+top:0;
+z-index:10;
+}
+
+.brand{
+font-size:18px;
+font-weight:900;
+}
+
+.back{
+color:white;
+border:1px solid rgba(255,255,255,.3);
+padding:8px 11px;
+border-radius:8px;
+font-size:11px;
+font-weight:800;
+text-decoration:none;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:24px 14px 50px;
+}
+
+.title{
+margin-bottom:20px;
+}
+
+.title h1{
+margin:0;
+color:#172554;
+font-size:26px;
+}
+
+.title p{
+margin:5px 0 0;
+color:#64748b;
+font-size:12px;
+}
+
+
+/* FORM */
+
+.form-card{
+background:white;
+border:1px solid #e5e7eb;
+border-radius:17px;
+padding:20px;
+margin-bottom:25px;
+box-shadow:0 5px 18px rgba(15,23,42,.04);
+}
+
+.form-title{
+font-size:17px;
+font-weight:900;
+color:#172554;
+margin-bottom:17px;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:13px;
+}
+
+.field{
+display:flex;
+flex-direction:column;
+}
+
+.field.full{
+grid-column:1/-1;
+}
+
+label{
+font-size:10px;
+font-weight:800;
+color:#475569;
+margin-bottom:6px;
+}
+
+input,
+textarea{
+width:100%;
+border:1px solid #d8deea;
+border-radius:9px;
+padding:11px;
+font-family:inherit;
+font-size:12px;
+outline:none;
+}
+
+textarea{
+min-height:100px;
+resize:vertical;
+}
+
+input:focus,
+textarea:focus{
+border-color:#3155d9;
+box-shadow:0 0 0 3px #eef2ff;
+}
+
+.submit-btn{
+margin-top:15px;
+border:none;
+background:#3155d9;
+color:white;
+padding:12px 18px;
+border-radius:9px;
+font-size:11px;
+font-weight:900;
+cursor:pointer;
+}
+
+.submit-btn:disabled{
+opacity:.6;
+cursor:not-allowed;
+}
+
+.message{
+display:none;
+margin-top:12px;
+padding:10px;
+border-radius:9px;
+font-size:11px;
+font-weight:700;
+}
+
+.success{
+display:block;
+background:#ecfdf5;
+color:#047857;
+}
+
+.error{
+display:block;
+background:#fff1f2;
+color:#be123c;
+}
+
+
+/* LIST */
+
+.list-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:12px;
+gap:10px;
+}
+
+.list-header h2{
+margin:0;
+font-size:19px;
+color:#172554;
+}
+
+.search{
+width:250px;
+border:1px solid #d8deea;
+border-radius:9px;
+padding:10px;
+font-size:11px;
+outline:none;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:13px;
+}
+
+.card{
+background:white;
+border:1px solid #e5e7eb;
+border-radius:15px;
+padding:17px;
+box-shadow:0 5px 18px rgba(15,23,42,.04);
+}
+
+.card-top{
+display:flex;
+justify-content:space-between;
+gap:10px;
+margin-bottom:8px;
+}
+
+.card h3{
+margin:0;
+color:#172554;
+font-size:15px;
+line-height:1.4;
+}
+
+.badge{
+background:#eef2ff;
+color:#3155d9;
+padding:5px 8px;
+border-radius:20px;
+font-size:8px;
+font-weight:900;
+white-space:nowrap;
+height:max-content;
+}
+
+.department{
+font-size:10px;
+color:#64748b;
+margin-bottom:13px;
+}
+
+.info-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px;
+margin-bottom:12px;
+}
+
+.info{
+background:#f8fafc;
+border-radius:8px;
+padding:9px;
+}
+
+.info-label{
+display:block;
+font-size:8px;
+color:#94a3b8;
+margin-bottom:3px;
+}
+
+.info-value{
+font-size:10px;
+font-weight:800;
+color:#334155;
+}
+
+.description{
+font-size:10px;
+line-height:1.6;
+color:#64748b;
+margin-bottom:13px;
+}
+
+.links{
+display:flex;
+gap:7px;
+margin-bottom:10px;
+}
+
+.link-btn{
+flex:1;
+text-align:center;
+padding:9px;
+border-radius:8px;
+font-size:9px;
+font-weight:900;
+text-decoration:none;
+}
+
+.notification{
+background:#eef2ff;
+color:#3155d9;
+}
+
+.download{
+background:#3155d9;
+color:white;
+}
+
+.delete-btn{
+width:100%;
+border:1px solid #fecdd3;
+background:#fff1f2;
+color:#be123c;
+padding:9px;
+border-radius:8px;
+font-size:9px;
+font-weight:900;
+cursor:pointer;
+}
+
+.loading,
+.empty{
+grid-column:1/-1;
+background:white;
+border:1px dashed #cbd5e1;
+border-radius:15px;
+padding:35px;
+text-align:center;
+color:#64748b;
+font-size:12px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.form-grid{
+grid-template-columns:1fr;
+}
+
+.field.full{
+grid-column:auto;
+}
+
+.cards{
+grid-template-columns:1fr;
+}
+
+.list-header{
+align-items:stretch;
+flex-direction:column;
+}
+
+.search{
+width:100%;
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+<div class="brand">
+🎫 Admit Card Management
+</div>
+
+<a
+href="/admin-dashboard.html"
+class="back">
+
+← Dashboard
+
+</a>
+
+</header>
+
+
+<main class="container">
+
+
+<div class="title">
+
+<h1>
+🎫 Admit Card Management
+</h1>
+
+<p>
+Add and manage Rajasthan Government Exam Admit Cards
+</p>
+
+</div>
+
+
+<!-- =========================
+ADD FORM
+========================= -->
+
+<section class="form-card">
+
+<div class="form-title">
+➕ Add New Admit Card
+</div>
+
+
+<form id="admitForm">
+
+
+<div class="form-grid">
+
+
+<div class="field">
+
+<label>
+Exam Name *
+</label>
+
+<input
+id="examName"
+type="text"
+placeholder="Example: Rajasthan Police Constable"
+required>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Department / Board
+</label>
+
+<input
+id="department"
+type="text"
+placeholder="Example: Rajasthan Police">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Exam Date
+</label>
+
+<input
+id="examDate"
+type="text"
+placeholder="Example: 15 August 2026">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Admit Card Release Date
+</label>
+
+<input
+id="releaseDate"
+type="text"
+placeholder="Example: 05 August 2026">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Official Notification Link
+</label>
+
+<input
+id="notificationLink"
+type="url"
+placeholder="https://...">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Download Admit Card Link
+</label>
+
+<input
+id="admitCardLink"
+type="url"
+placeholder="https://...">
+
+</div>
+
+
+<div class="field full">
+
+<label>
+Description
+</label>
+
+<textarea
+id="description"
+placeholder="Enter important information about the admit card..."></textarea>
+
+</div>
+
+
+</div>
+
+
+<button
+id="submitBtn"
+type="submit"
+class="submit-btn">
+
+➕ Publish Admit Card
+
+</button>
+
+
+<div
+id="message"
+class="message">
+
+</div>
+
+
+</form>
+
+</section>
+
+
+<!-- =========================
+LIST
+========================= -->
+
+<div class="list-header">
+
+<h2>
+📋 Published Admit Cards
+</h2>
+
+<input
+id="search"
+class="search"
+type="search"
+placeholder="🔎 Search admit cards...">
+
+</div>
+
+
+<section
+id="cards"
+class="cards">
+
+<div class="loading">
+
+⏳ Loading admit cards...
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<script>
+
+
+/* =========================
+LOGIN CHECK
+========================= */
+
+if(
+sessionStorage.getItem(
+"janmatAdminLoggedIn"
+)!=="true"
+){
+
+window.location.href =
+"/admin.html";
+
+}
+
+
+/* =========================
+FORM
+========================= */
+
+const form =
+document.getElementById(
+"admitForm"
+);
+
+const submitBtn =
+document.getElementById(
+"submitBtn"
+);
+
+const message =
+document.getElementById(
+"message"
+);
+
+const cards =
+document.getElementById(
+"cards"
+);
+
+const search =
+document.getElementById(
+"search"
+);
+
+
+let allCards=[];
+
+
+/* =========================
+ADD ADMIT CARD
+========================= */
+
+form.addEventListener(
+"submit",
+async function(e){
+
+e.preventDefault();
+
+
+submitBtn.disabled=true;
+
+submitBtn.textContent=
+"⏳ Publishing...";
+
+
+message.className=
+"message";
+
+message.textContent="";
+
+
+try{
+
+
+const data={
+
+exam_name:
+document.getElementById(
+"examName"
+).value.trim(),
+
+department:
+document.getElementById(
+"department"
+).value.trim(),
+
+exam_date:
+document.getElementById(
+"examDate"
+).value.trim(),
+
+release_date:
+document.getElementById(
+"releaseDate"
+).value.trim(),
+
+notification_link:
+document.getElementById(
+"notificationLink"
+).value.trim(),
+
+admit_card_link:
+document.getElementById(
+"admitCardLink"
+).value.trim(),
+
+description:
+document.getElementById(
+"description"
+).value.trim()
+
+};
+
+
+const response =
+await fetch(
+"/api/admin/admit-cards",
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/json"
+},
+
+body:
+JSON.stringify(data)
+
+}
+);
+
+
+const result =
+await response.json();
+
+
+if(
+!response.ok ||
+!result.success
+){
+
+throw new Error(
+result.message ||
+"Could not publish admit card"
+);
+
+}
+
+
+message.className=
+"message success";
+
+message.textContent=
+"✅ Admit Card published successfully.";
+
+
+form.reset();
+
+loadCards();
+
+
+}
+catch(error){
+
+console.error(error);
+
+message.className=
+"message error";
+
+message.textContent=
+"❌ "+
+error.message;
+
+}
+
+
+submitBtn.disabled=false;
+
+submitBtn.textContent=
+"➕ Publish Admit Card";
+
+});
+
+
+/* =========================
+LOAD CARDS
+========================= */
+
+async function loadCards(){
+
+cards.innerHTML=
+`<div class="loading">
+⏳ Loading admit cards...
+</div>`;
+
+
+try{
+
+
+const response =
+await fetch(
+"/api/admin/admit-cards"
+);
+
+
+const result =
+await response.json();
+
+
+if(
+!response.ok ||
+!result.success
+){
+
+throw new Error(
+result.message ||
+"Could not load admit cards"
+);
+
+}
+
+
+allCards =
+result.data || [];
+
+
+renderCards(
+allCards
+);
+
+
+}
+catch(error){
+
+console.error(error);
+
+cards.innerHTML=
+`<div class="empty">
+⚠️ Admit cards load नहीं हो सके।
+</div>`;
+
+}
+
+}
+
+
+/* =========================
+RENDER
+========================= */
+
+function renderCards(data){
+
+if(!data.length){
+
+cards.innerHTML=
+`<div class="empty">
+
+🎫
+
+<br><br>
+
+No admit cards published yet.
+
+</div>`;
+
+return;
+
+}
+
+
+cards.innerHTML=
+data.map(
+card=>{
+
+const exam =
+escapeHTML(
+card.exam_name ||
+"Admit Card"
+);
+
+const department =
+escapeHTML(
+card.department ||
+"Rajasthan Government"
+);
+
+const examDate =
+escapeHTML(
+card.exam_date ||
+"-"
+);
+
+const releaseDate =
+escapeHTML(
+card.release_date ||
+"-"
+);
+
+const description =
+escapeHTML(
+card.description ||
+"No description available."
+);
+
+const notification =
+safeURL(
+card.notification_link
+);
+
+const admitLink =
+safeURL(
+card.admit_card_link
+);
+
+
+return `
+
+<article class="card">
+
+
+<div class="card-top">
+
+<h3>
+${exam}
+</h3>
+
+<div class="badge">
+ADMIT CARD
+</div>
+
+</div>
+
+
+<div class="department">
+
+🏛️ ${department}
+
+</div>
+
+
+<div class="info-grid">
+
+
+<div class="info">
+
+<span class="info-label">
+EXAM DATE
+</span>
+
+<span class="info-value">
+${examDate}
+</span>
+
+</div>
+
+
+<div class="info">
+
+<span class="info-label">
+RELEASE DATE
+</span>
+
+<span class="info-value">
+${releaseDate}
+</span>
+
+</div>
+
+
+</div>
+
+
+<div class="description">
+
+${description}
+
+</div>
+
+
+<div class="links">
+
+
+${
+notification
+?
+`
+
+<a
+href="${notification}"
+target="_blank"
+rel="noopener noreferrer"
+class="link-btn notification">
+
+📄 Notification
+
+</a>
+
+`
+:
+""
+}
+
+
+${
+admitLink
+?
+`
+
+<a
+href="${admitLink}"
+target="_blank"
+rel="noopener noreferrer"
+class="link-btn download">
+
+⬇️ Download
+
+</a>
+
+`
+:
+""
+}
+
+
+</div>
+
+
+<button
+class="delete-btn"
+onclick="deleteCard('${card.id}')">
+
+🗑️ Delete Admit Card
+
+</button>
+
+
+</article>
+
+`;
+
+}
+).join("");
+
+}
+
+
+/* =========================
+SEARCH
+========================= */
+
+search.addEventListener(
+"input",
+function(){
+
+const query =
+this.value
+.toLowerCase()
+.trim();
+
+
+if(!query){
+
+renderCards(
+allCards
+);
+
+return;
+
+}
+
+
+const filtered =
+allCards.filter(
+card=>{
+
+const text=[
+
+card.exam_name,
+card.department,
+card.exam_date,
+card.release_date,
+card.description
+
+]
+.filter(Boolean)
+.join(" ")
+.toLowerCase();
+
+
+return text.includes(
+query
+);
+
+});
+
+
+renderCards(
+filtered
+);
+
+});
+
+
+/* =========================
+DELETE
+========================= */
+
+async function deleteCard(id){
+
+const confirmed =
+confirm(
+"Are you sure you want to delete this Admit Card?"
+);
+
+
+if(!confirmed){
+
+return;
+
+}
+
+
+try{
+
+
+const response =
+await fetch(
+"/api/admin/admit-cards/"+id,
+{
+
+method:"DELETE"
+
+}
+);
+
+
+const result =
+await response.json();
+
+
+if(
+!response.ok ||
+!result.success
+){
+
+throw new Error(
+result.message ||
+"Delete failed"
+);
+
+}
+
+
+loadCards();
+
+
+}
+catch(error){
+
+console.error(error);
+
+alert(
+"❌ "+
+error.message
+);
+
+}
+
+}
+
+
+/* =========================
+URL
+========================= */
+
+function safeURL(value){
+
+if(!value){
+
+return "";
+
+}
+
+
+try{
+
+const url =
+new URL(value);
+
+
+if(
+url.protocol==="http:" ||
+url.protocol==="https:"
+){
+
+return escapeHTML(
+url.href
+);
+
+}
+
+
+return "";
+
+}
+catch{
+
+return "";
+
+}
+
+}
+
+
+/* =========================
+ESCAPE
+========================= */
+
+function escapeHTML(value){
+
+const div =
+document.createElement(
+"div"
+);
+
+div.textContent =
+String(value);
+
+return div.innerHTML;
+
+}
+
+
+/* =========================
+START
+========================= */
+
+loadCards();
+
+</script>
+
+
+</body>
+
+</html>
