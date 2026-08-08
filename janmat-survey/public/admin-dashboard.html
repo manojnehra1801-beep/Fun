@@ -74,7 +74,9 @@ font-size:12px;
 }
 
 
-/* ACTIONS */
+/* =========================
+ACTION CARDS
+========================= */
 
 .actions{
 display:grid;
@@ -117,41 +119,26 @@ margin-top:3px;
 }
 
 
-/* STATS */
+/* =========================
+SUBMISSIONS
+========================= */
 
-.stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:14px;
-margin-bottom:22px;
+.section-title{
+margin-top:25px;
+margin-bottom:12px;
 }
 
-.stat{
-background:white;
-border:1px solid #e5e7eb;
-border-radius:15px;
-padding:18px;
-box-shadow:0 5px 18px rgba(15,23,42,.04);
+.section-title h2{
+margin:0;
+color:#172554;
+font-size:19px;
 }
 
-.stat-icon{
-font-size:24px;
-}
-
-.stat-number{
-color:#3155d9;
-font-size:27px;
-font-weight:900;
+.section-title p{
 margin-top:4px;
-}
-
-.stat-label{
 color:#64748b;
-font-size:10px;
+font-size:11px;
 }
-
-
-/* SUBMISSIONS */
 
 .toolbar{
 background:white;
@@ -189,7 +176,9 @@ cursor:pointer;
 }
 
 
-/* TABLE */
+/* =========================
+TABLE
+========================= */
 
 .table-card{
 background:white;
@@ -261,16 +250,14 @@ display:none;
 }
 
 
-/* MOBILE */
+/* =========================
+MOBILE
+========================= */
 
 @media(max-width:800px){
 
 .actions{
 grid-template-columns:repeat(2,1fr);
-}
-
-.stats{
-grid-template-columns:1fr;
 }
 
 }
@@ -289,6 +276,14 @@ font-size:15px;
 padding:20px 10px 40px;
 }
 
+.toolbar{
+flex-direction:column;
+}
+
+.refresh{
+height:42px;
+}
+
 }
 
 </style>
@@ -298,6 +293,10 @@ padding:20px 10px 40px;
 
 <body>
 
+
+<!-- =========================
+HEADER
+========================= -->
 
 <header class="header">
 
@@ -319,6 +318,10 @@ Logout
 <main class="container">
 
 
+<!-- =========================
+TITLE
+========================= -->
+
 <div class="title">
 
 <h1>
@@ -333,7 +336,7 @@ Website administration panel
 
 
 <!-- =========================
-QUICK ACTIONS
+ADMIN ACTIONS
 ========================= -->
 
 <section class="actions">
@@ -514,85 +517,29 @@ View submitted data
 
 
 <!-- =========================
-STATS
+SUBMISSIONS TITLE
 ========================= -->
 
-<section class="stats">
-
-
-<div class="stat">
-
-<div class="stat-icon">
-📋
-</div>
-
 <div
-class="stat-number"
-id="total">
+class="section-title"
+id="submissions">
 
-0
+<h2>
+📋 Submissions
+</h2>
 
-</div>
-
-<div class="stat-label">
-Total Submissions
-</div>
-
-</div>
-
-
-<div class="stat">
-
-<div class="stat-icon">
-📍
-</div>
-
-<div
-class="stat-number"
-id="locations">
-
-0
+<p>
+View submitted survey data
+</p>
 
 </div>
-
-<div class="stat-label">
-Unique Locations
-</div>
-
-</div>
-
-
-<div class="stat">
-
-<div class="stat-icon">
-👥
-</div>
-
-<div
-class="stat-number"
-id="candidateCount">
-
-0
-
-</div>
-
-<div class="stat-label">
-Candidate Names
-</div>
-
-</div>
-
-
-</section>
 
 
 <!-- =========================
-SUBMISSIONS
+SEARCH
 ========================= -->
 
-<div
-class="toolbar"
-id="submissions">
+<div class="toolbar">
 
 <input
 type="search"
@@ -611,6 +558,10 @@ onclick="loadData()">
 </div>
 
 
+<!-- =========================
+TABLE
+========================= -->
+
 <div class="table-card">
 
 <div class="table-wrapper">
@@ -621,30 +572,50 @@ onclick="loadData()">
 
 <tr>
 
-<th>#</th>
+<th>
+#
+</th>
 
-<th>Location</th>
+<th>
+Location
+</th>
 
-<th>Candidate 1</th>
+<th>
+Candidate 1
+</th>
 
-<th>Candidate 2</th>
+<th>
+Candidate 2
+</th>
 
-<th>Candidate 3</th>
+<th>
+Candidate 3
+</th>
 
-<th>Candidate 4</th>
+<th>
+Candidate 4
+</th>
 
-<th>Mobile</th>
+<th>
+Mobile
+</th>
 
-<th>Likely</th>
+<th>
+Likely
+</th>
 
-<th>Submitted</th>
+<th>
+Submitted
+</th>
 
 </tr>
 
 </thead>
 
+
 <tbody
 id="tableBody">
+
 </tbody>
 
 </table>
@@ -704,10 +675,14 @@ LOAD DATA
 async function loadData(){
 
 const loading =
-document.getElementById("loading");
+document.getElementById(
+"loading"
+);
 
 const tableBody =
-document.getElementById("tableBody");
+document.getElementById(
+"tableBody"
+);
 
 
 loading.style.display="block";
@@ -721,6 +696,7 @@ const response =
 await fetch(
 "/api/admin/candidates"
 );
+
 
 const result =
 await response.json();
@@ -743,9 +719,9 @@ allData =
 result.data || [];
 
 
-updateStats(allData);
-
-renderTable(allData);
+renderTable(
+allData
+);
 
 
 }
@@ -767,70 +743,7 @@ loading.style.display="none";
 
 
 /* =========================
-STATS
-========================= */
-
-function updateStats(data){
-
-document.getElementById(
-"total"
-).textContent=data.length;
-
-
-const locations=new Set();
-
-const candidates=new Set();
-
-
-data.forEach(row=>{
-
-locations.add(
-
-`${row["State"] || ""}|`+
-`${row["District"] || ""}|`+
-`${row["Village"] || ""}|`+
-`${row["Panchayat"] || ""}`
-
-);
-
-
-[
-row["Candidate 1"],
-row["Candidate 2"],
-row["Candidate 3"],
-row["Candidate 4"]
-
-].forEach(name=>{
-
-if(name){
-
-candidates.add(
-String(name).trim()
-);
-
-}
-
-});
-
-});
-
-
-document.getElementById(
-"locations"
-).textContent=
-locations.size;
-
-
-document.getElementById(
-"candidateCount"
-).textContent=
-candidates.size;
-
-}
-
-
-/* =========================
-TABLE
+RENDER TABLE
 ========================= */
 
 function renderTable(data){
@@ -865,7 +778,9 @@ data.forEach(
 (row,index)=>{
 
 const tr =
-document.createElement("tr");
+document.createElement(
+"tr"
+);
 
 
 const submitted =
@@ -873,13 +788,20 @@ row["Created at"]
 ?
 new Date(
 row["Created at"]
-).toLocaleString("en-IN")
+).toLocaleString(
+"en-IN"
+)
+
 :
+
 row["created_at"]
 ?
 new Date(
 row["created_at"]
-).toLocaleString("en-IN")
+).toLocaleString(
+"en-IN"
+)
+
 :
 "-";
 
@@ -894,9 +816,11 @@ ${index+1}
 <td class="location">
 
 <strong>
+
 ${escapeHTML(
 row["Panchayat"] || "-"
 )}
+
 </strong>
 
 <br>
@@ -993,7 +917,9 @@ submitted
 `;
 
 
-tableBody.appendChild(tr);
+tableBody.appendChild(
+tr
+);
 
 });
 
@@ -1005,7 +931,9 @@ SEARCH
 ========================= */
 
 document
-.getElementById("search")
+.getElementById(
+"search"
+)
 .addEventListener(
 "input",
 function(){
@@ -1028,7 +956,8 @@ return;
 
 
 const filtered =
-allData.filter(row=>{
+allData.filter(
+row=>{
 
 const text=[
 
@@ -1049,24 +978,32 @@ row["Likely"]
 .toLowerCase();
 
 
-return text.includes(query);
+return text.includes(
+query
+);
 
 });
 
 
-renderTable(filtered);
+renderTable(
+filtered
+);
 
 });
 
 
 /* =========================
-ESCAPE
+ESCAPE HTML
 ========================= */
 
-function escapeHTML(value){
+function escapeHTML(
+value
+){
 
 const div =
-document.createElement("div");
+document.createElement(
+"div"
+);
 
 div.textContent =
 String(value);
