@@ -1,423 +1,54 @@
 <!DOCTYPE html>
 <html lang="hi">
-
 <head>
-
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <title>Janmat Survey | Sarpanch Election 2026</title>
 
-  <title>सरपंच चुनाव सर्वे 2026 ।। जनमत सर्वे</title>
-
-  <link rel="stylesheet" href="css/style.css">
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background: #f5f7fb;
-      font-family: Arial, sans-serif;
-      color: #182033;
-    }
-
-    /* HEADER */
-
-    .simple-header {
-      background: #ffffff;
-      padding: 18px 6%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #e8ebf2;
-    }
-
-    .brand {
-      font-size: 21px;
-      font-weight: 800;
-    }
-
-    .result-link {
-      text-decoration: none;
-      background: #eef2ff;
-      color: #3155d8;
-      padding: 10px 16px;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-
-    /* MAIN */
-
-    .survey-home {
-      max-width: 720px;
-      margin: auto;
-      padding: 35px 18px 60px;
-    }
-
-
-    /* HEADLINE */
-
-    .welcome {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
-    .small-badge {
-      display: inline-block;
-      background: #eaf0ff;
-      color: #3155d8;
-      padding: 7px 13px;
-      border-radius: 30px;
-      font-size: 11px;
-      font-weight: 800;
-      margin-bottom: 15px;
-    }
-
-    .welcome h1 {
-      font-size: 42px;
-      line-height: 1.15;
-      margin: 5px 0 14px;
-      font-weight: 900;
-    }
-
-    .welcome h1 span {
-      color: #3155d8;
-    }
-
-    .welcome p {
-      color: #697386;
-      font-size: 15px;
-      line-height: 1.7;
-      margin: auto;
-      max-width: 590px;
-    }
-
-
-    /* RESULTS */
-
-    .results-box {
-      display: block;
-      text-decoration: none;
-      background: #18244d;
-      color: white;
-      border-radius: 16px;
-      padding: 18px 20px;
-      margin: 25px 0;
-      box-shadow: 0 10px 25px rgba(24,36,77,0.14);
-    }
-
-    .results-box strong {
-      display: block;
-      font-size: 18px;
-      margin-bottom: 4px;
-    }
-
-    .results-box span {
-      font-size: 12px;
-      opacity: .8;
-    }
-
-
-    /* LOCATION CARD */
-
-    .location-card {
-      background: white;
-      padding: 25px;
-      border-radius: 20px;
-      border: 1px solid #e9edf4;
-      box-shadow: 0 10px 35px rgba(20,30,60,.06);
-    }
-
-    .location-card h2 {
-      text-align: center;
-      margin: 0 0 4px;
-      font-size: 24px;
-    }
-
-    .card-subtitle {
-      text-align: center;
-      color: #7a8495;
-      font-size: 13px;
-      margin: 0 0 25px;
-    }
-
-
-    /* INSTRUCTIONS */
-
-    .instruction {
-      background: #f6f8ff;
-      border: 1px solid #e4e9fb;
-      border-radius: 12px;
-      padding: 13px;
-      margin-bottom: 20px;
-      text-align: center;
-      color: #4d5870;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .instruction strong {
-      color: #182033;
-    }
-
-
-    /* SELECT */
-
-    .select-group {
-      margin-bottom: 17px;
-    }
-
-    .select-group label {
-      display: block;
-      font-weight: 700;
-      font-size: 14px;
-      margin-bottom: 7px;
-    }
-
-    .select-group select,
-    .select-group input {
-      width: 100%;
-      padding: 14px;
-      border: 1px solid #d9dfeb;
-      border-radius: 11px;
-      background: #fff;
-      font-size: 15px;
-      color: #182033;
-      outline: none;
-    }
-
-    .select-group select:focus,
-    .select-group input:focus {
-      border-color: #3155d8;
-      box-shadow: 0 0 0 3px #e9edff;
-    }
-
-
-    /* CONTINUE */
-
-    .continue-btn {
-      width: 100%;
-      border: 0;
-      padding: 15px;
-      border-radius: 11px;
-      background: #3155d8;
-      color: white;
-      font-size: 16px;
-      font-weight: 800;
-      cursor: pointer;
-      margin-top: 5px;
-    }
-
-
-    /* CANDIDATE */
-
-    .candidate-card {
-      display: none;
-      background: white;
-      margin-top: 20px;
-      padding: 25px;
-      border-radius: 20px;
-      border: 1px solid #e9edf4;
-      box-shadow: 0 10px 35px rgba(20,30,60,.06);
-    }
-
-    .question-number {
-      color: #3155d8;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-    }
-
-    .candidate-card h2 {
-      font-size: 25px;
-      line-height: 1.35;
-      margin: 0 0 8px;
-    }
-
-    .candidate-card h2 span {
-      color: #3155d8;
-    }
-
-    .candidate-card > p {
-      color: #747e8e;
-      font-size: 13px;
-      margin-bottom: 20px;
-    }
-
-    .candidate-option {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 15px;
-      margin-bottom: 10px;
-      border: 1px solid #e1e5ee;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: .2s;
-    }
-
-    .candidate-option:hover {
-      border-color: #3155d8;
-      background: #f7f9ff;
-    }
-
-    .candidate-option input {
-      accent-color: #3155d8;
-      width: 18px;
-      height: 18px;
-    }
-
-    .candidate-info strong {
-      display: block;
-      font-size: 15px;
-    }
-
-    .candidate-info span {
-      color: #8a92a1;
-      font-size: 11px;
-    }
-
-    .submit-opinion {
-      width: 100%;
-      margin-top: 12px;
-      border: 0;
-      padding: 15px;
-      border-radius: 11px;
-      background: #18244d;
-      color: white;
-      font-size: 15px;
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-
-    /* NOTE */
-
-    .simple-note {
-      text-align: center;
-      color: #7b8494;
-      font-size: 11px;
-      line-height: 1.6;
-      margin-top: 22px;
-    }
-
-
-    /* FOOTER */
-
-    footer {
-      text-align: center;
-      padding: 25px;
-      background: #111827;
-      color: #aeb6c5;
-      font-size: 12px;
-    }
-
-
-    /* MOBILE */
-
-    @media (max-width: 500px) {
-
-      .simple-header {
-        padding: 15px 5%;
-      }
-
-      .brand {
-        font-size: 18px;
-      }
-
-      .result-link {
-        padding: 8px 11px;
-        font-size: 12px;
-      }
-
-      .survey-home {
-        padding: 30px 13px 50px;
-      }
-
-      .welcome h1 {
-        font-size: 34px;
-      }
-
-      .welcome p {
-        font-size: 14px;
-      }
-
-      .location-card,
-      .candidate-card {
-        padding: 20px;
-      }
-
-      .location-card h2 {
-        font-size: 21px;
-      }
-
-      .candidate-card h2 {
-        font-size: 22px;
-      }
-
-    }
-
-  </style>
-
+  <link rel="stylesheet" href="/css/style.css">
 </head>
-
 
 <body>
 
-
   <!-- HEADER -->
+  <header class="header">
 
-  <header class="simple-header">
-
-    <div class="brand">
-      🗳️ Janmat Survey
+    <div class="logo">
+      🗳️ <span>Janmat Survey</span>
     </div>
 
-    <a
-      href="results.html"
-      class="result-link">
-
-      📊 Results
-
+    <a href="#results" class="results-link">
+      Results
     </a>
 
   </header>
 
 
+  <!-- MAIN -->
+  <main class="container">
 
-  <main class="survey-home">
 
+    <!-- HERO -->
+    <section class="hero">
 
-    <!-- MAIN HEADING -->
-
-    <section class="welcome">
-
-      <div class="small-badge">
-        SARPANCH ELECTION SURVEY 2026
+      <div class="hero-badge">
+        🗳️ Sarpanch Election 2026
       </div>
 
       <h1>
-
-        अपनी पंचायत का
-        <br>
-
+        अपनी पंचायत का<br>
         <span>अगला सरपंच</span> चुनें
-
       </h1>
 
       <p>
+        अपनी पंचायत से जुड़े संभावित उम्मीदवारों
+        की जानकारी साझा करें।
+      </p>
 
-        अपने गांव और पंचायत को select करें
-        और बताएं कि आप किसे अगला सरपंच
-        बनते देखना चाहते हैं।
-
+      <p class="english">
+        Share information about potential
+        Sarpanch candidates in your Panchayat.
       </p>
 
     </section>
@@ -425,314 +56,135 @@
 
 
     <!-- RESULTS -->
+    <section class="results-card" id="results">
 
-    <a
-      href="results.html"
-      class="results-box">
-
-      <strong>
-        📊 Survey Results
-        <small>(Will be available soon)</small>
-      </strong>
-
-      <span>
-        View aggregated public opinion results
-      </span>
-
-    </a>
-
-<!-- POSSIBLE CANDIDATES -->
-
-<section class="potential-section">
-
-  <div class="potential-icon">
-    👥
-  </div>
-
-  <div class="potential-content">
-
-    <span class="potential-badge">
-      संभावित उम्मीदवार
-    </span>
-
-    <h2>
-      आपकी पंचायत में कौन चुनाव लड़ने जा रहा है?
-    </h2>
-
-    <p>
-      Who is likely to contest the Sarpanch Election
-      in your Panchayat?
-    </p>
-
-    <p class="potential-info">
-      अगर आपको किसी संभावित उम्मीदवार के बारे में जानकारी है,
-      तो आप उसका नाम हमारे साथ साझा कर सकते हैं।
-    </p>
-
-    <a href="candidate.html"
-       class="potential-btn">
-
-      ➕ संभावित उम्मीदवार की जानकारी दें
-
-    </a>
-
-  </div>
-
-</section>
-
-    <!-- LOCATION -->
-
-    <section class="location-card">
-
-      <h2>
-        📍 अपनी पंचायत चुनें
-      </h2>
-
-      <p class="card-subtitle">
-        Please select your location
-      </p>
-
-
-      <div class="instruction">
-
-        <strong>
-          कृपया अपना राज्य और जिला चुनें
-        </strong>
-
-        <br>
-
-        Please select your
-        <strong>State & District</strong>
-        first.
-
+      <div class="results-icon">
+        📊
       </div>
 
+      <div class="results-content">
 
+        <h2>
+          Survey Results
+          <span>(Will be available soon)</span>
+        </h2>
 
-      <!-- STATE -->
+        <p>
+          सर्वे के परिणाम जल्द उपलब्ध होंगे।
+        </p>
 
-      <div class="select-group">
-
-        <label>
-          राज्य / State
-        </label>
-
-        <select id="state">
-
-          <option value="">
-            राज्य चुनें / Select State
-          </option>
-
-        </select>
+        <p class="english">
+          View aggregated public opinion results
+        </p>
 
       </div>
-
-
-
-      <!-- DISTRICT -->
-
-      <div class="select-group">
-
-        <label>
-          जिला / District
-        </label>
-
-        <select id="district" disabled>
-
-          <option value="">
-            पहले राज्य चुनें / Select State First
-          </option>
-
-        </select>
-
-      </div>
-
-
-
-      <!-- VILLAGE -->
-
-      <div class="select-group">
-
-        <label>
-          गांव / Village
-        </label>
-
-        <input
-          type="text"
-          id="village"
-          placeholder="गांव का नाम / Enter Village Name">
-
-      </div>
-
-
-
-      <!-- PANCHAYAT -->
-
-      <div class="select-group">
-
-        <label>
-          ग्राम पंचायत / Gram Panchayat
-        </label>
-
-        <input
-          type="text"
-          id="panchayat"
-          placeholder="ग्राम पंचायत का नाम / Enter Panchayat Name">
-
-      </div>
-
-
-
-      <button
-        class="continue-btn"
-        id="continueBtn">
-
-        आगे बढ़ें / Continue →
-
-      </button>
 
     </section>
 
 
 
-    <!-- CANDIDATE -->
+    <!-- POTENTIAL CANDIDATES -->
+    <section class="candidate-card">
 
-    <section
-      class="candidate-card"
-      id="candidateSection">
+      <div class="candidate-top">
 
-      <div class="question-number">
-        QUESTION 01
+        <div class="candidate-icon">
+          👥
+        </div>
+
+        <div>
+
+          <span class="small-title">
+            संभावित उम्मीदवार
+          </span>
+
+          <h2>
+            आपकी पंचायत में कौन चुनाव लड़ने जा रहा है?
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <p class="candidate-description">
+
+        अगर आपको अपनी पंचायत के संभावित
+        Sarpanch candidates के बारे में जानकारी है,
+        तो नीचे जानकारी साझा कर सकते हैं।
+
+      </p>
+
+      <p class="english">
+
+        Know who may contest the Sarpanch Election
+        in your Panchayat?
+
+      </p>
+
+
+      <a
+        href="/candidates.html"
+        class="candidate-btn">
+
+        👥 संभावित उम्मीदवार की जानकारी दें →
+
+      </a>
+
+    </section>
+
+
+
+    <!-- VOTING COMING SOON -->
+    <section class="voting-card">
+
+      <div class="lock-icon">
+        🔒
       </div>
 
       <h2>
-
-        आप किसे अगला सरपंच
-        <span>बनते देखना चाहते हैं?</span>
-
+        जनमत सर्वे / Public Opinion Voting
       </h2>
+
+      <div class="coming-badge">
+        WILL BE AVAILABLE SOON
+      </div>
 
       <p>
-        Whom do you want to see as the next Sarpanch?
+        उम्मीदवारों के अंतिम होने के बाद
+        यहाँ जनमत सर्वे शुरू किया जाएगा।
       </p>
 
-
-      <div id="candidateList">
-
-        <label class="candidate-option">
-
-          <input
-            type="radio"
-            name="candidate"
-            value="Candidate 1">
-
-          <div class="candidate-info">
-
-            <strong>
-              Candidate 1
-            </strong>
-
-            <span>
-              Sarpanch Candidate
-            </span>
-
-          </div>
-
-        </label>
-
-
-        <label class="candidate-option">
-
-          <input
-            type="radio"
-            name="candidate"
-            value="Candidate 2">
-
-          <div class="candidate-info">
-
-            <strong>
-              Candidate 2
-            </strong>
-
-            <span>
-              Sarpanch Candidate
-            </span>
-
-          </div>
-
-        </label>
-
-
-        <label class="candidate-option">
-
-          <input
-            type="radio"
-            name="candidate"
-            value="Candidate 3">
-
-          <div class="candidate-info">
-
-            <strong>
-              Candidate 3
-            </strong>
-
-            <span>
-              Sarpanch Candidate
-            </span>
-
-          </div>
-
-        </label>
-
-
-        <label class="candidate-option">
-
-          <input
-            type="radio"
-            name="candidate"
-            value="Undecided">
-
-          <div class="candidate-info">
-
-            <strong>
-              अभी तय नहीं / Undecided
-            </strong>
-
-            <span>
-              Prefer not to choose
-            </span>
-
-          </div>
-
-        </label>
-
-      </div>
-
-
-      <button
-        class="submit-opinion"
-        id="submitOpinion">
-
-        अपनी राय Submit करें
-
-      </button>
+      <p class="english">
+        Public opinion voting will be available
+        once the candidates are finalized.
+      </p>
 
     </section>
 
 
 
-    <div class="simple-note">
+    <!-- NOTICE -->
+    <div class="notice">
 
-      🔒 यह independent public opinion survey है।
+      🔒 कृपया केवल सही और सार्वजनिक रूप से उपलब्ध
+      जानकारी साझा करें।
+
       <br>
-      This is not official election voting.
+
+      <span>
+        यह एक independent public opinion survey है।
+        यह official election voting form नहीं है।
+      </span>
 
     </div>
+
 
   </main>
 
 
 
+  <!-- FOOTER -->
   <footer>
 
     © 2026 Janmat Survey
@@ -740,985 +192,5 @@
   </footer>
 
 
-
-  <script>
-
-    /*
-      28 INDIAN STATES
-
-      Union Territories are intentionally
-      not included because this survey is
-      for Gram Panchayat/Sarpanch elections.
-    */
-
-    const states = {
-
-      "Andhra Pradesh": [
-        "Alluri Sitharama Raju",
-        "Anakapalli",
-        "Anantapuramu",
-        "Annamayya",
-        "Bapatla",
-        "Chittoor",
-        "Dr. B.R. Ambedkar Konaseema",
-        "East Godavari",
-        "Eluru",
-        "Guntur",
-        "Kakinada",
-        "Krishna",
-        "Kurnool",
-        "Nandyal",
-        "NTR",
-        "Palnadu",
-        "Parvathipuram Manyam",
-        "Prakasam",
-        "Sri Potti Sriramulu Nellore",
-        "Srikakulam",
-        "Tirupati",
-        "Visakhapatnam",
-        "Vizianagaram",
-        "West Godavari",
-        "YSR Kadapa"
-      ],
-
-      "Arunachal Pradesh": [
-        "Anjaw",
-        "Changlang",
-        "Dibang Valley",
-        "East Kameng",
-        "East Siang",
-        "Kamle",
-        "Kra Daadi",
-        "Kurung Kumey",
-        "Lepa Rada",
-        "Lohit",
-        "Longding",
-        "Lower Dibang Valley",
-        "Lower Siang",
-        "Lower Subansiri",
-        "Namsai",
-        "Pakke Kessang",
-        "Papum Pare",
-        "Shi Yomi",
-        "Siang",
-        "Tawang",
-        "Tirap",
-        "Upper Siang",
-        "Upper Subansiri",
-        "West Kameng",
-        "West Siang"
-      ],
-
-      "Assam": [
-        "Baksa",
-        "Barpeta",
-        "Biswanath",
-        "Bongaigaon",
-        "Cachar",
-        "Charaideo",
-        "Chirang",
-        "Darrang",
-        "Dhemaji",
-        "Dhubri",
-        "Dibrugarh",
-        "Dima Hasao",
-        "Goalpara",
-        "Golaghat",
-        "Hailakandi",
-        "Hojai",
-        "Jorhat",
-        "Kamrup",
-        "Kamrup Metropolitan",
-        "Karbi Anglong",
-        "Karimganj",
-        "Kokrajhar",
-        "Lakhimpur",
-        "Majuli",
-        "Morigaon",
-        "Nagaon",
-        "Nalbari",
-        "Sivasagar",
-        "Sonitpur",
-        "South Salmara-Mankachar",
-        "Tinsukia",
-        "Udalguri",
-        "West Karbi Anglong"
-      ],
-
-      "Bihar": [
-        "Araria",
-        "Arwal",
-        "Aurangabad",
-        "Banka",
-        "Begusarai",
-        "Bhagalpur",
-        "Bhojpur",
-        "Buxar",
-        "Darbhanga",
-        "East Champaran",
-        "Gaya",
-        "Gopalganj",
-        "Jamui",
-        "Jehanabad",
-        "Kaimur",
-        "Katihar",
-        "Khagaria",
-        "Kishanganj",
-        "Lakhisarai",
-        "Madhepura",
-        "Madhubani",
-        "Munger",
-        "Muzaffarpur",
-        "Nalanda",
-        "Nawada",
-        "Patna",
-        "Purnia",
-        "Rohtas",
-        "Saharsa",
-        "Samastipur",
-        "Saran",
-        "Sheikhpura",
-        "Sheohar",
-        "Sitamarhi",
-        "Siwan",
-        "Supaul",
-        "Vaishali",
-        "West Champaran"
-      ],
-
-      "Chhattisgarh": [
-        "Balod",
-        "Baloda Bazar",
-        "Balrampur-Ramanujganj",
-        "Bastar",
-        "Bemetara",
-        "Bijapur",
-        "Bilaspur",
-        "Dantewada",
-        "Dhamtari",
-        "Durg",
-        "Gariaband",
-        "Gaurela-Pendra-Marwahi",
-        "Janjgir-Champa",
-        "Jashpur",
-        "Kabirdham",
-        "Kanker",
-        "Khairagarh-Chhuikhadan-Gandai",
-        "Kondagaon",
-        "Korba",
-        "Koriya",
-        "Mahasamund",
-        "Manendragarh-Chirmiri-Bharatpur",
-        "Mungeli",
-        "Narayanpur",
-        "Raigarh",
-        "Raipur",
-        "Rajnandgaon",
-        "Sukma",
-        "Surajpur",
-        "Surguja"
-      ],
-
-      "Goa": [
-        "North Goa",
-        "South Goa"
-      ],
-
-      "Gujarat": [
-        "Ahmedabad",
-        "Amreli",
-        "Anand",
-        "Aravalli",
-        "Banaskantha",
-        "Bharuch",
-        "Bhavnagar",
-        "Botad",
-        "Chhota Udepur",
-        "Dahod",
-        "Dang",
-        "Devbhoomi Dwarka",
-        "Gandhinagar",
-        "Gir Somnath",
-        "Jamnagar",
-        "Junagadh",
-        "Kachchh",
-        "Kheda",
-        "Mahisagar",
-        "Mehsana",
-        "Morbi",
-        "Narmada",
-        "Navsari",
-        "Panchmahal",
-        "Patan",
-        "Porbandar",
-        "Rajkot",
-        "Sabarkantha",
-        "Surat",
-        "Surendranagar",
-        "Tapi",
-        "Vadodara",
-        "Valsad"
-      ],
-
-      "Haryana": [
-        "Ambala",
-        "Bhiwani",
-        "Charkhi Dadri",
-        "Faridabad",
-        "Fatehabad",
-        "Gurugram",
-        "Hisar",
-        "Jhajjar",
-        "Jind",
-        "Kaithal",
-        "Karnal",
-        "Kurukshetra",
-        "Mahendragarh",
-        "Nuh",
-        "Palwal",
-        "Panchkula",
-        "Panipat",
-        "Rewari",
-        "Rohtak",
-        "Sirsa",
-        "Sonipat",
-        "Yamunanagar"
-      ],
-
-      "Himachal Pradesh": [
-        "Bilaspur",
-        "Chamba",
-        "Hamirpur",
-        "Kangra",
-        "Kinnaur",
-        "Kullu",
-        "Lahaul and Spiti",
-        "Mandi",
-        "Shimla",
-        "Sirmaur",
-        "Solan",
-        "Una"
-      ],
-
-      "Jharkhand": [
-        "Bokaro",
-        "Chatra",
-        "Deoghar",
-        "Dhanbad",
-        "Dumka",
-        "East Singhbhum",
-        "Garhwa",
-        "Giridih",
-        "Godda",
-        "Gumla",
-        "Hazaribagh",
-        "Jamtara",
-        "Khunti",
-        "Koderma",
-        "Latehar",
-        "Lohardaga",
-        "Pakur",
-        "Palamu",
-        "Ramgarh",
-        "Ranchi",
-        "Sahibganj",
-        "Seraikela Kharsawan",
-        "Simdega",
-        "West Singhbhum"
-      ],
-
-      "Karnataka": [
-        "Bagalkot",
-        "Ballari",
-        "Belagavi",
-        "Bengaluru Rural",
-        "Bengaluru Urban",
-        "Bidar",
-        "Chamarajanagar",
-        "Chikkaballapur",
-        "Chikkamagaluru",
-        "Chitradurga",
-        "Dakshina Kannada",
-        "Davanagere",
-        "Dharwad",
-        "Gadag",
-        "Hassan",
-        "Haveri",
-        "Kalaburagi",
-        "Kodagu",
-        "Kolar",
-        "Koppal",
-        "Mandya",
-        "Mysuru",
-        "Raichur",
-        "Ramanagara",
-        "Shivamogga",
-        "Tumakuru",
-        "Udupi",
-        "Uttara Kannada",
-        "Vijayapura",
-        "Yadgir"
-      ],
-
-      "Kerala": [
-        "Alappuzha",
-        "Ernakulam",
-        "Idukki",
-        "Kannur",
-        "Kasaragod",
-        "Kollam",
-        "Kottayam",
-        "Kozhikode",
-        "Malappuram",
-        "Palakkad",
-        "Pathanamthitta",
-        "Thiruvananthapuram",
-        "Thrissur",
-        "Wayanad"
-      ],
-
-      "Madhya Pradesh": [
-        "Agar Malwa",
-        "Alirajpur",
-        "Anuppur",
-        "Ashoknagar",
-        "Balaghat",
-        "Barwani",
-        "Betul",
-        "Bhind",
-        "Bhopal",
-        "Burhanpur",
-        "Chhatarpur",
-        "Chhindwara",
-        "Damoh",
-        "Datia",
-        "Dewas",
-        "Dhar",
-        "Dindori",
-        "Guna",
-        "Gwalior",
-        "Harda",
-        "Indore",
-        "Jabalpur",
-        "Jhabua",
-        "Katni",
-        "Khandwa",
-        "Khargone",
-        "Maihar",
-        "Mandla",
-        "Mandsaur",
-        "Mauganj",
-        "Morena",
-        "Narmadapuram",
-        "Narsinghpur",
-        "Neemuch",
-        "Niwari",
-        "Panna",
-        "Raisen",
-        "Rajgarh",
-        "Ratlam",
-        "Rewa",
-        "Sagar",
-        "Satna",
-        "Sehore",
-        "Seoni",
-        "Shahdol",
-        "Shajapur",
-        "Sheopur",
-        "Shivpuri",
-        "Sidhi",
-        "Singrauli",
-        "Tikamgarh",
-        "Ujjain",
-        "Umaria",
-        "Vidisha"
-      ],
-
-      "Maharashtra": [
-        "Ahmednagar",
-        "Akola",
-        "Amravati",
-        "Beed",
-        "Bhandara",
-        "Buldhana",
-        "Chandrapur",
-        "Chhatrapati Sambhajinagar",
-        "Dhule",
-        "Gadchiroli",
-        "Gondia",
-        "Hingoli",
-        "Jalgaon",
-        "Jalna",
-        "Kolhapur",
-        "Latur",
-        "Mumbai City",
-        "Mumbai Suburban",
-        "Nagpur",
-        "Nanded",
-        "Nandurbar",
-        "Nashik",
-        "Dharashiv",
-        "Palghar",
-        "Parbhani",
-        "Pune",
-        "Raigad",
-        "Ratnagiri",
-        "Sangli",
-        "Satara",
-        "Sindhudurg",
-        "Solapur",
-        "Thane",
-        "Wardha",
-        "Washim",
-        "Yavatmal"
-      ],
-
-      "Manipur": [
-        "Bishnupur",
-        "Chandel",
-        "Churachandpur",
-        "Imphal East",
-        "Imphal West",
-        "Jiribam",
-        "Kakching",
-        "Kamjong",
-        "Kangpokpi",
-        "Noney",
-        "Pherzawl",
-        "Senapati",
-        "Tamenglong",
-        "Tengnoupal",
-        "Thoubal",
-        "Ukhrul"
-      ],
-
-      "Meghalaya": [
-        "East Garo Hills",
-        "East Jaintia Hills",
-        "East Khasi Hills",
-        "North Garo Hills",
-        "Ri Bhoi",
-        "South Garo Hills",
-        "South West Garo Hills",
-        "South West Khasi Hills",
-        "West Garo Hills",
-        "West Jaintia Hills",
-        "West Khasi Hills"
-      ],
-
-      "Mizoram": [
-        "Aizawl",
-        "Champhai",
-        "Hnahthial",
-        "Khawzawl",
-        "Kolasib",
-        "Lawngtlai",
-        "Lunglei",
-        "Mamit",
-        "Saiha",
-        "Saitual",
-        "Serchhip"
-      ],
-
-      "Nagaland": [
-        "Chumoukedima",
-        "Dimapur",
-        "Kiphire",
-        "Kohima",
-        "Longleng",
-        "Mokokchung",
-        "Mon",
-        "Niuland",
-        "Noklak",
-        "Peren",
-        "Phek",
-        "Shamator",
-        "Tseminyu",
-        "Tuensang",
-        "Wokha",
-        "Zunheboto"
-      ],
-
-      "Odisha": [
-        "Angul",
-        "Balangir",
-        "Balasore",
-        "Bargarh",
-        "Bhadrak",
-        "Boudh",
-        "Cuttack",
-        "Deogarh",
-        "Dhenkanal",
-        "Gajapati",
-        "Ganjam",
-        "Jagatsinghpur",
-        "Jajpur",
-        "Jharsuguda",
-        "Kalahandi",
-        "Kandhamal",
-        "Kendrapara",
-        "Kendujhar",
-        "Khordha",
-        "Koraput",
-        "Malkangiri",
-        "Mayurbhanj",
-        "Nabarangpur",
-        "Nayagarh",
-        "Nuapada",
-        "Puri",
-        "Rayagada",
-        "Sambalpur",
-        "Subarnapur",
-        "Sundargarh"
-      ],
-
-      "Punjab": [
-        "Amritsar",
-        "Barnala",
-        "Bathinda",
-        "Faridkot",
-        "Fatehgarh Sahib",
-        "Fazilka",
-        "Ferozepur",
-        "Gurdaspur",
-        "Hoshiarpur",
-        "Jalandhar",
-        "Kapurthala",
-        "Ludhiana",
-        "Malerkotla",
-        "Mansa",
-        "Moga",
-        "Pathankot",
-        "Patiala",
-        "Rupnagar",
-        "Sahibzada Ajit Singh Nagar",
-        "Sangrur",
-        "Shaheed Bhagat Singh Nagar",
-        "Sri Muktsar Sahib",
-        "Tarn Taran"
-      ],
-
-      "Rajasthan": [
-        "Ajmer",
-        "Alwar",
-        "Balotra",
-        "Banswara",
-        "Baran",
-        "Barmer",
-        "Beawar",
-        "Bharatpur",
-        "Bhilwara",
-        "Bikaner",
-        "Bundi",
-        "Chittorgarh",
-        "Churu",
-        "Dausa",
-        "Deeg",
-        "Dholpur",
-        "Didwana-Kuchamana",
-        "Dungarpur",
-        "Hanumangarh",
-        "Jaipur",
-        "Jaisalmer",
-        "Jalore",
-        "Jhalawar",
-        "Jhunjhunu",
-        "Jodhpur",
-        "Karauli",
-        "Khairthal-Tijara",
-        "Kota",
-        "Kotputli-Behror",
-        "Nagaur",
-        "Pali",
-        "Phalodi",
-        "Pratapgarh",
-        "Rajsamand",
-        "Salumbar",
-        "Sawai Madhopur",
-        "Sikar",
-        "Sirohi",
-        "Sri Ganganagar",
-        "Tonk",
-        "Udaipur"
-      ],
-
-      "Sikkim": [
-        "Gangtok",
-        "Mangan",
-        "Namchi",
-        "Pakyong",
-        "Soreng",
-        "Gyalshing"
-      ],
-
-      "Tamil Nadu": [
-        "Ariyalur",
-        "Chengalpattu",
-        "Chennai",
-        "Coimbatore",
-        "Cuddalore",
-        "Dharmapuri",
-        "Dindigul",
-        "Erode",
-        "Kallakurichi",
-        "Kancheepuram",
-        "Kanniyakumari",
-        "Karur",
-        "Krishnagiri",
-        "Madurai",
-        "Mayiladuthurai",
-        "Nagapattinam",
-        "Namakkal",
-        "Perambalur",
-        "Pudukkottai",
-        "Ramanathapuram",
-        "Ranipet",
-        "Salem",
-        "Sivaganga",
-        "Tenkasi",
-        "Thanjavur",
-        "The Nilgiris",
-        "Theni",
-        "Thoothukudi",
-        "Tiruchirappalli",
-        "Tirunelveli",
-        "Tirupathur",
-        "Tiruppur",
-        "Tiruvallur",
-        "Tiruvannamalai",
-        "Tiruvarur",
-        "Vellore",
-        "Viluppuram",
-        "Virudhunagar"
-      ],
-
-      "Telangana": [
-        "Adilabad",
-        "Bhadradri Kothagudem",
-        "Hanamkonda",
-        "Hyderabad",
-        "Jagtial",
-        "Jangaon",
-        "Jayashankar Bhupalapally",
-        "Jogulamba Gadwal",
-        "Kamareddy",
-        "Karimnagar",
-        "Khammam",
-        "Kumuram Bheem Asifabad",
-        "Mahabubabad",
-        "Mahabubnagar",
-        "Mancherial",
-        "Medak",
-        "Medchal-Malkajgiri",
-        "Mulugu",
-        "Nagarkurnool",
-        "Nalgonda",
-        "Narayanpet",
-        "Nirmal",
-        "Nizamabad",
-        "Peddapalli",
-        "Rajanna Sircilla",
-        "Rangareddy",
-        "Sangareddy",
-        "Siddipet",
-        "Suryapet",
-        "Vikarabad",
-        "Wanaparthy",
-        "Warangal",
-        "Yadadri Bhuvanagiri"
-      ],
-
-      "Tripura": [
-        "Dhalai",
-        "Gomati",
-        "Khowai",
-        "North Tripura",
-        "Sepahijala",
-        "South Tripura",
-        "Unakoti",
-        "West Tripura"
-      ],
-
-      "Uttar Pradesh": [
-        "Agra",
-        "Aligarh",
-        "Ambedkar Nagar",
-        "Amethi",
-        "Amroha",
-        "Auraiya",
-        "Ayodhya",
-        "Azamgarh",
-        "Baghpat",
-        "Bahraich",
-        "Ballia",
-        "Balrampur",
-        "Banda",
-        "Barabanki",
-        "Bareilly",
-        "Basti",
-        "Bhadohi",
-        "Bijnor",
-        "Budaun",
-        "Bulandshahr",
-        "Chandauli",
-        "Chitrakoot",
-        "Deoria",
-        "Etah",
-        "Etawah",
-        "Farrukhabad",
-        "Fatehpur",
-        "Firozabad",
-        "Gautam Buddha Nagar",
-        "Ghaziabad",
-        "Ghazipur",
-        "Gonda",
-        "Gorakhpur",
-        "Hamirpur",
-        "Hapur",
-        "Hardoi",
-        "Hathras",
-        "Jalaun",
-        "Jaunpur",
-        "Jhansi",
-        "Kannauj",
-        "Kanpur Dehat",
-        "Kanpur Nagar",
-        "Kasganj",
-        "Kaushambi",
-        "Kushinagar",
-        "Lakhimpur Kheri",
-        "Lalitpur",
-        "Lucknow",
-        "Maharajganj",
-        "Mahoba",
-        "Mainpuri",
-        "Mathura",
-        "Mau",
-        "Meerut",
-        "Mirzapur",
-        "Moradabad",
-        "Muzaffarnagar",
-        "Pilibhit",
-        "Pratapgarh",
-        "Prayagraj",
-        "Raebareli",
-        "Rampur",
-        "Saharanpur",
-        "Sambhal",
-        "Sant Kabir Nagar",
-        "Shahjahanpur",
-        "Shamli",
-        "Shravasti",
-        "Siddharthnagar",
-        "Sitapur",
-        "Sonbhadra",
-        "Sultanpur",
-        "Unnao",
-        "Varanasi"
-      ],
-
-      "Uttarakhand": [
-        "Almora",
-        "Bageshwar",
-        "Chamoli",
-        "Champawat",
-        "Dehradun",
-        "Haridwar",
-        "Nainital",
-        "Pauri Garhwal",
-        "Pithoragarh",
-        "Rudraprayag",
-        "Tehri Garhwal",
-        "Udham Singh Nagar",
-        "Uttarkashi"
-      ],
-
-      "West Bengal": [
-        "Alipurduar",
-        "Bankura",
-        "Paschim Bardhaman",
-        "Purba Bardhaman",
-        "Birbhum",
-        "Cooch Behar",
-        "Darjeeling",
-        "Hooghly",
-        "Howrah",
-        "Jalpaiguri",
-        "Jhargram",
-        "Kalimpong",
-        "Kolkata",
-        "Maldah",
-        "Murshidabad",
-        "Nadia",
-        "North 24 Parganas",
-        "South 24 Parganas",
-        "Paschim Medinipur",
-        "Purba Medinipur",
-        "Uttar Dinajpur",
-        "Dakshin Dinajpur"
-      ]
-
-    };
-
-
-    /* STATE DROPDOWN */
-
-    const stateSelect =
-      document.getElementById("state");
-
-    const districtSelect =
-      document.getElementById("district");
-
-
-    Object.keys(states)
-      .sort()
-      .forEach(function(state) {
-
-        const option =
-          document.createElement("option");
-
-        option.value = state;
-
-        option.textContent = state;
-
-        stateSelect.appendChild(option);
-
-      });
-
-
-    /* STATE → DISTRICT */
-
-    stateSelect.addEventListener(
-      "change",
-      function() {
-
-        districtSelect.innerHTML =
-          '<option value="">जिला चुनें / Select District</option>';
-
-        districtSelect.disabled =
-          true;
-
-        const districts =
-          states[this.value] || [];
-
-
-        districts.forEach(
-          function(district) {
-
-            const option =
-              document.createElement("option");
-
-            option.value = district;
-
-            option.textContent = district;
-
-            districtSelect.appendChild(option);
-
-          }
-        );
-
-
-        if (districts.length > 0) {
-
-          districtSelect.disabled =
-            false;
-
-        }
-
-      }
-    );
-
-
-    /* CONTINUE */
-
-    document
-      .getElementById("continueBtn")
-      .addEventListener(
-        "click",
-        function() {
-
-          const state =
-            stateSelect.value;
-
-          const district =
-            districtSelect.value;
-
-          const village =
-            document.getElementById(
-              "village"
-            ).value.trim();
-
-          const panchayat =
-            document.getElementById(
-              "panchayat"
-            ).value.trim();
-
-
-          if (
-            !state ||
-            !district ||
-            !village ||
-            !panchayat
-          ) {
-
-            alert(
-              "कृपया State, District, Village और Gram Panchayat की जानकारी भरें।"
-            );
-
-            return;
-
-          }
-
-
-          document.getElementById(
-            "candidateSection"
-          ).style.display = "block";
-
-
-          document
-            .getElementById("candidateSection")
-            .scrollIntoView({
-              behavior: "smooth"
-            });
-
-        }
-      );
-
-
-    /* SUBMIT */
-
-    document
-      .getElementById("submitOpinion")
-      .addEventListener(
-        "click",
-        function() {
-
-          const selected =
-            document.querySelector(
-              'input[name="candidate"]:checked'
-            );
-
-
-          if (!selected) {
-
-            alert(
-              "कृपया उम्मीदवार चुनें।"
-            );
-
-            return;
-
-          }
-
-
-          alert(
-            "आपकी राय दर्ज कर ली गई है।"
-          );
-
-        }
-      );
-
-  </script>
-
 </body>
-
 </html>
