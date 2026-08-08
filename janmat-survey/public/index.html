@@ -8,890 +8,481 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-  <title>Sarpanch Election Survey 2026 | Janmat</title>
-
-  <meta name="description"
-        content="Gram Panchayat Sarpanch Election Public Opinion Survey">
+  <title>Sarpanch Election Survey 2026</title>
 
   <link rel="stylesheet" href="css/style.css">
 
-  <style>
-
-    .premium-hero {
-      min-height: 720px;
-      padding: 70px 7%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 60px;
-      background:
-        radial-gradient(
-          circle at 85% 20%,
-          rgba(49,85,216,0.12),
-          transparent 30%
-        ),
-        linear-gradient(
-          135deg,
-          #f9fbff,
-          #eef3ff
-        );
-      position: relative;
-      overflow: hidden;
-    }
-
-    .premium-hero::before {
-      content: "";
-      position: absolute;
-      width: 350px;
-      height: 350px;
-      border-radius: 50%;
-      border: 1px solid rgba(49,85,216,0.12);
-      right: -100px;
-      bottom: -100px;
-    }
-
-    .premium-content {
-      max-width: 650px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .location-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #ffffff;
-      border: 1px solid #e1e6f2;
-      padding: 9px 15px;
-      border-radius: 50px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #46526a;
-      margin-bottom: 22px;
-      box-shadow: 0 6px 20px rgba(30,45,90,0.05);
-    }
-
-    .premium-content h1 {
-      font-size: 64px;
-      line-height: 1.02;
-      letter-spacing: -2.5px;
-      margin-bottom: 22px;
-      color: #111827;
-    }
-
-    .premium-content h1 span {
-      color: #3155d8;
-    }
-
-    .premium-description {
-      font-size: 18px;
-      color: #667085;
-      max-width: 600px;
-      line-height: 1.7;
-      margin-bottom: 32px;
-    }
-
-    .premium-buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .premium-main-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 15px 23px;
-      border-radius: 12px;
-      background: #3155d8;
-      color: white;
-      text-decoration: none;
-      font-weight: 700;
-      box-shadow: 0 12px 25px rgba(49,85,216,0.22);
-      transition: 0.2s;
-    }
-
-    .premium-main-btn:hover {
-      transform: translateY(-3px);
-    }
-
-    .premium-outline-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 15px 23px;
-      border-radius: 12px;
-      background: white;
-      color: #3155d8;
-      border: 1px solid #dce2f0;
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .premium-note {
-      margin-top: 18px;
-      color: #7b8495;
-      font-size: 12px;
-    }
-
-
-    /* DASHBOARD CARD */
-
-    .election-card {
-      width: 400px;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.9);
-      border-radius: 26px;
-      padding: 28px;
-      box-shadow:
-        0 25px 70px rgba(31,48,95,0.13);
-      position: relative;
-      z-index: 2;
-    }
-
-    .card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 25px;
-    }
-
-    .election-icon {
-      width: 58px;
-      height: 58px;
-      border-radius: 17px;
-      background: #edf1ff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-    }
-
-    .live-badge {
-      padding: 7px 11px;
-      background: #eef8f1;
-      color: #20833f;
-      border-radius: 30px;
-      font-size: 11px;
-      font-weight: 800;
-    }
-
-    .election-card h2 {
-      font-size: 25px;
-      margin-bottom: 5px;
-    }
-
-    .election-card > p {
-      color: #7a8496;
-      font-size: 13px;
-      margin-bottom: 24px;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      gap: 12px;
-    }
-
-    .stat-box {
-      padding: 18px;
-      background: #f7f8fc;
-      border: 1px solid #edf0f6;
-      border-radius: 15px;
-    }
-
-    .stat-box strong {
-      display: block;
-      font-size: 25px;
-      color: #172033;
-    }
-
-    .stat-box span {
-      font-size: 11px;
-      color: #7c8493;
-    }
-
-    .card-bottom {
-      margin-top: 18px;
-      padding-top: 18px;
-      border-top: 1px solid #edf0f5;
-      font-size: 12px;
-      color: #737d8e;
-      text-align: center;
-    }
-
-
-    /* TRUST STRIP */
-
-    .trust-strip {
-      background: #ffffff;
-      border-bottom: 1px solid #edf0f5;
-      padding: 17px 7%;
-      display: flex;
-      justify-content: center;
-      gap: 45px;
-      flex-wrap: wrap;
-    }
-
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #697386;
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-
-    /* SECTION */
-
-    .premium-section {
-      padding: 90px 7%;
-      background: #ffffff;
-    }
-
-    .premium-heading {
-      max-width: 650px;
-      margin: auto;
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .premium-heading small {
-      color: #3155d8;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      font-size: 11px;
-    }
-
-    .premium-heading h2 {
-      font-size: 40px;
-      margin: 8px 0;
-      color: #111827;
-    }
-
-    .premium-heading p {
-      color: #70798a;
-    }
-
-
-    /* PROCESS */
-
-    .process-grid {
-      max-width: 1100px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 20px;
-    }
-
-    .process-card {
-      padding: 30px;
-      border: 1px solid #e9edf5;
-      border-radius: 20px;
-      background: #ffffff;
-      transition: 0.25s;
-    }
-
-    .process-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 18px 40px rgba(30,45,90,0.08);
-    }
-
-    .process-number {
-      font-size: 12px;
-      font-weight: 800;
-      color: #3155d8;
-      margin-bottom: 18px;
-    }
-
-    .process-card h3 {
-      font-size: 19px;
-      margin-bottom: 10px;
-    }
-
-    .process-card p {
-      color: #717b8d;
-      font-size: 14px;
-    }
-
-
-    /* CTA */
-
-    .premium-cta {
-      margin: 20px 7% 80px;
-      padding: 65px 30px;
-      border-radius: 25px;
-      text-align: center;
-      background:
-        linear-gradient(
-          135deg,
-          #18244d,
-          #3155d8
-        );
-      color: white;
-    }
-
-    .premium-cta h2 {
-      font-size: 35px;
-      margin-bottom: 10px;
-    }
-
-    .premium-cta p {
-      opacity: 0.85;
-      margin-bottom: 25px;
-    }
-
-    .premium-cta a {
-      display: inline-block;
-      padding: 14px 24px;
-      border-radius: 10px;
-      background: white;
-      color: #3155d8;
-      text-decoration: none;
-      font-weight: 800;
-    }
-
-
-    @media (max-width: 850px) {
-
-      .premium-hero {
-        padding: 55px 6%;
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .premium-content h1 {
-        font-size: 46px;
-      }
-
-      .election-card {
-        width: 100%;
-      }
-
-      .process-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .premium-heading h2 {
-        font-size: 31px;
-      }
-
-      .trust-strip {
-        gap: 18px;
-        justify-content: flex-start;
-      }
-
-    }
-
-
-    @media (max-width: 450px) {
-
-      .premium-content h1 {
-        font-size: 39px;
-        letter-spacing: -1.5px;
-      }
-
-      .premium-description {
-        font-size: 15px;
-      }
-
-      .premium-buttons {
-        flex-direction: column;
-      }
-
-      .premium-main-btn,
-      .premium-outline-btn {
-        justify-content: center;
-      }
-
-      .election-card {
-        padding: 22px;
-      }
-
-      .premium-cta {
-        margin-left: 5%;
-        margin-right: 5%;
-        padding: 45px 20px;
-      }
-
-      .premium-cta h2 {
-        font-size: 27px;
-      }
-
-    }
-
-  </style>
-
 </head>
-
 
 <body>
 
+  <!-- HEADER -->
 
-  <!-- NAVBAR -->
+  <header class="simple-header">
 
-  <header class="navbar">
-
-    <div class="logo">
-      🏡 Janmat
+    <div class="brand">
+      🗳️ Janmat Survey
     </div>
 
-    <nav>
-
-      <a href="index.html">Home</a>
-
-      <a href="survey.html">Survey</a>
-
-      <a href="results.html">Results</a>
-
-    </nav>
+    <a href="results.html">
+      Results
+    </a>
 
   </header>
 
 
+  <!-- MAIN -->
 
-  <!-- HERO -->
+  <main class="survey-home">
 
-  <section class="premium-hero">
+    <div class="welcome">
 
-
-    <div class="premium-content">
-
-
-      <div class="location-pill">
-        📍 Gram Panchayat • Sarpanch Election 2026
+      <div class="small-badge">
+        SARPANCH ELECTION SURVEY 2026
       </div>
-
 
       <h1>
-
-        आपकी राय,
-        <br>
-
-        <span>आपकी पंचायत।</span>
-
+        अपनी पंचायत का
+        <span>अगला सरपंच</span> चुनें
       </h1>
 
-
-      <p class="premium-description">
-
-        अपने ग्राम पंचायत के Sarpanch Election
-        से जुड़े महत्वपूर्ण मुद्दों और उम्मीदवारों
-        को लेकर अपनी राय दें। आपकी response
-        aggregated public opinion survey में शामिल होगी।
-
+      <p>
+        अपने गांव और पंचायत को select करें और
+        बताएं कि आप किसे अगला सरपंच बनते देखना चाहते हैं।
       </p>
-
-
-      <div class="premium-buttons">
-
-        <a href="survey.html"
-           class="premium-main-btn">
-
-          📝
-
-          सर्वे में भाग लें
-
-        </a>
-
-
-        <a href="results.html"
-           class="premium-outline-btn">
-
-          📊
-
-          Results देखें
-
-        </a>
-
-      </div>
-
-
-      <div class="premium-note">
-
-        🔒 Independent survey • No unnecessary personal information
-
-      </div>
-
 
     </div>
 
 
+    <!-- LOCATION CARD -->
 
-    <!-- ELECTION CARD -->
+    <div class="location-card">
 
-    <div class="election-card">
+      <h2>
+        📍 अपनी पंचायत चुनें
+      </h2>
+
+      <p class="card-subtitle">
+        पहले अपना location select करें
+      </p>
 
 
-      <div class="card-top">
+      <!-- STATE -->
 
-        <div class="election-icon">
-          🗳️
-        </div>
+      <div class="select-group">
 
-        <div class="live-badge">
-          ● SURVEY ACTIVE
-        </div>
+        <label>
+          राज्य
+        </label>
+
+        <select id="state">
+
+          <option value="">
+            राज्य चुनें
+          </option>
+
+          <option value="Rajasthan">
+            Rajasthan
+          </option>
+
+        </select>
 
       </div>
 
 
+      <!-- DISTRICT -->
+
+      <div class="select-group">
+
+        <label>
+          जिला
+        </label>
+
+        <select id="district">
+
+          <option value="">
+            जिला चुनें
+          </option>
+
+          <option value="Jhunjhunu">
+            Jhunjhunu
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- VILLAGE -->
+
+      <div class="select-group">
+
+        <label>
+          गांव
+        </label>
+
+        <select id="village">
+
+          <option value="">
+            गांव चुनें
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- PANCHAYAT -->
+
+      <div class="select-group">
+
+        <label>
+          ग्राम पंचायत
+        </label>
+
+        <select id="panchayat">
+
+          <option value="">
+            ग्राम पंचायत चुनें
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <button
+        class="continue-btn"
+        id="continueBtn">
+
+        आगे बढ़ें →
+
+      </button>
+
+    </div>
+
+
+    <!-- CANDIDATE SECTION -->
+
+    <div
+      class="candidate-card"
+      id="candidateSection">
+
+      <div class="question-number">
+        QUESTION
+      </div>
+
       <h2>
-        Sarpanch Election 2026
+        आप किसे अगला सरपंच
+        <span>बनते देखना चाहते हैं?</span>
       </h2>
 
       <p>
-        Gram Panchayat Public Opinion
+        अपने पसंदीदा उम्मीदवार को चुनें।
       </p>
 
 
-      <div class="stats-grid">
+      <div
+        class="candidate-list"
+        id="candidateList">
 
-
-        <div class="stat-box">
-
-          <strong id="totalResponses">
-            0
-          </strong>
-
-          <span>
-            Total Responses
-          </span>
-
-        </div>
-
-
-        <div class="stat-box">
-
-          <strong>
-            01
-          </strong>
-
-          <span>
-            Panchayat
-          </span>
-
-        </div>
-
-
-        <div class="stat-box">
-
-          <strong>
-            2–3
-          </strong>
-
-          <span>
-            Minutes
-          </span>
-
-        </div>
-
-
-        <div class="stat-box">
-
-          <strong>
-            10+
-          </strong>
-
-          <span>
-            Questions
-          </span>
-
-        </div>
-
+        <!-- Candidates will appear here -->
 
       </div>
 
 
-      <div class="card-bottom">
+      <button
+        class="submit-opinion"
+        id="submitOpinion">
 
-        📈 Results are based on submitted survey responses
+        अपनी राय Submit करें
 
-      </div>
-
-    </div>
-
-
-  </section>
-
-
-
-  <!-- TRUST STRIP -->
-
-  <div class="trust-strip">
-
-    <div class="trust-item">
-      🔒 Privacy focused
-    </div>
-
-    <div class="trust-item">
-      📊 Aggregated results
-    </div>
-
-    <div class="trust-item">
-      📱 Mobile friendly
-    </div>
-
-    <div class="trust-item">
-      ⚖️ Independent survey
-    </div>
-
-  </div>
-
-
-
-  <!-- HOW IT WORKS -->
-
-  <section class="premium-section">
-
-
-    <div class="premium-heading">
-
-      <small>
-        HOW IT WORKS
-      </small>
-
-      <h2>
-        सिर्फ 3 आसान steps
-      </h2>
-
-      <p>
-        अपनी पंचायत के survey में आसानी से participate करें।
-      </p>
+      </button>
 
     </div>
 
 
-    <div class="process-grid">
+    <!-- DISCLAIMER -->
 
+    <div class="simple-note">
 
-      <div class="process-card">
-
-        <div class="process-number">
-          01 — YOUR OPINION
-        </div>
-
-        <h3>
-          अपनी राय दें
-        </h3>
-
-        <p>
-          अपने area और पंचायत से जुड़े
-          questions का honest response दें।
-        </p>
-
-      </div>
-
-
-      <div class="process-card">
-
-        <div class="process-number">
-          02 — SUBMIT
-        </div>
-
-        <h3>
-          Survey Submit करें
-        </h3>
-
-        <p>
-          अपनी जानकारी check करके
-          response submit करें।
-        </p>
-
-      </div>
-
-
-      <div class="process-card">
-
-        <div class="process-number">
-          03 — RESULTS
-        </div>
-
-        <h3>
-          Results देखें
-        </h3>
-
-        <p>
-          Available aggregated responses
-          और survey statistics देखें।
-        </p>
-
-      </div>
-
+      🔒 यह एक independent public opinion survey है।
+      यह official election voting नहीं है।
 
     </div>
 
-  </section>
-
-
-
-  <!-- LOCAL ISSUES -->
-
-  <section class="premium-section"
-           style="background:#f7f9fd;">
-
-
-    <div class="premium-heading">
-
-      <small>
-        PANCHAYAT ISSUES
-      </small>
-
-      <h2>
-        आपकी पंचायत के मुद्दे
-      </h2>
-
-      <p>
-        Survey में local development से जुड़े मुद्दों पर भी राय ली जाएगी।
-      </p>
-
-    </div>
-
-
-    <div class="process-grid">
-
-
-      <div class="process-card">
-
-        <div class="process-number">
-          🛣️ INFRASTRUCTURE
-        </div>
-
-        <h3>
-          सड़क एवं नाली
-        </h3>
-
-        <p>
-          सड़क, drainage और basic infrastructure
-          से जुड़े मुद्दे।
-        </p>
-
-      </div>
-
-
-      <div class="process-card">
-
-        <div class="process-number">
-          💧 BASIC SERVICES
-        </div>
-
-        <h3>
-          पानी एवं बिजली
-        </h3>
-
-        <p>
-          Drinking water और electricity
-          जैसी basic सुविधाएँ।
-        </p>
-
-      </div>
-
-
-      <div class="process-card">
-
-        <div class="process-number">
-          🌱 DEVELOPMENT
-        </div>
-
-        <h3>
-          विकास एवं रोजगार
-        </h3>
-
-        <p>
-          रोजगार, development और
-          पंचायत सुविधाओं से जुड़े मुद्दे।
-        </p>
-
-      </div>
-
-
-    </div>
-
-  </section>
-
-
-
-  <!-- CTA -->
-
-  <section class="premium-cta">
-
-    <h2>
-      आपकी आवाज़, आपकी पंचायत।
-    </h2>
-
-    <p>
-      Sarpanch Election Public Opinion Survey में participate करें।
-    </p>
-
-    <a href="survey.html">
-      📝 Survey शुरू करें →
-    </a>
-
-  </section>
-
+  </main>
 
 
   <!-- FOOTER -->
 
   <footer>
 
-    <div class="footer-logo">
-      🏡 Janmat Survey
-    </div>
-
-    <p>
-      Gram Panchayat Sarpanch Election Public Opinion Survey
-    </p>
-
-    <p class="disclaimer">
-
-      यह एक independent public opinion survey है।
-      यह Government या Election Commission की official
-      website नहीं है। Survey results को official
-      election results नहीं माना जाना चाहिए।
-
-    </p>
-
-    <div class="copyright">
-      © 2026 Janmat Survey
-    </div>
+    © 2026 Janmat Survey
 
   </footer>
 
 
-
-  <!-- RESPONSE COUNT -->
-
   <script>
 
-    fetch("/api/results")
+    const village =
+      document.getElementById("village");
 
-      .then(response => response.json())
+    const panchayat =
+      document.getElementById("panchayat");
 
-      .then(data => {
+    const continueBtn =
+      document.getElementById("continueBtn");
 
-        if (data.success) {
+    const candidateSection =
+      document.getElementById("candidateSection");
 
-          document.getElementById(
-            "totalResponses"
-          ).textContent = data.total;
+    const candidateList =
+      document.getElementById("candidateList");
+
+
+    /*
+      DEMO DATA
+
+      Later we will move this data
+      to MongoDB/Admin Panel.
+    */
+
+    const villages = {
+
+      "Jhunjhunu": [
+        "Village 1",
+        "Village 2",
+        "Village 3"
+      ]
+
+    };
+
+
+    const panchayats = {
+
+      "Village 1": [
+        "Gram Panchayat 1"
+      ],
+
+      "Village 2": [
+        "Gram Panchayat 2"
+      ],
+
+      "Village 3": [
+        "Gram Panchayat 3"
+      ]
+
+    };
+
+
+    const candidates = [
+
+      "Candidate 1",
+
+      "Candidate 2",
+
+      "Candidate 3",
+
+      "Candidate 4"
+
+    ];
+
+
+    /*
+      DISTRICT → VILLAGE
+    */
+
+    document
+      .getElementById("district")
+      .addEventListener(
+        "change",
+        function () {
+
+          village.innerHTML =
+            '<option value="">गांव चुनें</option>';
+
+          panchayat.innerHTML =
+            '<option value="">ग्राम पंचायत चुनें</option>';
+
+          const list =
+            villages[this.value] || [];
+
+          list.forEach(function (item) {
+
+            const option =
+              document.createElement("option");
+
+            option.value = item;
+
+            option.textContent = item;
+
+            village.appendChild(option);
+
+          });
+
+        }
+      );
+
+
+    /*
+      VILLAGE → PANCHAYAT
+    */
+
+    village.addEventListener(
+      "change",
+      function () {
+
+        panchayat.innerHTML =
+          '<option value="">ग्राम पंचायत चुनें</option>';
+
+        const list =
+          panchayats[this.value] || [];
+
+        list.forEach(function (item) {
+
+          const option =
+            document.createElement("option");
+
+          option.value = item;
+
+          option.textContent = item;
+
+          panchayat.appendChild(option);
+
+        });
+
+      }
+    );
+
+
+    /*
+      SHOW CANDIDATES
+    */
+
+    continueBtn.addEventListener(
+      "click",
+      function () {
+
+        const state =
+          document.getElementById("state").value;
+
+        const district =
+          document.getElementById("district").value;
+
+        const villageValue =
+          village.value;
+
+        const panchayatValue =
+          panchayat.value;
+
+
+        if (
+          !state ||
+          !district ||
+          !villageValue ||
+          !panchayatValue
+        ) {
+
+          alert(
+            "कृपया State, District, Village और Gram Panchayat चुनें।"
+          );
+
+          return;
 
         }
 
-      })
 
-      .catch(() => {
+        candidateList.innerHTML = "";
 
-        document.getElementById(
-          "totalResponses"
-        ).textContent = "0";
 
-      });
+        candidates.forEach(
+          function (candidate, index) {
+
+            const label =
+              document.createElement("label");
+
+            label.className =
+              "candidate-option";
+
+
+            label.innerHTML = `
+
+              <input
+                type="radio"
+                name="candidate"
+                value="${candidate}">
+
+              <div class="candidate-info">
+
+                <strong>
+                  ${candidate}
+                </strong>
+
+                <span>
+                  Sarpanch Candidate
+                </span>
+
+              </div>
+
+              <div class="radio-circle"></div>
+
+            `;
+
+
+            candidateList.appendChild(label);
+
+          }
+        );
+
+
+        candidateSection.style.display =
+          "block";
+
+
+        candidateSection.scrollIntoView({
+          behavior: "smooth"
+        });
+
+      }
+    );
+
+
+    /*
+      SUBMIT OPINION
+    */
+
+    document
+      .getElementById("submitOpinion")
+      .addEventListener(
+        "click",
+        function () {
+
+          const selected =
+            document.querySelector(
+              'input[name="candidate"]:checked'
+            );
+
+
+          if (!selected) {
+
+            alert(
+              "कृपया अपना पसंदीदा उम्मीदवार चुनें।"
+            );
+
+            return;
+
+          }
+
+
+          alert(
+            "आपकी राय सफलतापूर्वक दर्ज की गई।"
+          );
+
+        }
+      );
 
   </script>
-
 
 </body>
 
