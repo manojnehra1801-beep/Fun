@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 
 <head>
 
@@ -8,270 +8,829 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-  <title>Janmat Survey | Public Opinion</title>
+  <title>Sarpanch Election Survey 2026 | Janmat</title>
 
   <meta name="description"
-        content="Janmat Survey - Independent public opinion survey platform">
+        content="Gram Panchayat Sarpanch Election Public Opinion Survey">
 
   <link rel="stylesheet" href="css/style.css">
 
+  <style>
+
+    .premium-hero {
+      min-height: 720px;
+      padding: 70px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+      background:
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(49,85,216,0.12),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          #f9fbff,
+          #eef3ff
+        );
+      position: relative;
+      overflow: hidden;
+    }
+
+    .premium-hero::before {
+      content: "";
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      border: 1px solid rgba(49,85,216,0.12);
+      right: -100px;
+      bottom: -100px;
+    }
+
+    .premium-content {
+      max-width: 650px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .location-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      border: 1px solid #e1e6f2;
+      padding: 9px 15px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #46526a;
+      margin-bottom: 22px;
+      box-shadow: 0 6px 20px rgba(30,45,90,0.05);
+    }
+
+    .premium-content h1 {
+      font-size: 64px;
+      line-height: 1.02;
+      letter-spacing: -2.5px;
+      margin-bottom: 22px;
+      color: #111827;
+    }
+
+    .premium-content h1 span {
+      color: #3155d8;
+    }
+
+    .premium-description {
+      font-size: 18px;
+      color: #667085;
+      max-width: 600px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .premium-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .premium-main-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 23px;
+      border-radius: 12px;
+      background: #3155d8;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 12px 25px rgba(49,85,216,0.22);
+      transition: 0.2s;
+    }
+
+    .premium-main-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .premium-outline-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 23px;
+      border-radius: 12px;
+      background: white;
+      color: #3155d8;
+      border: 1px solid #dce2f0;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .premium-note {
+      margin-top: 18px;
+      color: #7b8495;
+      font-size: 12px;
+    }
+
+
+    /* DASHBOARD CARD */
+
+    .election-card {
+      width: 400px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.9);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow:
+        0 25px 70px rgba(31,48,95,0.13);
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .election-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 17px;
+      background: #edf1ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    .live-badge {
+      padding: 7px 11px;
+      background: #eef8f1;
+      color: #20833f;
+      border-radius: 30px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .election-card h2 {
+      font-size: 25px;
+      margin-bottom: 5px;
+    }
+
+    .election-card > p {
+      color: #7a8496;
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 12px;
+    }
+
+    .stat-box {
+      padding: 18px;
+      background: #f7f8fc;
+      border: 1px solid #edf0f6;
+      border-radius: 15px;
+    }
+
+    .stat-box strong {
+      display: block;
+      font-size: 25px;
+      color: #172033;
+    }
+
+    .stat-box span {
+      font-size: 11px;
+      color: #7c8493;
+    }
+
+    .card-bottom {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid #edf0f5;
+      font-size: 12px;
+      color: #737d8e;
+      text-align: center;
+    }
+
+
+    /* TRUST STRIP */
+
+    .trust-strip {
+      background: #ffffff;
+      border-bottom: 1px solid #edf0f5;
+      padding: 17px 7%;
+      display: flex;
+      justify-content: center;
+      gap: 45px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #697386;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+
+    /* SECTION */
+
+    .premium-section {
+      padding: 90px 7%;
+      background: #ffffff;
+    }
+
+    .premium-heading {
+      max-width: 650px;
+      margin: auto;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .premium-heading small {
+      color: #3155d8;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      font-size: 11px;
+    }
+
+    .premium-heading h2 {
+      font-size: 40px;
+      margin: 8px 0;
+      color: #111827;
+    }
+
+    .premium-heading p {
+      color: #70798a;
+    }
+
+
+    /* PROCESS */
+
+    .process-grid {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
+    }
+
+    .process-card {
+      padding: 30px;
+      border: 1px solid #e9edf5;
+      border-radius: 20px;
+      background: #ffffff;
+      transition: 0.25s;
+    }
+
+    .process-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px rgba(30,45,90,0.08);
+    }
+
+    .process-number {
+      font-size: 12px;
+      font-weight: 800;
+      color: #3155d8;
+      margin-bottom: 18px;
+    }
+
+    .process-card h3 {
+      font-size: 19px;
+      margin-bottom: 10px;
+    }
+
+    .process-card p {
+      color: #717b8d;
+      font-size: 14px;
+    }
+
+
+    /* CTA */
+
+    .premium-cta {
+      margin: 20px 7% 80px;
+      padding: 65px 30px;
+      border-radius: 25px;
+      text-align: center;
+      background:
+        linear-gradient(
+          135deg,
+          #18244d,
+          #3155d8
+        );
+      color: white;
+    }
+
+    .premium-cta h2 {
+      font-size: 35px;
+      margin-bottom: 10px;
+    }
+
+    .premium-cta p {
+      opacity: 0.85;
+      margin-bottom: 25px;
+    }
+
+    .premium-cta a {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 10px;
+      background: white;
+      color: #3155d8;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+
+    @media (max-width: 850px) {
+
+      .premium-hero {
+        padding: 55px 6%;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .premium-content h1 {
+        font-size: 46px;
+      }
+
+      .election-card {
+        width: 100%;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .premium-heading h2 {
+        font-size: 31px;
+      }
+
+      .trust-strip {
+        gap: 18px;
+        justify-content: flex-start;
+      }
+
+    }
+
+
+    @media (max-width: 450px) {
+
+      .premium-content h1 {
+        font-size: 39px;
+        letter-spacing: -1.5px;
+      }
+
+      .premium-description {
+        font-size: 15px;
+      }
+
+      .premium-buttons {
+        flex-direction: column;
+      }
+
+      .premium-main-btn,
+      .premium-outline-btn {
+        justify-content: center;
+      }
+
+      .election-card {
+        padding: 22px;
+      }
+
+      .premium-cta {
+        margin-left: 5%;
+        margin-right: 5%;
+        padding: 45px 20px;
+      }
+
+      .premium-cta h2 {
+        font-size: 27px;
+      }
+
+    }
+
+  </style>
+
 </head>
 
+
 <body>
+
 
   <!-- NAVBAR -->
 
   <header class="navbar">
 
     <div class="logo">
-      🗳️ Janmat Survey
+      🏡 Janmat
     </div>
 
     <nav>
 
-      <a href="index.html">
-        Home
-      </a>
+      <a href="index.html">Home</a>
 
-      <a href="survey.html">
-        Survey
-      </a>
+      <a href="survey.html">Survey</a>
 
-      <a href="results.html">
-        Results
-      </a>
+      <a href="results.html">Results</a>
 
     </nav>
 
   </header>
 
 
+
   <!-- HERO -->
 
-  <main>
-
-    <section class="hero">
-
-      <div class="hero-content">
-
-        <div class="badge">
-          🇮🇳 PUBLIC OPINION SURVEY
-        </div>
-
-        <h1>
-          Aapki Rai,
-          <br>
-          <span>Aapki Awaaz.</span>
-        </h1>
-
-        <p>
-          Apne area aur constituency ke important
-          issues par apni opinion share karein.
-          Survey complete karne mein sirf 2–3
-          minutes lagenge.
-        </p>
+  <section class="premium-hero">
 
 
-        <div class="hero-buttons">
-
-          <a href="survey.html"
-             class="primary-btn">
-
-            📝 Start Survey
-
-          </a>
+    <div class="premium-content">
 
 
-          <a href="results.html"
-             class="secondary-btn">
-
-            📊 View Results
-
-          </a>
-
-        </div>
-
-
-        <div class="trust-text">
-
-          🔒 No unnecessary personal information required
-
-        </div>
-
+      <div class="location-pill">
+        📍 Gram Panchayat • Sarpanch Election 2026
       </div>
 
 
-      <!-- HERO CARD -->
+      <h1>
 
-      <div class="hero-card">
+        आपकी राय,
+        <br>
 
-        <div class="card-icon">
-          🗳️
-        </div>
+        <span>आपकी पंचायत।</span>
 
-        <h2>
-          Public Opinion
-        </h2>
-
-        <p>
-          Apni opinion dein aur aggregated
-          survey results dekhein.
-        </p>
+      </h1>
 
 
-        <div class="mini-stats">
+      <p class="premium-description">
 
-          <div>
+        अपने ग्राम पंचायत के Sarpanch Election
+        से जुड़े महत्वपूर्ण मुद्दों और उम्मीदवारों
+        को लेकर अपनी राय दें। आपकी response
+        aggregated public opinion survey में शामिल होगी।
 
-            <strong>
-              2–3
-            </strong>
-
-            <small>
-              Minutes
-            </small>
-
-          </div>
-
-
-          <div>
-
-            <strong>
-              10+
-            </strong>
-
-            <small>
-              Questions
-            </small>
-
-          </div>
-
-
-          <div>
-
-            <strong>
-              100%
-            </strong>
-
-            <small>
-              Online
-            </small>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- HOW IT WORKS -->
-
-    <section class="features-section">
-
-      <div class="section-heading">
-
-        <span>
-          HOW IT WORKS
-        </span>
-
-        <h2>
-          Simple. Fast. Transparent.
-        </h2>
-
-        <p>
-          Public opinion collect karna simple hai.
-        </p>
-
-      </div>
-
-
-      <div class="features">
-
-
-        <div class="feature-card">
-
-          <div class="feature-icon">
-            📝
-          </div>
-
-          <h3>
-            1. Give Your Opinion
-          </h3>
-
-          <p>
-            Kuch simple questions ka answer
-            dein aur apni opinion submit karein.
-          </p>
-
-        </div>
-
-
-        <div class="feature-card">
-
-          <div class="feature-icon">
-            📊
-          </div>
-
-          <h3>
-            2. See Results
-          </h3>
-
-          <p>
-            Aggregated survey responses ke
-            charts aur statistics dekhein.
-          </p>
-
-        </div>
-
-
-        <div class="feature-card">
-
-          <div class="feature-icon">
-            📍
-          </div>
-
-          <h3>
-            3. Area Wise Opinion
-          </h3>
-
-          <p>
-            District aur constituency level
-            par survey insights dekhein.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- CTA -->
-
-    <section class="cta">
-
-      <h2>
-        Aapki opinion important hai.
-      </h2>
-
-      <p>
-        Survey mein participate karne mein
-        sirf kuch minutes lagenge.
       </p>
 
 
-      <a href="survey.html"
-         class="primary-btn">
+      <div class="premium-buttons">
 
-        Start Survey →
+        <a href="survey.html"
+           class="premium-main-btn">
 
-      </a>
+          📝
 
-    </section>
+          सर्वे में भाग लें
 
-  </main>
+        </a>
+
+
+        <a href="results.html"
+           class="premium-outline-btn">
+
+          📊
+
+          Results देखें
+
+        </a>
+
+      </div>
+
+
+      <div class="premium-note">
+
+        🔒 Independent survey • No unnecessary personal information
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- ELECTION CARD -->
+
+    <div class="election-card">
+
+
+      <div class="card-top">
+
+        <div class="election-icon">
+          🗳️
+        </div>
+
+        <div class="live-badge">
+          ● SURVEY ACTIVE
+        </div>
+
+      </div>
+
+
+      <h2>
+        Sarpanch Election 2026
+      </h2>
+
+      <p>
+        Gram Panchayat Public Opinion
+      </p>
+
+
+      <div class="stats-grid">
+
+
+        <div class="stat-box">
+
+          <strong id="totalResponses">
+            0
+          </strong>
+
+          <span>
+            Total Responses
+          </span>
+
+        </div>
+
+
+        <div class="stat-box">
+
+          <strong>
+            01
+          </strong>
+
+          <span>
+            Panchayat
+          </span>
+
+        </div>
+
+
+        <div class="stat-box">
+
+          <strong>
+            2–3
+          </strong>
+
+          <span>
+            Minutes
+          </span>
+
+        </div>
+
+
+        <div class="stat-box">
+
+          <strong>
+            10+
+          </strong>
+
+          <span>
+            Questions
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="card-bottom">
+
+        📈 Results are based on submitted survey responses
+
+      </div>
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- TRUST STRIP -->
+
+  <div class="trust-strip">
+
+    <div class="trust-item">
+      🔒 Privacy focused
+    </div>
+
+    <div class="trust-item">
+      📊 Aggregated results
+    </div>
+
+    <div class="trust-item">
+      📱 Mobile friendly
+    </div>
+
+    <div class="trust-item">
+      ⚖️ Independent survey
+    </div>
+
+  </div>
+
+
+
+  <!-- HOW IT WORKS -->
+
+  <section class="premium-section">
+
+
+    <div class="premium-heading">
+
+      <small>
+        HOW IT WORKS
+      </small>
+
+      <h2>
+        सिर्फ 3 आसान steps
+      </h2>
+
+      <p>
+        अपनी पंचायत के survey में आसानी से participate करें।
+      </p>
+
+    </div>
+
+
+    <div class="process-grid">
+
+
+      <div class="process-card">
+
+        <div class="process-number">
+          01 — YOUR OPINION
+        </div>
+
+        <h3>
+          अपनी राय दें
+        </h3>
+
+        <p>
+          अपने area और पंचायत से जुड़े
+          questions का honest response दें।
+        </p>
+
+      </div>
+
+
+      <div class="process-card">
+
+        <div class="process-number">
+          02 — SUBMIT
+        </div>
+
+        <h3>
+          Survey Submit करें
+        </h3>
+
+        <p>
+          अपनी जानकारी check करके
+          response submit करें।
+        </p>
+
+      </div>
+
+
+      <div class="process-card">
+
+        <div class="process-number">
+          03 — RESULTS
+        </div>
+
+        <h3>
+          Results देखें
+        </h3>
+
+        <p>
+          Available aggregated responses
+          और survey statistics देखें।
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- LOCAL ISSUES -->
+
+  <section class="premium-section"
+           style="background:#f7f9fd;">
+
+
+    <div class="premium-heading">
+
+      <small>
+        PANCHAYAT ISSUES
+      </small>
+
+      <h2>
+        आपकी पंचायत के मुद्दे
+      </h2>
+
+      <p>
+        Survey में local development से जुड़े मुद्दों पर भी राय ली जाएगी।
+      </p>
+
+    </div>
+
+
+    <div class="process-grid">
+
+
+      <div class="process-card">
+
+        <div class="process-number">
+          🛣️ INFRASTRUCTURE
+        </div>
+
+        <h3>
+          सड़क एवं नाली
+        </h3>
+
+        <p>
+          सड़क, drainage और basic infrastructure
+          से जुड़े मुद्दे।
+        </p>
+
+      </div>
+
+
+      <div class="process-card">
+
+        <div class="process-number">
+          💧 BASIC SERVICES
+        </div>
+
+        <h3>
+          पानी एवं बिजली
+        </h3>
+
+        <p>
+          Drinking water और electricity
+          जैसी basic सुविधाएँ।
+        </p>
+
+      </div>
+
+
+      <div class="process-card">
+
+        <div class="process-number">
+          🌱 DEVELOPMENT
+        </div>
+
+        <h3>
+          विकास एवं रोजगार
+        </h3>
+
+        <p>
+          रोजगार, development और
+          पंचायत सुविधाओं से जुड़े मुद्दे।
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- CTA -->
+
+  <section class="premium-cta">
+
+    <h2>
+      आपकी आवाज़, आपकी पंचायत।
+    </h2>
+
+    <p>
+      Sarpanch Election Public Opinion Survey में participate करें।
+    </p>
+
+    <a href="survey.html">
+      📝 Survey शुरू करें →
+    </a>
+
+  </section>
+
 
 
   <!-- FOOTER -->
@@ -279,28 +838,60 @@
   <footer>
 
     <div class="footer-logo">
-      🗳️ Janmat Survey
+      🏡 Janmat Survey
     </div>
 
     <p>
-      Independent public opinion survey platform.
+      Gram Panchayat Sarpanch Election Public Opinion Survey
     </p>
 
     <p class="disclaimer">
 
-      This website is not an official government
-      or Election Commission website. Survey results
-      should not be treated as official election results.
+      यह एक independent public opinion survey है।
+      यह Government या Election Commission की official
+      website नहीं है। Survey results को official
+      election results नहीं माना जाना चाहिए।
 
     </p>
 
     <div class="copyright">
-
-      © 2026 Janmat Survey. All rights reserved.
-
+      © 2026 Janmat Survey
     </div>
 
   </footer>
+
+
+
+  <!-- RESPONSE COUNT -->
+
+  <script>
+
+    fetch("/api/results")
+
+      .then(response => response.json())
+
+      .then(data => {
+
+        if (data.success) {
+
+          document.getElementById(
+            "totalResponses"
+          ).textContent = data.total;
+
+        }
+
+      })
+
+      .catch(() => {
+
+        document.getElementById(
+          "totalResponses"
+        ).textContent = "0";
+
+      });
+
+  </script>
+
 
 </body>
 
