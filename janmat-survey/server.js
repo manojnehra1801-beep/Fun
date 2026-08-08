@@ -9,22 +9,24 @@ const { createClient } = require("@supabase/supabase-js");
 const app = express();
 
 
-// ==================================================
-// BASIC CONFIG
-// ==================================================
+// ======================================================
+// BASIC SETTINGS
+// ======================================================
 
 app.use(cors());
 
 app.use(express.json());
 
-app.use(express.urlencoded({
-  extended: true
-}));
+app.use(
+  express.urlencoded({
+    extended: true
+  })
+);
 
 
-// ==================================================
-// SUPABASE CONFIG
-// ==================================================
+// ======================================================
+// SUPABASE
+// ======================================================
 
 const SUPABASE_URL =
   process.env.SUPABASE_URL;
@@ -35,9 +37,7 @@ const SUPABASE_KEY =
   process.env.SUPABASE_KEY ||
   process.env.SUPABASE_ANON_KEY;
 
-
 let supabase = null;
-
 
 if (SUPABASE_URL && SUPABASE_KEY) {
 
@@ -51,30 +51,32 @@ if (SUPABASE_URL && SUPABASE_KEY) {
 } else {
 
   console.log(
-    "⚠️ SUPABASE_URL or SUPABASE_KEY is missing"
+    "⚠️ Supabase configuration is missing"
   );
 
 }
 
 
-// ==================================================
-// HOME
-// ==================================================
+// ======================================================
+// HOMEPAGE
+// ======================================================
 
 app.get("/", (req, res) => {
 
-  res.json({
-    success: true,
-    message: "Rajasthan Govt Vacancies server is running",
-    api: "/api/health"
-  });
+  res.sendFile(
+    path.join(
+      __dirname,
+      "public",
+      "index.html"
+    )
+  );
 
 });
 
 
-// ==================================================
+// ======================================================
 // HEALTH CHECK
-// ==================================================
+// ======================================================
 
 app.get("/api/health", (req, res) => {
 
@@ -90,136 +92,130 @@ app.get("/api/health", (req, res) => {
 });
 
 
-// ==================================================
+// ======================================================
 // ADMIN LOGIN - GET TEST
-// ==================================================
+// ======================================================
 
-app.get("/api/admin/login", (req, res) => {
+app.get(
+  "/api/admin/login",
+  (req, res) => {
 
-  res.json({
+    res.json({
 
-    success: true,
+      success: true,
 
-    message:
-      "Admin login API is available. Use POST request."
+      message:
+        "Admin login API is available. Use POST request."
 
-  });
+    });
 
-});
+  }
+);
 
 
-// ==================================================
+// ======================================================
 // ADMIN LOGIN - POST
-// ==================================================
+// ======================================================
 
-app.post("/api/admin/login", (req, res) => {
+app.post(
+  "/api/admin/login",
+  (req, res) => {
 
-  try {
+    try {
 
-    const id =
-      String(req.body.id || "").trim();
+      const id =
+        String(
+          req.body.id || ""
+        ).trim();
 
-    const password =
-      String(req.body.password || "");
-
-
-    const adminId =
-      process.env.ADMIN_ID;
-
-    const adminPassword =
-      process.env.ADMIN_PASSWORD;
+      const password =
+        String(
+          req.body.password || ""
+        );
 
 
-    // ----------------------------------------------
-    // CHECK ENVIRONMENT VARIABLES
-    // ----------------------------------------------
+      const adminId =
+        process.env.ADMIN_ID;
 
-    if (
-      !adminId ||
-      !adminPassword
-    ) {
+      const adminPassword =
+        process.env.ADMIN_PASSWORD;
 
-      console.log(
-        "❌ ADMIN_ID or ADMIN_PASSWORD missing"
+
+      if (
+        !adminId ||
+        !adminPassword
+      ) {
+
+        return res.status(500).json({
+
+          success: false,
+
+          message:
+            "Admin credentials are not configured on server."
+
+        });
+
+      }
+
+
+      if (
+        id === adminId &&
+        password === adminPassword
+      ) {
+
+        console.log(
+          "✅ Admin login successful"
+        );
+
+
+        return res.json({
+
+          success: true,
+
+          message:
+            "Login successful"
+
+        });
+
+      }
+
+
+      return res.status(401).json({
+
+        success: false,
+
+        message:
+          "Invalid Admin ID or Password"
+
+      });
+
+
+    } catch (error) {
+
+      console.error(
+        "Admin login error:",
+        error
       );
+
 
       return res.status(500).json({
 
         success: false,
 
         message:
-          "Admin credentials are not configured on server."
+          "Server error"
 
       });
 
     }
-
-
-    // ----------------------------------------------
-    // CHECK LOGIN
-    // ----------------------------------------------
-
-    if (
-      id === adminId &&
-      password === adminPassword
-    ) {
-
-      console.log(
-        "✅ Admin login successful"
-      );
-
-      return res.json({
-
-        success: true,
-
-        message:
-          "Login successful"
-
-      });
-
-    }
-
-
-    console.log(
-      "❌ Invalid admin login"
-    );
-
-
-    return res.status(401).json({
-
-      success: false,
-
-      message:
-        "Invalid Admin ID or Password"
-
-    });
-
-
-  } catch (error) {
-
-    console.error(
-      "Admin login error:",
-      error
-    );
-
-
-    return res.status(500).json({
-
-      success: false,
-
-      message:
-        "Server error"
-
-    });
 
   }
+);
 
-});
 
-
-// ==================================================
-// ADMIN CANDIDATES
-// ==================================================
+// ======================================================
+// ADMIN - GET CANDIDATE DATA
+// ======================================================
 
 app.get(
   "/api/admin/candidates",
@@ -239,14 +235,6 @@ app.get(
         });
 
       }
-
-
-      /*
-        IMPORTANT:
-
-        Change "submissions" below if your
-        Supabase table has another name.
-      */
 
 
       const {
@@ -269,7 +257,7 @@ app.get(
       if (error) {
 
         console.error(
-          "Supabase candidates error:",
+          "Candidates error:",
           error
         );
 
@@ -305,7 +293,6 @@ app.get(
     } catch (error) {
 
       console.error(
-        "Candidates API error:",
         error
       );
 
@@ -328,9 +315,9 @@ app.get(
 );
 
 
-// ==================================================
-// SAVE CANDIDATE / SURVEY
-// ==================================================
+// ======================================================
+// SAVE SURVEY / CANDIDATE DATA
+// ======================================================
 
 app.post(
   "/api/submissions",
@@ -432,9 +419,9 @@ app.post(
 );
 
 
-// ==================================================
+// ======================================================
 // GET VACANCIES
-// ==================================================
+// ======================================================
 
 app.get(
   "/api/vacancies",
@@ -476,7 +463,7 @@ app.get(
       if (error) {
 
         console.error(
-          "Vacancies fetch error:",
+          "Vacancies error:",
           error
         );
 
@@ -511,7 +498,9 @@ app.get(
 
     } catch (error) {
 
-      console.error(error);
+      console.error(
+        error
+      );
 
 
       return res.status(500).json({
@@ -532,9 +521,9 @@ app.get(
 );
 
 
-// ==================================================
+// ======================================================
 // ADD VACANCY
-// ==================================================
+// ======================================================
 
 app.post(
   "/api/vacancies",
@@ -705,9 +694,9 @@ app.post(
 );
 
 
-// ==================================================
-// PUBLIC FILES
-// ==================================================
+// ======================================================
+// SERVE PUBLIC FOLDER
+// ======================================================
 
 app.use(
   express.static(
@@ -719,9 +708,9 @@ app.use(
 );
 
 
-// ==================================================
+// ======================================================
 // 404
-// ==================================================
+// ======================================================
 
 app.use(
   (req, res) => {
@@ -742,9 +731,9 @@ app.use(
 );
 
 
-// ==================================================
+// ======================================================
 // ERROR HANDLER
-// ==================================================
+// ======================================================
 
 app.use(
   (error, req, res, next) => {
@@ -768,9 +757,9 @@ app.use(
 );
 
 
-// ==================================================
+// ======================================================
 // START SERVER
-// ==================================================
+// ======================================================
 
 const PORT =
   process.env.PORT || 10000;
