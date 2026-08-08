@@ -417,7 +417,314 @@ app.post(
 
   }
 );
+// ======================================================
+// ADMIT CARD - GET ALL
+// ======================================================
 
+app.get(
+  "/api/admin/admit-cards",
+  async (req, res) => {
+
+    try {
+
+      if (!supabase) {
+
+        return res.status(500).json({
+          success: false,
+          message: "Supabase configuration is missing."
+        });
+
+      }
+
+      const {
+        data,
+        error
+      } = await supabase
+        .from("admit_cards")
+        .select("*")
+        .order(
+          "created_at",
+          {
+            ascending: false
+          }
+        );
+
+      if (error) {
+
+        console.error(
+          "Admit cards fetch error:",
+          error
+        );
+
+        return res.status(500).json({
+          success: false,
+          message: "Could not load admit cards.",
+          error: error.message
+        });
+
+      }
+
+      return res.json({
+        success: true,
+        count: data.length,
+        data: data
+      });
+
+    } catch (error) {
+
+      console.error(
+        "Admit cards error:",
+        error
+      );
+
+      return res.status(500).json({
+        success: false,
+        message: "Server error.",
+        error: error.message
+      });
+
+    }
+
+  }
+);
+
+
+// ======================================================
+// ADMIT CARD - ADD
+// ======================================================
+
+app.post(
+  "/api/admin/admit-cards",
+  async (req, res) => {
+
+    try {
+
+      if (!supabase) {
+
+        return res.status(500).json({
+          success: false,
+          message: "Supabase configuration is missing."
+        });
+
+      }
+
+
+      const {
+        exam_name,
+        department,
+        exam_date,
+        release_date,
+        notification_link,
+        admit_card_link,
+        description
+      } = req.body;
+
+
+      if (!exam_name) {
+
+        return res.status(400).json({
+          success: false,
+          message: "Exam name is required."
+        });
+
+      }
+
+
+      const admitCard = {
+
+        exam_name:
+          String(exam_name).trim(),
+
+        department:
+          department
+            ? String(department).trim()
+            : null,
+
+        exam_date:
+          exam_date
+            ? String(exam_date).trim()
+            : null,
+
+        release_date:
+          release_date
+            ? String(release_date).trim()
+            : null,
+
+        notification_link:
+          notification_link
+            ? String(notification_link).trim()
+            : null,
+
+        admit_card_link:
+          admit_card_link
+            ? String(admit_card_link).trim()
+            : null,
+
+        description:
+          description
+            ? String(description).trim()
+            : null
+
+      };
+
+
+      const {
+        data,
+        error
+      } = await supabase
+        .from("admit_cards")
+        .insert([
+          admitCard
+        ])
+        .select();
+
+
+      if (error) {
+
+        console.error(
+          "Admit card insert error:",
+          error
+        );
+
+        return res.status(500).json({
+          success: false,
+          message: "Admit Card could not be saved.",
+          error: error.message
+        });
+
+      }
+
+
+      return res.status(201).json({
+
+        success: true,
+
+        message:
+          "Admit Card published successfully.",
+
+        data: data
+
+      });
+
+    } catch (error) {
+
+      console.error(
+        "Admit card POST error:",
+        error
+      );
+
+      return res.status(500).json({
+
+        success: false,
+
+        message: "Server error.",
+
+        error: error.message
+
+      });
+
+    }
+
+  }
+);
+
+
+// ======================================================
+// ADMIT CARD - DELETE
+// ======================================================
+
+app.delete(
+  "/api/admin/admit-cards/:id",
+  async (req, res) => {
+
+    try {
+
+      if (!supabase) {
+
+        return res.status(500).json({
+          success: false,
+          message: "Supabase configuration is missing."
+        });
+
+      }
+
+
+      const id =
+        req.params.id;
+
+
+      if (!id) {
+
+        return res.status(400).json({
+          success: false,
+          message: "Admit Card ID is required."
+        });
+
+      }
+
+
+      const {
+        error
+      } = await supabase
+        .from("admit_cards")
+        .delete()
+        .eq("id", id);
+
+
+      if (error) {
+
+        console.error(
+          "Admit card delete error:",
+          error
+        );
+
+        return res.status(500).json({
+
+          success: false,
+
+          message:
+            "Admit Card could not be deleted.",
+
+          error:
+            error.message
+
+        });
+
+      }
+
+
+      return res.json({
+
+        success: true,
+
+        message:
+          "Admit Card deleted successfully."
+
+      });
+
+    } catch (error) {
+
+      console.error(
+        "Admit card DELETE error:",
+        error
+      );
+
+      return res.status(500).json({
+
+        success: false,
+
+        message:
+          "Server error.",
+
+        error:
+          error.message
+
+      });
+
+    }
+
+  }
+);
 
 // ======================================================
 // GET VACANCIES
