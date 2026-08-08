@@ -1,18 +1,18 @@
 require("dotenv").config();
 
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
-const path = require("path");
 
-const Survey = require("./models/Survey");
+const { createClient } = require("@supabase/supabase-js");
 
 const app = express();
 
+const PORT = process.env.PORT || 3000;
 
-// ==============================
-// MIDDLEWARE
-// ==============================
+
+/* =========================
+   MIDDLEWARE
+========================= */
 
 app.use(cors());
 
@@ -22,225 +22,90 @@ app.use(express.urlencoded({
   extended: true
 }));
 
+app.use(express.static("public"));
 
-// ==============================
-// STATIC FILES
-// ==============================
 
-app.use(
-  express.static(
-    path.join(__dirname, "public")
-  )
+/* =========================
+   SUPABASE
+========================= */
+
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_PUBLISHABLE_KEY
 );
 
 
-// ==============================
-// MONGODB
-// ==============================
-
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log("MongoDB connected successfully");
-  })
-  .catch((error) => {
-    console.error(
-      "MongoDB connection error:",
-      error.message
-    );
-  });
-
-
-// ==============================
-// HOME
-// ==============================
+/* =========================
+   HOME
+========================= */
 
 app.get("/", (req, res) => {
 
   res.sendFile(
-    path.join(
-      __dirname,
-      "public",
-      "index.html"
-    )
+    __dirname + "/public/index.html"
   );
 
 });
 
 
-// ==============================
-// SUBMIT SURVEY
-// ==============================
+/* =========================
+   TEST SUPABASE CONNECTION
+========================= */
 
-app.post("/api/survey", async (req, res) => {
+app.get("/api/test", async (req, res) => {
 
   try {
 
-    const {
-      ageGroup,
-      gender,
-      state,
-      district,
-      constituency,
-      area,
-      importantIssue,
-      preferredParty,
-      candidateChoice,
-      votingLikelihood
-    } = req.body;
+    const { data, error } =
+      await supabase
+        .from("potential_candidates")
+        .select("id")
+        .limit(1);
 
 
-    if (
-      !ageGroup ||
-      !state ||
-      !district ||
-      !constituency ||
-      !importantIssue ||
-      !preferredParty ||
-      !candidateChoice ||
-      !votingLikelihood
-    ) {
+    if (error) {
 
-      return res.status(400).json({
+      console.error(
+        "Supabase Error:",
+        error
+      );
+
+      return res.status(500).json({
+
         success: false,
-        message: "Please fill all required fields."
+
+        message:
+          "Supabase connection failed",
+
+        error: error.message
+
       });
 
     }
-
-
-    const survey = new Survey({
-
-      ageGroup,
-
-      gender: gender || "Prefer not to say",
-
-      state,
-
-      district,
-
-      constituency,
-
-      area: area || "",
-
-      importantIssue,
-
-      preferredParty,
-
-      candidateChoice,
-
-      votingLikelihood
-
-    });
-
-
-    await survey.save();
-
-
-    res.status(201).json({
-
-      success: true,
-
-      message: "Survey submitted successfully."
-
-    });
-
-
-  } catch (error) {
-
-    console.error(
-      "Survey submission error:",
-      error
-    );
-
-    res.status(500).json({
-
-      success: false,
-
-      message: "Unable to submit survey."
-
-    });
-
-  }
-
-});
-
-
-// ==============================
-// RESULTS
-// ==============================
-
-app.get("/api/results", async (req, res) => {
-
-  try {
-
-    const surveys = await Survey.find();
-
-    const total = surveys.length;
-
-    const partyResults = {};
-    const candidateResults = {};
-    const issueResults = {};
-
-
-    surveys.forEach((survey) => {
-
-      const party = survey.preferredParty;
-
-      if (!partyResults[party]) {
-        partyResults[party] = 0;
-      }
-
-      partyResults[party]++;
-
-
-      const candidate = survey.candidateChoice;
-
-      if (!candidateResults[candidate]) {
-        candidateResults[candidate] = 0;
-      }
-
-      candidateResults[candidate]++;
-
-
-      const issue = survey.importantIssue;
-
-      if (!issueResults[issue]) {
-        issueResults[issue] = 0;
-      }
-
-      issueResults[issue]++;
-
-    });
 
 
     res.json({
 
       success: true,
 
-      total,
+      message:
+        "Supabase connected successfully",
 
-      partyResults,
-
-      candidateResults,
-
-      issueResults
+      data: data
 
     });
 
-
   } catch (error) {
 
-    console.error(
-      "Results error:",
-      error
-    );
+    console.error(error);
 
     res.status(500).json({
 
       success: false,
 
-      message: "Unable to load results."
+      message: "Server error",
+
+      error: error.message
 
     });
 
@@ -249,50 +114,169 @@ app.get("/api/results", async (req, res) => {
 });
 
 
-// ==============================
-// HEALTH CHECK
-// ==============================
+/* =========================
+   SUBMIT POTENTIAL CANDIDATES
+========================= */
 
-app.get("/api/health", (req, res) => {
+app.post(
+  "/api/candidates",
+  async (req, res) => {
 
-  res.json({
+    try {
 
-    success: true,
+      const {
 
-    message: "Janmat Survey server is running."
+        state,
+        district,
+        village,
+        panchayat,
 
-  });
+        candidate1,
+        candidate2,
+        candidate3,
+        candidate4,
 
-});
+        mobile,
+        likely,
+        extraInfo
 
-
-// ==============================
-// 404
-// ==============================
-
-app.use((req, res) => {
-
-  res.status(404).json({
-
-    success: false,
-
-    message: "Page or API endpoint not found."
-
-  });
-
-});
+      } = req.body;
 
 
-// ==============================
-// START SERVER
-// ==============================
+      /* BASIC VALIDATION */
 
-const PORT = process.env.PORT || 3000;
+      if (
+        !state ||
+        !district ||
+        !village ||
+        !panchayat ||
+        !candidate1
+      ) {
 
-app.listen(PORT, () => {
+        return res.status(400).json({
 
-  console.log(
-    `Server running on port ${PORT}`
-  );
+          success: false,
 
-});
+          message:
+            "Please fill all required fields."
+
+        });
+
+      }
+
+
+      /* INSERT INTO SUPABASE */
+
+      const { data, error } =
+        await supabase
+          .from("potential_candidates")
+          .insert([
+
+            {
+
+              state: state,
+
+              district: district,
+
+              village: village,
+
+              panchayat: panchayat,
+
+              candidate1:
+                candidate1 || null,
+
+              candidate2:
+                candidate2 || null,
+
+              candidate3:
+                candidate3 || null,
+
+              candidate4:
+                candidate4 || null,
+
+              mobile:
+                mobile || null,
+
+              likely:
+                likely || null,
+
+              extra_info:
+                extraInfo || null
+
+            }
+
+          ])
+          .select();
+
+
+      /* DATABASE ERROR */
+
+      if (error) {
+
+        console.error(
+          "Insert Error:",
+          error
+        );
+
+        return res.status(500).json({
+
+          success: false,
+
+          message:
+            "Could not save candidate information.",
+
+          error: error.message
+
+        });
+
+      }
+
+
+      /* SUCCESS */
+
+      res.status(201).json({
+
+        success: true,
+
+        message:
+          "Candidate information saved successfully.",
+
+        data: data
+
+      });
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      res.status(500).json({
+
+        success: false,
+
+        message: "Server error",
+
+        error: error.message
+
+      });
+
+    }
+
+  }
+);
+
+
+/* =========================
+   SERVER
+========================= */
+
+app.listen(
+  PORT,
+  () => {
+
+    console.log(
+      `Janmat Survey running on port ${PORT}`
+    );
+
+  }
+);
