@@ -6,266 +6,288 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+content="width=device-width, initial-scale=1.0">
 
 <title>Admin Dashboard | Rajasthan Govt Vacancies</title>
 
 <style>
 
 *{
-  box-sizing:border-box;
+box-sizing:border-box;
 }
 
 body{
-  margin:0;
-  font-family:Arial,"Noto Sans Devanagari",sans-serif;
-  background:#f5f7fb;
-  color:#172033;
+margin:0;
+font-family:Arial,"Noto Sans Devanagari",sans-serif;
+background:#f5f7fb;
+color:#172033;
 }
 
 .header{
-  background:#172554;
-  color:white;
-  padding:15px 18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  position:sticky;
-  top:0;
-  z-index:10;
+background:#172554;
+color:white;
+padding:15px 18px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+position:sticky;
+top:0;
+z-index:10;
 }
 
 .brand{
-  font-size:18px;
-  font-weight:900;
+font-size:18px;
+font-weight:900;
 }
 
 .logout{
-  border:1px solid rgba(255,255,255,.3);
-  background:transparent;
-  color:white;
-  padding:8px 12px;
-  border-radius:8px;
-  cursor:pointer;
-  font-size:11px;
-  font-weight:800;
+border:1px solid rgba(255,255,255,.3);
+background:transparent;
+color:white;
+padding:8px 12px;
+border-radius:8px;
+cursor:pointer;
+font-size:11px;
+font-weight:800;
 }
 
 .container{
-  max-width:1200px;
-  margin:auto;
-  padding:25px 14px 50px;
+max-width:1200px;
+margin:auto;
+padding:25px 14px 50px;
 }
 
 .title{
-  margin-bottom:20px;
+margin-bottom:20px;
 }
 
 .title h1{
-  margin:0;
-  color:#172554;
-  font-size:27px;
+margin:0;
+color:#172554;
+font-size:27px;
 }
 
 .title p{
-  margin-top:5px;
-  color:#64748b;
-  font-size:12px;
+margin-top:5px;
+color:#64748b;
+font-size:12px;
 }
 
+
+/* ACTIONS */
+
 .actions{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-bottom:22px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin-bottom:25px;
 }
 
 .action{
-  background:white;
-  border:1px solid #e5e7eb;
-  border-radius:15px;
-  padding:17px;
-  text-decoration:none;
-  box-shadow:0 5px 18px rgba(15,23,42,.04);
+background:white;
+border:1px solid #e5e7eb;
+border-radius:15px;
+padding:17px;
+text-decoration:none;
+box-shadow:0 5px 18px rgba(15,23,42,.04);
+transition:.2s;
+}
+
+.action:hover{
+transform:translateY(-2px);
+border-color:#c7d2fe;
 }
 
 .action-icon{
-  font-size:27px;
-  margin-bottom:7px;
+font-size:27px;
+margin-bottom:7px;
 }
 
 .action strong{
-  display:block;
-  color:#172554;
-  font-size:13px;
+display:block;
+color:#172554;
+font-size:13px;
 }
 
 .action span{
-  display:block;
-  color:#64748b;
-  font-size:10px;
-  margin-top:3px;
+display:block;
+color:#64748b;
+font-size:10px;
+margin-top:3px;
 }
 
+
+/* STATS */
+
 .stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-  margin-bottom:22px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:14px;
+margin-bottom:22px;
 }
 
 .stat{
-  background:white;
-  border:1px solid #e5e7eb;
-  border-radius:15px;
-  padding:18px;
-  box-shadow:0 5px 18px rgba(15,23,42,.04);
+background:white;
+border:1px solid #e5e7eb;
+border-radius:15px;
+padding:18px;
+box-shadow:0 5px 18px rgba(15,23,42,.04);
 }
 
 .stat-icon{
-  font-size:24px;
+font-size:24px;
 }
 
 .stat-number{
-  color:#3155d9;
-  font-size:27px;
-  font-weight:900;
-  margin-top:4px;
+color:#3155d9;
+font-size:27px;
+font-weight:900;
+margin-top:4px;
 }
 
 .stat-label{
-  color:#64748b;
-  font-size:10px;
+color:#64748b;
+font-size:10px;
 }
 
+
+/* SUBMISSIONS */
+
 .toolbar{
-  background:white;
-  border:1px solid #e5e7eb;
-  border-radius:15px;
-  padding:13px;
-  margin-bottom:17px;
-  display:flex;
-  gap:9px;
+background:white;
+border:1px solid #e5e7eb;
+border-radius:15px;
+padding:13px;
+margin-bottom:17px;
+display:flex;
+gap:9px;
 }
 
 .search{
-  flex:1;
-  min-width:0;
-  border:1px solid #d8deea;
-  border-radius:9px;
-  padding:12px;
-  outline:none;
-  font-size:12px;
+flex:1;
+min-width:0;
+border:1px solid #d8deea;
+border-radius:9px;
+padding:12px;
+outline:none;
+font-size:12px;
 }
 
 .search:focus{
-  border-color:#3155d9;
-  box-shadow:0 0 0 3px #eef2ff;
+border-color:#3155d9;
+box-shadow:0 0 0 3px #eef2ff;
 }
 
 .refresh{
-  border:none;
-  background:#3155d9;
-  color:white;
-  border-radius:9px;
-  padding:0 15px;
-  font-weight:800;
-  cursor:pointer;
+border:none;
+background:#3155d9;
+color:white;
+border-radius:9px;
+padding:0 15px;
+font-weight:800;
+cursor:pointer;
 }
 
+
+/* TABLE */
+
 .table-card{
-  background:white;
-  border:1px solid #e5e7eb;
-  border-radius:15px;
-  overflow:hidden;
+background:white;
+border:1px solid #e5e7eb;
+border-radius:15px;
+overflow:hidden;
 }
 
 .table-wrapper{
-  overflow-x:auto;
+overflow-x:auto;
 }
 
 table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:950px;
+width:100%;
+border-collapse:collapse;
+min-width:950px;
 }
 
 th{
-  background:#f8fafc;
-  color:#475569;
-  font-size:10px;
-  padding:13px;
-  text-align:left;
-  white-space:nowrap;
-  border-bottom:1px solid #e5e7eb;
+background:#f8fafc;
+color:#475569;
+font-size:10px;
+padding:13px;
+text-align:left;
+white-space:nowrap;
+border-bottom:1px solid #e5e7eb;
 }
 
 td{
-  padding:13px;
-  font-size:11px;
-  border-bottom:1px solid #eef1f5;
-  vertical-align:top;
+padding:13px;
+font-size:11px;
+border-bottom:1px solid #eef1f5;
+vertical-align:top;
 }
 
 .candidate{
-  font-weight:800;
-  color:#172554;
+font-weight:800;
+color:#172554;
 }
 
 .location{
-  line-height:1.6;
+line-height:1.6;
 }
 
 .muted{
-  color:#94a3b8;
+color:#94a3b8;
 }
 
 .status{
-  display:inline-block;
-  background:#eef2ff;
-  color:#3155d9;
-  padding:5px 8px;
-  border-radius:20px;
-  font-size:9px;
-  font-weight:800;
+display:inline-block;
+background:#eef2ff;
+color:#3155d9;
+padding:5px 8px;
+border-radius:20px;
+font-size:9px;
+font-weight:800;
 }
 
 .loading,
-.empty,
-.error{
-  text-align:center;
-  padding:45px 20px;
-  color:#64748b;
-  font-size:12px;
+.empty{
+text-align:center;
+padding:45px 20px;
+color:#64748b;
+font-size:12px;
 }
 
-.empty,
-.error{
-  display:none;
+.empty{
+display:none;
 }
 
-.error{
-  color:#be123c;
-  background:#fff1f2;
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+.actions{
+grid-template-columns:repeat(2,1fr);
 }
 
-@media(max-width:700px){
+.stats{
+grid-template-columns:1fr;
+}
 
-  .actions{
-    grid-template-columns:1fr;
-  }
+}
 
-  .stats{
-    grid-template-columns:1fr;
-  }
+@media(max-width:550px){
 
-  .brand{
-    font-size:15px;
-  }
+.actions{
+grid-template-columns:1fr;
+}
 
-  .container{
-    padding:20px 10px 40px;
-  }
+.brand{
+font-size:15px;
+}
+
+.container{
+padding:20px 10px 40px;
+}
 
 }
 
@@ -310,6 +332,10 @@ Website administration panel
 </div>
 
 
+<!-- =========================
+QUICK ACTIONS
+========================= -->
+
 <section class="actions">
 
 
@@ -327,6 +353,120 @@ Add Vacancy
 
 <span>
 Publish a new government job
+</span>
+
+</a>
+
+
+<a
+href="/admit-card.html"
+class="action">
+
+<div class="action-icon">
+🎫
+</div>
+
+<strong>
+Admit Card
+</strong>
+
+<span>
+Add and manage admit cards
+</span>
+
+</a>
+
+
+<a
+href="/result.html"
+class="action">
+
+<div class="action-icon">
+📊
+</div>
+
+<strong>
+Result Update
+</strong>
+
+<span>
+Add and manage results
+</span>
+
+</a>
+
+
+<a
+href="/answer-key.html"
+class="action">
+
+<div class="action-icon">
+🔑
+</div>
+
+<strong>
+Answer Key
+</strong>
+
+<span>
+Add and manage answer keys
+</span>
+
+</a>
+
+
+<a
+href="/syllabus.html"
+class="action">
+
+<div class="action-icon">
+📚
+</div>
+
+<strong>
+Syllabus
+</strong>
+
+<span>
+Add and manage syllabus
+</span>
+
+</a>
+
+
+<a
+href="/exam-calendar.html"
+class="action">
+
+<div class="action-icon">
+📅
+</div>
+
+<strong>
+Exam Calendar
+</strong>
+
+<span>
+Manage important exam dates
+</span>
+
+</a>
+
+
+<a
+href="/updates.html"
+class="action">
+
+<div class="action-icon">
+📢
+</div>
+
+<strong>
+Important Updates
+</strong>
+
+<span>
+Publish important notices
 </span>
 
 </a>
@@ -373,6 +513,10 @@ View submitted data
 </section>
 
 
+<!-- =========================
+STATS
+========================= -->
+
 <section class="stats">
 
 
@@ -385,7 +529,9 @@ View submitted data
 <div
 class="stat-number"
 id="total">
+
 0
+
 </div>
 
 <div class="stat-label">
@@ -404,7 +550,9 @@ Total Submissions
 <div
 class="stat-number"
 id="locations">
+
 0
+
 </div>
 
 <div class="stat-label">
@@ -423,7 +571,9 @@ Unique Locations
 <div
 class="stat-number"
 id="candidateCount">
+
 0
+
 </div>
 
 <div class="stat-label">
@@ -436,6 +586,10 @@ Candidate Names
 </section>
 
 
+<!-- =========================
+SUBMISSIONS
+========================= -->
+
 <div
 class="toolbar"
 id="submissions">
@@ -444,7 +598,7 @@ id="submissions">
 type="search"
 id="search"
 class="search"
-placeholder="🔎 Search candidate, village, district...">
+placeholder="🔎 Search village, district, panchayat or candidate...">
 
 <button
 class="refresh"
@@ -489,9 +643,8 @@ onclick="loadData()">
 
 </thead>
 
-
-<tbody id="tableBody">
-
+<tbody
+id="tableBody">
 </tbody>
 
 </table>
@@ -516,14 +669,6 @@ No submissions found.
 
 </div>
 
-
-<div
-class="error"
-id="error">
-
-</div>
-
-
 </div>
 
 
@@ -533,17 +678,9 @@ id="error">
 <script>
 
 
-// =================================================
-// WEB SERVICE API
-// =================================================
-
-const API_URL =
-"https://rajasthangovtvacancie.onrender.com";
-
-
-// =================================================
-// LOGIN CHECK
-// =================================================
+/* =========================
+LOGIN CHECK
+========================= */
 
 if(
 sessionStorage.getItem(
@@ -557,45 +694,23 @@ window.location.href =
 }
 
 
-// =================================================
-// DATA
-// =================================================
-
 let allData=[];
 
 
-// =================================================
-// LOAD DATA
-// =================================================
+/* =========================
+LOAD DATA
+========================= */
 
 async function loadData(){
 
 const loading =
-document.getElementById(
-"loading"
-);
-
-const empty =
-document.getElementById(
-"empty"
-);
-
-const errorBox =
-document.getElementById(
-"error"
-);
+document.getElementById("loading");
 
 const tableBody =
-document.getElementById(
-"tableBody"
-);
+document.getElementById("tableBody");
 
 
 loading.style.display="block";
-
-empty.style.display="none";
-
-errorBox.style.display="none";
 
 tableBody.innerHTML="";
 
@@ -604,19 +719,11 @@ try{
 
 const response =
 await fetch(
-API_URL+
 "/api/admin/candidates"
 );
 
-
 const result =
 await response.json();
-
-
-console.log(
-"Candidates API:",
-result
-);
 
 
 if(
@@ -625,98 +732,69 @@ if(
 ){
 
 throw new Error(
-result.message||
-"Could not load submissions"
+result.message ||
+"Could not load data"
 );
 
 }
 
 
 allData =
-result.data||[];
+result.data || [];
 
 
-updateStats(
-allData
-);
+updateStats(allData);
 
+renderTable(allData);
 
-renderTable(
-allData
-);
-
-
-}catch(error){
-
-console.error(
-"Dashboard error:",
-error
-);
-
-
-errorBox.textContent =
-"Data load failed: "+
-error.message;
-
-
-errorBox.style.display =
-"block";
-
-
-}finally{
-
-loading.style.display =
-"none";
 
 }
+catch(error){
+
+console.error(error);
+
+tableBody.innerHTML="";
+
+loading.textContent =
+"Data load नहीं हो सका।";
 
 }
 
 
-// =================================================
-// STATS
-// =================================================
+loading.style.display="none";
+
+}
+
+
+/* =========================
+STATS
+========================= */
 
 function updateStats(data){
 
 document.getElementById(
 "total"
-).textContent=
-data.length;
+).textContent=data.length;
 
 
-const locations =
-new Set();
+const locations=new Set();
 
-const candidates =
-new Set();
+const candidates=new Set();
 
 
 data.forEach(row=>{
 
-const location=[
-
-row.State,
-row.District,
-row.Village,
-row.Panchayat
-
-]
-.filter(Boolean)
-.join("|");
-
-
-if(location){
-
 locations.add(
-location
-);
 
-}
+`${row["State"] || ""}|`+
+`${row["District"] || ""}|`+
+`${row["Village"] || ""}|`+
+`${row["Panchayat"] || ""}`
+
+);
 
 
 [
-
 row["Candidate 1"],
 row["Candidate 2"],
 row["Candidate 3"],
@@ -751,9 +829,9 @@ candidates.size;
 }
 
 
-// =================================================
-// TABLE
-// =================================================
+/* =========================
+TABLE
+========================= */
 
 function renderTable(data){
 
@@ -773,35 +851,35 @@ tableBody.innerHTML="";
 
 if(!data.length){
 
-empty.style.display =
-"block";
+empty.style.display="block";
 
 return;
 
 }
 
 
-empty.style.display =
-"none";
+empty.style.display="none";
 
 
 data.forEach(
 (row,index)=>{
 
 const tr =
-document.createElement(
-"tr"
-);
+document.createElement("tr");
 
 
 const submitted =
-row.created_at
+row["Created at"]
 ?
 new Date(
-row.created_at
-).toLocaleString(
-"en-IN"
-)
+row["Created at"]
+).toLocaleString("en-IN")
+:
+row["created_at"]
+?
+new Date(
+row["created_at"]
+).toLocaleString("en-IN")
 :
 "-";
 
@@ -812,97 +890,119 @@ tr.innerHTML=`
 ${index+1}
 </td>
 
+
 <td class="location">
 
 <strong>
 ${escapeHTML(
-row.Panchayat||"-"
+row["Panchayat"] || "-"
 )}
 </strong>
 
 <br>
 
 ${escapeHTML(
-row.Village||"-"
+row["Village"] || "-"
 )}
 
 <br>
 
 ${escapeHTML(
-row.District||"-"
+row["District"] || "-"
 )}
 
 <br>
 
 <span class="muted">
+
 ${escapeHTML(
-row.State||"-"
+row["State"] || "-"
 )}
+
 </span>
 
 </td>
 
+
 <td class="candidate">
+
 ${escapeHTML(
-row["Candidate 1"]||"-"
+row["Candidate 1"] || "-"
 )}
+
 </td>
 
-<td>
-${escapeHTML(
-row["Candidate 2"]||"-"
-)}
-</td>
 
 <td>
+
 ${escapeHTML(
-row["Candidate 3"]||"-"
+row["Candidate 2"] || "-"
 )}
+
 </td>
 
-<td>
-${escapeHTML(
-row["Candidate 4"]||"-"
-)}
-</td>
 
 <td>
+
 ${escapeHTML(
-row.Mobile||"-"
+row["Candidate 3"] || "-"
 )}
+
 </td>
+
+
+<td>
+
+${escapeHTML(
+row["Candidate 4"] || "-"
+)}
+
+</td>
+
+
+<td>
+
+${escapeHTML(
+row["Mobile"] || "-"
+)}
+
+</td>
+
 
 <td>
 
 <span class="status">
+
 ${escapeHTML(
-row.Likely||"-"
+row["Likely"] || "-"
 )}
+
 </span>
 
 </td>
 
+
 <td>
+
 ${escapeHTML(
 submitted
 )}
+
 </td>
 
 `;
 
 
-tableBody.appendChild(
-tr
-);
+tableBody.appendChild(tr);
 
 });
 
 }
 
 
-// =================================================
-// SEARCH
-// =================================================
+/* =========================
+SEARCH
+========================= */
 
 document
 .getElementById("search")
@@ -928,23 +1028,20 @@ return;
 
 
 const filtered =
-allData.filter(
-row=>{
+allData.filter(row=>{
 
 const text=[
 
-row.State,
-row.District,
-row.Village,
-row.Panchayat,
-
+row["State"],
+row["District"],
+row["Village"],
+row["Panchayat"],
 row["Candidate 1"],
 row["Candidate 2"],
 row["Candidate 3"],
 row["Candidate 4"],
-
-row.Mobile,
-row.Likely
+row["Mobile"],
+row["Likely"]
 
 ]
 .filter(Boolean)
@@ -952,30 +1049,24 @@ row.Likely
 .toLowerCase();
 
 
-return text.includes(
-query
-);
+return text.includes(query);
 
 });
 
 
-renderTable(
-filtered
-);
+renderTable(filtered);
 
 });
 
 
-// =================================================
-// ESCAPE HTML
-// =================================================
+/* =========================
+ESCAPE
+========================= */
 
 function escapeHTML(value){
 
 const div =
-document.createElement(
-"div"
-);
+document.createElement("div");
 
 div.textContent =
 String(value);
@@ -985,18 +1076,14 @@ return div.innerHTML;
 }
 
 
-// =================================================
-// LOGOUT
-// =================================================
+/* =========================
+LOGOUT
+========================= */
 
 function logout(){
 
 sessionStorage.removeItem(
 "janmatAdminLoggedIn"
-);
-
-sessionStorage.removeItem(
-"adminLoginTime"
 );
 
 window.location.href =
@@ -1005,12 +1092,11 @@ window.location.href =
 }
 
 
-// =================================================
-// START
-// =================================================
+/* =========================
+START
+========================= */
 
 loadData();
-
 
 </script>
 
