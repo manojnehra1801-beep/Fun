@@ -10,9 +10,9 @@ const Survey = require("./models/Survey");
 const app = express();
 
 
-// ===============================
+// ==============================
 // MIDDLEWARE
-// ===============================
+// ==============================
 
 app.use(cors());
 
@@ -23,9 +23,9 @@ app.use(express.urlencoded({
 }));
 
 
-// ===============================
+// ==============================
 // STATIC FILES
-// ===============================
+// ==============================
 
 app.use(
   express.static(
@@ -34,9 +34,9 @@ app.use(
 );
 
 
-// ===============================
-// MONGODB CONNECTION
-// ===============================
+// ==============================
+// MONGODB
+// ==============================
 
 mongoose
   .connect(process.env.MONGO_URI)
@@ -51,9 +51,9 @@ mongoose
   });
 
 
-// ===============================
-// HOME PAGE
-// ===============================
+// ==============================
+// HOME
+// ==============================
 
 app.get("/", (req, res) => {
 
@@ -68,9 +68,9 @@ app.get("/", (req, res) => {
 });
 
 
-// ===============================
+// ==============================
 // SUBMIT SURVEY
-// ===============================
+// ==============================
 
 app.post("/api/survey", async (req, res) => {
 
@@ -90,8 +90,6 @@ app.post("/api/survey", async (req, res) => {
     } = req.body;
 
 
-    // Required fields check
-
     if (
       !ageGroup ||
       !state ||
@@ -104,25 +102,18 @@ app.post("/api/survey", async (req, res) => {
     ) {
 
       return res.status(400).json({
-
         success: false,
-
-        message:
-          "Please fill all required fields."
-
+        message: "Please fill all required fields."
       });
 
     }
 
 
-    // Create survey
-
     const survey = new Survey({
 
       ageGroup,
 
-      gender:
-        gender || "Prefer not to say",
+      gender: gender || "Prefer not to say",
 
       state,
 
@@ -130,8 +121,7 @@ app.post("/api/survey", async (req, res) => {
 
       constituency,
 
-      area:
-        area || "",
+      area: area || "",
 
       importantIssue,
 
@@ -144,8 +134,6 @@ app.post("/api/survey", async (req, res) => {
     });
 
 
-    // Save
-
     await survey.save();
 
 
@@ -153,8 +141,7 @@ app.post("/api/survey", async (req, res) => {
 
       success: true,
 
-      message:
-        "Survey submitted successfully."
+      message: "Survey submitted successfully."
 
     });
 
@@ -166,13 +153,11 @@ app.post("/api/survey", async (req, res) => {
       error
     );
 
-
     res.status(500).json({
 
       success: false,
 
-      message:
-        "Unable to submit survey."
+      message: "Unable to submit survey."
 
     });
 
@@ -181,24 +166,133 @@ app.post("/api/survey", async (req, res) => {
 });
 
 
-// ===============================
-// GET SURVEY RESULTS
-// ===============================
+// ==============================
+// RESULTS
+// ==============================
 
 app.get("/api/results", async (req, res) => {
 
   try {
 
-    const surveys =
-      await Survey.find();
+    const surveys = await Survey.find();
+
+    const total = surveys.length;
+
+    const partyResults = {};
+    const candidateResults = {};
+    const issueResults = {};
 
 
-    const total =
-      surveys.length;
+    surveys.forEach((survey) => {
+
+      const party = survey.preferredParty;
+
+      if (!partyResults[party]) {
+        partyResults[party] = 0;
+      }
+
+      partyResults[party]++;
 
 
-    // ===========================
-    // PARTY RESULTS
-    // ===========================
+      const candidate = survey.candidateChoice;
 
-    const partyResults
+      if (!candidateResults[candidate]) {
+        candidateResults[candidate] = 0;
+      }
+
+      candidateResults[candidate]++;
+
+
+      const issue = survey.importantIssue;
+
+      if (!issueResults[issue]) {
+        issueResults[issue] = 0;
+      }
+
+      issueResults[issue]++;
+
+    });
+
+
+    res.json({
+
+      success: true,
+
+      total,
+
+      partyResults,
+
+      candidateResults,
+
+      issueResults
+
+    });
+
+
+  } catch (error) {
+
+    console.error(
+      "Results error:",
+      error
+    );
+
+    res.status(500).json({
+
+      success: false,
+
+      message: "Unable to load results."
+
+    });
+
+  }
+
+});
+
+
+// ==============================
+// HEALTH CHECK
+// ==============================
+
+app.get("/api/health", (req, res) => {
+
+  res.json({
+
+    success: true,
+
+    message: "Janmat Survey server is running."
+
+  });
+
+});
+
+
+// ==============================
+// 404
+// ==============================
+
+app.use((req, res) => {
+
+  res.status(404).json({
+
+    success: false,
+
+    message: "Page or API endpoint not found."
+
+  });
+
+});
+
+
+// ==============================
+// START SERVER
+// ==============================
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+
+  console.log(
+    `Server running on port ${PORT}`
+  );
+
+});
