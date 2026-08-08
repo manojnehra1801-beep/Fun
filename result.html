@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Survey Results</title>
+
+<link rel="stylesheet"
+href="css/style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="logo">
+Janmat Survey
+</div>
+
+<a href="index.html">
+Home
+</a>
+
+</header>
+
+
+<div class="results-container">
+
+<h1>Survey Results</h1>
+
+<p>
+Aggregated results from submitted survey responses.
+</p>
+
+
+<div class="stat-card">
+
+<h3>Total Responses</h3>
+
+<div
+class="stat-number"
+id="totalResponses">
+
+0
+
+</div>
+
+</div>
+
+
+<div class="chart-card">
+
+<h2>Preferred Party</h2>
+
+<canvas id="partyChart"></canvas>
+
+</div>
+
+
+<div class="chart-card">
+
+<h2>Preferred Candidate</h2>
+
+<canvas id="candidateChart"></canvas>
+
+</div>
+
+
+<div class="chart-card">
+
+<h2>Most Important Issues</h2>
+
+<canvas id="issueChart"></canvas>
+
+</div>
+
+
+</div>
+
+
+<script src="js/results.js"></script>
+
+</body>
+
+</html>
