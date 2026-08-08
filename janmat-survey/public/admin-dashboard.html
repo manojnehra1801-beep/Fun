@@ -3,419 +3,273 @@
 
 <head>
 
-  <meta charset="UTF-8">
-
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-  <title>Admin Dashboard | Rajasthan Govt Vacancies</title>
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-
-      font-family:
-        Arial,
-        "Noto Sans Devanagari",
-        sans-serif;
-
-      background: #f5f7fb;
-
-      color: #172033;
-    }
-
-
-    /* HEADER */
-
-    .header {
-      background: #172554;
-
-      color: white;
-
-      padding: 15px 18px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      position: sticky;
-
-      top: 0;
-
-      z-index: 10;
-    }
-
-    .brand {
-      font-size: 18px;
-
-      font-weight: 900;
-    }
-
-    .logout {
-      border:
-        1px solid rgba(255,255,255,.3);
-
-      background: transparent;
-
-      color: white;
-
-      padding: 8px 12px;
-
-      border-radius: 8px;
-
-      cursor: pointer;
-
-      font-size: 11px;
-
-      font-weight: 800;
-    }
-
-
-    /* CONTAINER */
-
-    .container {
-      max-width: 1200px;
-
-      margin: auto;
-
-      padding:
-        25px 14px 50px;
-    }
-
-
-    /* TITLE */
-
-    .title {
-      margin-bottom: 20px;
-    }
-
-    .title h1 {
-      margin: 0;
-
-      color: #172554;
-
-      font-size: 27px;
-    }
-
-    .title p {
-      margin-top: 5px;
-
-      color: #64748b;
-
-      font-size: 12px;
-    }
-
-
-    /* QUICK ACTIONS */
-
-    .actions {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 12px;
-
-      margin-bottom: 22px;
-    }
-
-    .action {
-      background: white;
-
-      border:
-        1px solid #e5e7eb;
-
-      border-radius: 15px;
-
-      padding: 17px;
-
-      text-decoration: none;
-
-      box-shadow:
-        0 5px 18px
-        rgba(15,23,42,.04);
-
-      transition: .2s;
-    }
-
-    .action:hover {
-      transform: translateY(-2px);
-
-      border-color: #c7d2fe;
-    }
-
-    .action-icon {
-      font-size: 27px;
-
-      margin-bottom: 7px;
-    }
-
-    .action strong {
-      display: block;
-
-      color: #172554;
-
-      font-size: 13px;
-    }
-
-    .action span {
-      display: block;
-
-      color: #64748b;
-
-      font-size: 10px;
-
-      margin-top: 3px;
-    }
-
-
-    /* STATS */
-
-    .stats {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 14px;
-
-      margin-bottom: 22px;
-    }
-
-    .stat {
-      background: white;
-
-      border:
-        1px solid #e5e7eb;
-
-      border-radius: 15px;
-
-      padding: 18px;
-
-      box-shadow:
-        0 5px 18px
-        rgba(15,23,42,.04);
-    }
-
-    .stat-icon {
-      font-size: 24px;
-    }
-
-    .stat-number {
-      color: #3155d9;
-
-      font-size: 27px;
-
-      font-weight: 900;
-
-      margin-top: 4px;
-    }
-
-    .stat-label {
-      color: #64748b;
-
-      font-size: 10px;
-    }
-
-
-    /* SEARCH */
-
-    .toolbar {
-      background: white;
-
-      border:
-        1px solid #e5e7eb;
-
-      border-radius: 15px;
-
-      padding: 13px;
-
-      margin-bottom: 17px;
-
-      display: flex;
-
-      gap: 9px;
-    }
-
-    .search {
-      flex: 1;
-
-      min-width: 0;
-
-      border:
-        1px solid #d8deea;
-
-      border-radius: 9px;
-
-      padding: 12px;
-
-      outline: none;
-
-      font-size: 12px;
-    }
-
-    .search:focus {
-      border-color: #3155d9;
-
-      box-shadow:
-        0 0 0 3px #eef2ff;
-    }
-
-    .refresh {
-      border: none;
-
-      background: #3155d9;
-
-      color: white;
-
-      border-radius: 9px;
-
-      padding: 0 15px;
-
-      font-weight: 800;
-
-      cursor: pointer;
-    }
-
-
-    /* TABLE */
-
-    .table-card {
-      background: white;
-
-      border:
-        1px solid #e5e7eb;
-
-      border-radius: 15px;
-
-      overflow: hidden;
-    }
-
-    .table-wrapper {
-      overflow-x: auto;
-    }
-
-    table {
-      width: 100%;
-
-      border-collapse: collapse;
-
-      min-width: 950px;
-    }
-
-    th {
-      background: #f8fafc;
-
-      color: #475569;
-
-      font-size: 10px;
-
-      padding: 13px;
-
-      text-align: left;
-
-      white-space: nowrap;
-
-      border-bottom:
-        1px solid #e5e7eb;
-    }
-
-    td {
-      padding: 13px;
-
-      font-size: 11px;
-
-      border-bottom:
-        1px solid #eef1f5;
-
-      vertical-align: top;
-    }
-
-    tr:hover td {
-      background: #fafbff;
-    }
-
-
-    .candidate {
-      font-weight: 800;
-
-      color: #172554;
-    }
-
-    .location {
-      line-height: 1.6;
-    }
-
-    .muted {
-      color: #94a3b8;
-    }
-
-    .status {
-      display: inline-block;
-
-      background: #eef2ff;
-
-      color: #3155d9;
-
-      padding: 5px 8px;
-
-      border-radius: 20px;
-
-      font-size: 9px;
-
-      font-weight: 800;
-    }
-
-
-    /* EMPTY */
-
-    .empty,
-    .loading {
-      text-align: center;
-
-      padding: 45px 20px;
-
-      color: #64748b;
-
-      font-size: 12px;
-    }
-
-    .empty {
-      display: none;
-    }
-
-
-    /* MOBILE */
-
-    @media (max-width: 700px) {
-
-      .actions {
-        grid-template-columns: 1fr;
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
-      .brand {
-        font-size: 15px;
-      }
-
-      .container {
-        padding:
-          20px 10px 40px;
-      }
-
-    }
-
-  </style>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard | Rajasthan Govt Vacancies</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,"Noto Sans Devanagari",sans-serif;
+  background:#f5f7fb;
+  color:#172033;
+}
+
+.header{
+  background:#172554;
+  color:white;
+  padding:15px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.brand{
+  font-size:18px;
+  font-weight:900;
+}
+
+.logout{
+  border:1px solid rgba(255,255,255,.3);
+  background:transparent;
+  color:white;
+  padding:8px 12px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:11px;
+  font-weight:800;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:25px 14px 50px;
+}
+
+.title{
+  margin-bottom:20px;
+}
+
+.title h1{
+  margin:0;
+  color:#172554;
+  font-size:27px;
+}
+
+.title p{
+  margin-top:5px;
+  color:#64748b;
+  font-size:12px;
+}
+
+.actions{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-bottom:22px;
+}
+
+.action{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:15px;
+  padding:17px;
+  text-decoration:none;
+  box-shadow:0 5px 18px rgba(15,23,42,.04);
+}
+
+.action-icon{
+  font-size:27px;
+  margin-bottom:7px;
+}
+
+.action strong{
+  display:block;
+  color:#172554;
+  font-size:13px;
+}
+
+.action span{
+  display:block;
+  color:#64748b;
+  font-size:10px;
+  margin-top:3px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-bottom:22px;
+}
+
+.stat{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:15px;
+  padding:18px;
+  box-shadow:0 5px 18px rgba(15,23,42,.04);
+}
+
+.stat-icon{
+  font-size:24px;
+}
+
+.stat-number{
+  color:#3155d9;
+  font-size:27px;
+  font-weight:900;
+  margin-top:4px;
+}
+
+.stat-label{
+  color:#64748b;
+  font-size:10px;
+}
+
+.toolbar{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:15px;
+  padding:13px;
+  margin-bottom:17px;
+  display:flex;
+  gap:9px;
+}
+
+.search{
+  flex:1;
+  min-width:0;
+  border:1px solid #d8deea;
+  border-radius:9px;
+  padding:12px;
+  outline:none;
+  font-size:12px;
+}
+
+.search:focus{
+  border-color:#3155d9;
+  box-shadow:0 0 0 3px #eef2ff;
+}
+
+.refresh{
+  border:none;
+  background:#3155d9;
+  color:white;
+  border-radius:9px;
+  padding:0 15px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.table-card{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:15px;
+  overflow:hidden;
+}
+
+.table-wrapper{
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:950px;
+}
+
+th{
+  background:#f8fafc;
+  color:#475569;
+  font-size:10px;
+  padding:13px;
+  text-align:left;
+  white-space:nowrap;
+  border-bottom:1px solid #e5e7eb;
+}
+
+td{
+  padding:13px;
+  font-size:11px;
+  border-bottom:1px solid #eef1f5;
+  vertical-align:top;
+}
+
+.candidate{
+  font-weight:800;
+  color:#172554;
+}
+
+.location{
+  line-height:1.6;
+}
+
+.muted{
+  color:#94a3b8;
+}
+
+.status{
+  display:inline-block;
+  background:#eef2ff;
+  color:#3155d9;
+  padding:5px 8px;
+  border-radius:20px;
+  font-size:9px;
+  font-weight:800;
+}
+
+.loading,
+.empty,
+.error{
+  text-align:center;
+  padding:45px 20px;
+  color:#64748b;
+  font-size:12px;
+}
+
+.empty,
+.error{
+  display:none;
+}
+
+.error{
+  color:#be123c;
+  background:#fff1f2;
+}
+
+@media(max-width:700px){
+
+  .actions{
+    grid-template-columns:1fr;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .brand{
+    font-size:15px;
+  }
+
+  .container{
+    padding:20px 10px 40px;
+  }
+
+}
+
+</style>
 
 </head>
 
@@ -423,732 +277,739 @@
 <body>
 
 
-<!-- HEADER -->
-
 <header class="header">
 
-  <div class="brand">
+<div class="brand">
+🏛️ Rajasthan Govt Vacancies
+</div>
 
-    🏛️ Rajasthan Govt Vacancies
+<button
+class="logout"
+onclick="logout()">
 
-  </div>
+Logout
 
-  <button
-    class="logout"
-    onclick="logout()">
-
-    Logout
-
-  </button>
+</button>
 
 </header>
-
 
 
 <main class="container">
 
 
-  <!-- TITLE -->
+<div class="title">
 
-  <div class="title">
+<h1>
+Admin Dashboard
+</h1>
 
-    <h1>
-      Admin Dashboard
-    </h1>
+<p>
+Website administration panel
+</p>
 
-    <p>
-      Website administration panel
-    </p>
+</div>
 
-  </div>
 
+<section class="actions">
 
 
-  <!-- QUICK ACTIONS -->
+<a
+href="/add-vacancy.html"
+class="action">
 
-  <section class="actions">
+<div class="action-icon">
+➕
+</div>
 
+<strong>
+Add Vacancy
+</strong>
 
-    <a
-      href="/add-vacancy.html"
-      class="action">
+<span>
+Publish a new government job
+</span>
 
-      <div class="action-icon">
-        ➕
-      </div>
+</a>
 
-      <strong>
-        Add Vacancy
-      </strong>
 
-      <span>
-        Publish a new government job
-      </span>
+<a
+href="/"
+class="action">
 
-    </a>
+<div class="action-icon">
+🌐
+</div>
 
+<strong>
+View Website
+</strong>
 
-    <a
-      href="/"
-      class="action">
+<span>
+Open public website
+</span>
 
-      <div class="action-icon">
-        🌐
-      </div>
+</a>
 
-      <strong>
-        View Website
-      </strong>
 
-      <span>
-        Open public website
-      </span>
+<a
+href="#submissions"
+class="action">
 
-    </a>
+<div class="action-icon">
+📋
+</div>
 
+<strong>
+Submissions
+</strong>
 
-    <a
-      href="#submissions"
-      class="action">
+<span>
+View submitted data
+</span>
 
-      <div class="action-icon">
-        📋
-      </div>
+</a>
 
-      <strong>
-        Submissions
-      </strong>
 
-      <span>
-        View submitted data
-      </span>
+</section>
 
-    </a>
 
+<section class="stats">
 
-  </section>
 
+<div class="stat">
 
+<div class="stat-icon">
+📋
+</div>
 
-  <!-- STATS -->
+<div
+class="stat-number"
+id="total">
+0
+</div>
 
-  <section class="stats">
+<div class="stat-label">
+Total Submissions
+</div>
 
+</div>
 
-    <div class="stat">
 
-      <div class="stat-icon">
-        📋
-      </div>
+<div class="stat">
 
-      <div
-        class="stat-number"
-        id="total">
+<div class="stat-icon">
+📍
+</div>
 
-        0
+<div
+class="stat-number"
+id="locations">
+0
+</div>
 
-      </div>
+<div class="stat-label">
+Unique Locations
+</div>
 
-      <div class="stat-label">
-        Total Submissions
-      </div>
+</div>
 
-    </div>
 
+<div class="stat">
 
-    <div class="stat">
+<div class="stat-icon">
+👥
+</div>
 
-      <div class="stat-icon">
-        📍
-      </div>
+<div
+class="stat-number"
+id="candidateCount">
+0
+</div>
 
-      <div
-        class="stat-number"
-        id="locations">
+<div class="stat-label">
+Candidate Names
+</div>
 
-        0
+</div>
 
-      </div>
 
-      <div class="stat-label">
-        Unique Locations
-      </div>
+</section>
 
-    </div>
 
+<div
+class="toolbar"
+id="submissions">
 
-    <div class="stat">
+<input
+type="search"
+id="search"
+class="search"
+placeholder="🔎 Search candidate, village, district...">
 
-      <div class="stat-icon">
-        👥
-      </div>
+<button
+class="refresh"
+onclick="loadData()">
 
-      <div
-        class="stat-number"
-        id="candidateCount">
+↻ Refresh
 
-        0
+</button>
 
-      </div>
+</div>
 
-      <div class="stat-label">
-        Candidate Names
-      </div>
 
-    </div>
+<div class="table-card">
 
+<div class="table-wrapper">
 
-  </section>
+<table>
 
+<thead>
 
+<tr>
 
-  <!-- SEARCH -->
+<th>#</th>
 
-  <div
-    class="toolbar"
-    id="submissions">
+<th>Location</th>
 
-    <input
-      type="search"
-      id="search"
-      class="search"
-      placeholder="🔎 Search village, district, panchayat or candidate...">
+<th>Candidate 1</th>
 
-    <button
-      class="refresh"
-      onclick="loadData()">
+<th>Candidate 2</th>
 
-      ↻ Refresh
+<th>Candidate 3</th>
 
-    </button>
+<th>Candidate 4</th>
 
-  </div>
+<th>Mobile</th>
 
+<th>Likely</th>
 
+<th>Submitted</th>
 
-  <!-- TABLE -->
+</tr>
 
-  <div class="table-card">
+</thead>
 
-    <div class="table-wrapper">
 
-      <table>
+<tbody id="tableBody">
 
-        <thead>
+</tbody>
 
-          <tr>
+</table>
 
-            <th>
-              #
-            </th>
+</div>
 
-            <th>
-              Location
-            </th>
 
-            <th>
-              Candidate 1
-            </th>
+<div
+class="loading"
+id="loading">
 
-            <th>
-              Candidate 2
-            </th>
+Loading submissions...
 
-            <th>
-              Candidate 3
-            </th>
+</div>
 
-            <th>
-              Candidate 4
-            </th>
 
-            <th>
-              Mobile
-            </th>
+<div
+class="empty"
+id="empty">
 
-            <th>
-              Likely
-            </th>
+No submissions found.
 
-            <th>
-              Submitted
-            </th>
+</div>
 
-          </tr>
 
-        </thead>
+<div
+class="error"
+id="error">
 
+</div>
 
-        <tbody id="tableBody">
 
-        </tbody>
-
-      </table>
-
-    </div>
-
-
-    <div
-      class="loading"
-      id="loading">
-
-      Loading submissions...
-
-    </div>
-
-
-    <div
-      class="empty"
-      id="empty">
-
-      No submissions found.
-
-    </div>
-
-  </div>
+</div>
 
 
 </main>
 
 
-
 <script>
 
 
-  /* =========================
-     LOGIN CHECK
-  ========================= */
+// =================================================
+// WEB SERVICE API
+// =================================================
 
-  if (
-    sessionStorage.getItem(
-      "janmatAdminLoggedIn"
-    ) !== "true"
-  ) {
+const API_URL =
+"https://rajasthangovtvacancie.onrender.com";
 
-    window.location.href =
-      "/admin.html";
 
-  }
+// =================================================
+// LOGIN CHECK
+// =================================================
 
+if(
+sessionStorage.getItem(
+"janmatAdminLoggedIn"
+)!=="true"
+){
 
-  let allData = [];
+window.location.href =
+"/admin.html";
 
+}
 
-  /* =========================
-     LOAD DATA
-  ========================= */
 
-  async function loadData() {
+// =================================================
+// DATA
+// =================================================
 
-    const loading =
-      document.getElementById(
-        "loading"
-      );
+let allData=[];
 
-    const tableBody =
-      document.getElementById(
-        "tableBody"
-      );
 
+// =================================================
+// LOAD DATA
+// =================================================
 
-    loading.style.display =
-      "block";
+async function loadData(){
 
-    tableBody.innerHTML =
-      "";
+const loading =
+document.getElementById(
+"loading"
+);
 
+const empty =
+document.getElementById(
+"empty"
+);
 
-    try {
+const errorBox =
+document.getElementById(
+"error"
+);
 
-      const response =
-        await fetch(
-          "/api/admin/candidates"
-        );
+const tableBody =
+document.getElementById(
+"tableBody"
+);
 
 
-      const result =
-        await response.json();
+loading.style.display="block";
 
+empty.style.display="none";
 
-      if (
-        !response.ok ||
-        !result.success
-      ) {
+errorBox.style.display="none";
 
-        throw new Error(
-          result.message ||
-          "Could not load data"
-        );
+tableBody.innerHTML="";
 
-      }
 
+try{
 
-      allData =
-        result.data || [];
+const response =
+await fetch(
+API_URL+
+"/api/admin/candidates"
+);
 
 
-      updateStats(
-        allData
-      );
+const result =
+await response.json();
 
 
-      renderTable(
-        allData
-      );
+console.log(
+"Candidates API:",
+result
+);
 
 
-    } catch (error) {
+if(
+!response.ok ||
+!result.success
+){
 
-      console.error(error);
+throw new Error(
+result.message||
+"Could not load submissions"
+);
 
-      tableBody.innerHTML = "";
+}
 
-      loading.textContent =
-        "Data load नहीं हो सका।";
 
-    }
+allData =
+result.data||[];
 
 
-    loading.style.display =
-      "none";
+updateStats(
+allData
+);
 
-  }
 
+renderTable(
+allData
+);
 
-  /* =========================
-     STATS
-  ========================= */
 
-  function updateStats(data) {
+}catch(error){
 
-    document.getElementById(
-      "total"
-    ).textContent =
-      data.length;
+console.error(
+"Dashboard error:",
+error
+);
 
 
-    const locations =
-      new Set();
+errorBox.textContent =
+"Data load failed: "+
+error.message;
 
 
-    const candidates =
-      new Set();
+errorBox.style.display =
+"block";
 
 
-    data.forEach(row => {
+}finally{
 
-      locations.add(
+loading.style.display =
+"none";
 
-        `${row["State"] || ""}|` +
-        `${row["District"] || ""}|` +
-        `${row["Village"] || ""}|` +
-        `${row["Panchayat"] || ""}`
+}
 
-      );
+}
 
 
-      [
+// =================================================
+// STATS
+// =================================================
 
-        row["Candidate 1"],
-        row["Candidate 2"],
-        row["Candidate 3"],
-        row["Candidate 4"]
+function updateStats(data){
 
-      ].forEach(name => {
+document.getElementById(
+"total"
+).textContent=
+data.length;
 
-        if (name) {
 
-          candidates.add(
-            name.trim()
-          );
+const locations =
+new Set();
 
-        }
+const candidates =
+new Set();
 
-      });
 
-    });
+data.forEach(row=>{
 
+const location=[
 
-    document.getElementById(
-      "locations"
-    ).textContent =
-      locations.size;
+row.State,
+row.District,
+row.Village,
+row.Panchayat
 
+]
+.filter(Boolean)
+.join("|");
 
-    document.getElementById(
-      "candidateCount"
-    ).textContent =
-      candidates.size;
 
-  }
+if(location){
 
+locations.add(
+location
+);
 
-  /* =========================
-     RENDER TABLE
-  ========================= */
+}
 
-  function renderTable(data) {
 
-    const tableBody =
-      document.getElementById(
-        "tableBody"
-      );
+[
 
-    const empty =
-      document.getElementById(
-        "empty"
-      );
+row["Candidate 1"],
+row["Candidate 2"],
+row["Candidate 3"],
+row["Candidate 4"]
 
+].forEach(name=>{
 
-    tableBody.innerHTML =
-      "";
+if(name){
 
+candidates.add(
+String(name).trim()
+);
 
-    if (!data.length) {
+}
 
-      empty.style.display =
-        "block";
+});
 
-      return;
+});
 
-    }
 
+document.getElementById(
+"locations"
+).textContent=
+locations.size;
 
-    empty.style.display =
-      "none";
 
+document.getElementById(
+"candidateCount"
+).textContent=
+candidates.size;
 
-    data.forEach(
-      (row, index) => {
+}
 
-        const tr =
-          document.createElement(
-            "tr"
-          );
 
+// =================================================
+// TABLE
+// =================================================
 
-        const submitted =
-          row["Created at"]
-            ? new Date(
-                row["Created at"]
-              ).toLocaleString(
-                "en-IN"
-              )
-            : "-";
+function renderTable(data){
 
+const tableBody =
+document.getElementById(
+"tableBody"
+);
 
-        tr.innerHTML = `
+const empty =
+document.getElementById(
+"empty"
+);
 
-          <td>
-            ${index + 1}
-          </td>
 
+tableBody.innerHTML="";
 
-          <td class="location">
 
-            <strong>
-              ${escapeHTML(
-                row["Panchayat"] || "-"
-              )}
-            </strong>
+if(!data.length){
 
-            <br>
+empty.style.display =
+"block";
 
-            ${escapeHTML(
-              row["Village"] || "-"
-            )}
+return;
 
-            <br>
+}
 
-            ${escapeHTML(
-              row["District"] || "-"
-            )}
 
-            <br>
+empty.style.display =
+"none";
 
-            <span class="muted">
-              ${escapeHTML(
-                row["State"] || "-"
-              )}
-            </span>
 
-          </td>
+data.forEach(
+(row,index)=>{
 
+const tr =
+document.createElement(
+"tr"
+);
 
-          <td class="candidate">
-            ${escapeHTML(
-              row["Candidate 1"] || "-"
-            )}
-          </td>
 
+const submitted =
+row.created_at
+?
+new Date(
+row.created_at
+).toLocaleString(
+"en-IN"
+)
+:
+"-";
 
-          <td>
-            ${escapeHTML(
-              row["Candidate 2"] || "-"
-            )}
-          </td>
 
+tr.innerHTML=`
 
-          <td>
-            ${escapeHTML(
-              row["Candidate 3"] || "-"
-            )}
-          </td>
+<td>
+${index+1}
+</td>
 
+<td class="location">
 
-          <td>
-            ${escapeHTML(
-              row["Candidate 4"] || "-"
-            )}
-          </td>
+<strong>
+${escapeHTML(
+row.Panchayat||"-"
+)}
+</strong>
 
+<br>
 
-          <td>
-            ${escapeHTML(
-              row["Mobile"] || "-"
-            )}
-          </td>
+${escapeHTML(
+row.Village||"-"
+)}
 
+<br>
 
-          <td>
+${escapeHTML(
+row.District||"-"
+)}
 
-            <span class="status">
+<br>
 
-              ${escapeHTML(
-                row["Likely"] || "-"
-              )}
+<span class="muted">
+${escapeHTML(
+row.State||"-"
+)}
+</span>
 
-            </span>
+</td>
 
-          </td>
+<td class="candidate">
+${escapeHTML(
+row["Candidate 1"]||"-"
+)}
+</td>
 
+<td>
+${escapeHTML(
+row["Candidate 2"]||"-"
+)}
+</td>
 
-          <td>
-            ${escapeHTML(
-              submitted
-            )}
-          </td>
+<td>
+${escapeHTML(
+row["Candidate 3"]||"-"
+)}
+</td>
 
-        `;
+<td>
+${escapeHTML(
+row["Candidate 4"]||"-"
+)}
+</td>
 
+<td>
+${escapeHTML(
+row.Mobile||"-"
+)}
+</td>
 
-        tableBody.appendChild(
-          tr
-        );
+<td>
 
-      }
-    );
+<span class="status">
+${escapeHTML(
+row.Likely||"-"
+)}
+</span>
 
-  }
+</td>
 
+<td>
+${escapeHTML(
+submitted
+)}
+</td>
 
-  /* =========================
-     SEARCH
-  ========================= */
+`;
 
-  document
-    .getElementById("search")
-    .addEventListener(
-      "input",
-      function() {
 
-        const query =
-          this.value
-            .toLowerCase()
-            .trim();
+tableBody.appendChild(
+tr
+);
 
+});
 
-        if (!query) {
+}
 
-          renderTable(
-            allData
-          );
 
-          return;
+// =================================================
+// SEARCH
+// =================================================
 
-        }
+document
+.getElementById("search")
+.addEventListener(
+"input",
+function(){
 
+const query =
+this.value
+.toLowerCase()
+.trim();
 
-        const filtered =
-          allData.filter(row => {
 
-            const text = [
+if(!query){
 
-              row["State"],
-              row["District"],
-              row["Village"],
-              row["Panchayat"],
-              row["Candidate 1"],
-              row["Candidate 2"],
-              row["Candidate 3"],
-              row["Candidate 4"],
-              row["Mobile"],
-              row["Likely"]
+renderTable(
+allData
+);
 
-            ]
+return;
 
-            .filter(Boolean)
+}
 
-            .join(" ")
 
-            .toLowerCase();
+const filtered =
+allData.filter(
+row=>{
 
+const text=[
 
-            return text.includes(
-              query
-            );
+row.State,
+row.District,
+row.Village,
+row.Panchayat,
 
-          });
+row["Candidate 1"],
+row["Candidate 2"],
+row["Candidate 3"],
+row["Candidate 4"],
 
+row.Mobile,
+row.Likely
 
-        renderTable(
-          filtered
-        );
+]
+.filter(Boolean)
+.join(" ")
+.toLowerCase();
 
-      }
-    );
 
+return text.includes(
+query
+);
 
-  /* =========================
-     ESCAPE HTML
-  ========================= */
+});
 
-  function escapeHTML(value) {
 
-    const div =
-      document.createElement(
-        "div"
-      );
+renderTable(
+filtered
+);
 
-    div.textContent =
-      String(value);
+});
 
-    return div.innerHTML;
 
-  }
+// =================================================
+// ESCAPE HTML
+// =================================================
 
+function escapeHTML(value){
 
-  /* =========================
-     LOGOUT
-  ========================= */
+const div =
+document.createElement(
+"div"
+);
 
-  function logout() {
+div.textContent =
+String(value);
 
-    sessionStorage.removeItem(
-      "janmatAdminLoggedIn"
-    );
+return div.innerHTML;
 
-    window.location.href =
-      "/admin.html";
+}
 
-  }
 
+// =================================================
+// LOGOUT
+// =================================================
 
-  /* =========================
-     START
-  ========================= */
+function logout(){
 
-  loadData();
+sessionStorage.removeItem(
+"janmatAdminLoggedIn"
+);
+
+sessionStorage.removeItem(
+"adminLoginTime"
+);
+
+window.location.href =
+"/admin.html";
+
+}
+
+
+// =================================================
+// START
+// =================================================
+
+loadData();
 
 
 </script>
