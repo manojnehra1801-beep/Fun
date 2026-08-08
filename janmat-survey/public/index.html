@@ -2,652 +2,578 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-  <meta name="description"
-        content="Rajasthan Govt Vacancies - Latest Rajasthan Government Jobs, Recruitment, Admit Card, Results, Answer Key and Exam Updates.">
-
-  <meta name="keywords"
-        content="Rajasthan Govt Jobs, Rajasthan Vacancy, Rajasthan Government Jobs 2026, Rajasthan Recruitment, Sarkari Result Rajasthan">
-
-  <title>Rajasthan Govt Vacancies | Latest Govt Jobs 2026</title>
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family:
-        Arial,
-        "Noto Sans Devanagari",
-        sans-serif;
-
-      background: #f5f7fb;
-      color: #172033;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-
-    /* =========================
-       HEADER
-    ========================= */
-
-    header {
-      background: #172554;
-      color: white;
-
-      position: sticky;
-      top: 0;
-      z-index: 100;
-
-      box-shadow:
-        0 3px 18px rgba(0,0,0,.12);
-    }
-
-    .header-inner {
-      max-width: 1150px;
-      margin: auto;
-
-      padding: 14px 16px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .logo {
-      font-size: 19px;
-      font-weight: 900;
-      line-height: 1.2;
-      color: white;
-    }
-
-    .logo span {
-      display: block;
-
-      color: #fbbf24;
-
-      font-size: 9px;
-
-      margin-top: 4px;
-
-      letter-spacing: .3px;
-    }
-
-    .admin-btn {
-      border: 1px solid
-        rgba(255,255,255,.35);
-
-      color: white;
-
-      padding: 8px 11px;
-
-      border-radius: 8px;
-
-      font-size: 11px;
-
-      font-weight: 800;
-    }
-
-
-    /* =========================
-       CONTAINER
-    ========================= */
-
-    .container {
-      max-width: 1150px;
-
-      margin: auto;
-
-      padding:
-        20px 14px 45px;
-    }
-
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      background:
-        linear-gradient(
-          135deg,
-          #172554,
-          #3155d9
-        );
-
-      color: white;
-
-      border-radius: 22px;
-
-      padding:
-        30px 21px;
-
-      margin-bottom: 18px;
-
-      position: relative;
-
-      overflow: hidden;
-    }
-
-    .hero::after {
-      content: "📋";
-
-      position: absolute;
-
-      right: 12px;
-      bottom: -20px;
-
-      font-size: 115px;
-
-      opacity: .07;
-    }
-
-    .hero-badge {
-      display: inline-block;
-
-      background:
-        rgba(255,255,255,.13);
-
-      padding: 7px 11px;
-
-      border-radius: 20px;
-
-      font-size: 10px;
-
-      font-weight: 900;
-
-      margin-bottom: 13px;
-    }
-
-    .hero h1 {
-      font-size: 29px;
-
-      line-height: 1.25;
-
-      margin-bottom: 10px;
-
-      max-width: 750px;
-    }
-
-    .hero h1 span {
-      color: #fbbf24;
-    }
-
-    .hero p {
-      color: #dbeafe;
-
-      font-size: 13px;
-
-      line-height: 1.7;
-
-      max-width: 700px;
-    }
-
-
-    /* =========================
-       SEARCH
-    ========================= */
-
-    .search-card {
-      background: white;
-
-      border-radius: 15px;
-
-      padding: 12px;
-
-      display: flex;
-
-      gap: 8px;
-
-      box-shadow:
-        0 7px 25px
-        rgba(15,23,42,.06);
-
-      margin-bottom: 20px;
-    }
-
-    .search-card input {
-      flex: 1;
-
-      min-width: 0;
-
-      border:
-        1px solid #d8deea;
-
-      outline: none;
-
-      padding:
-        12px 13px;
-
-      border-radius: 9px;
-
-      font-size: 13px;
-    }
-
-    .search-card input:focus {
-      border-color: #3155d9;
-
-      box-shadow:
-        0 0 0 3px #eef2ff;
-    }
-
-    .search-btn {
-      border: none;
-
-      background: #3155d9;
-
-      color: white;
-
-      padding:
-        0 17px;
-
-      border-radius: 9px;
-
-      font-weight: 800;
-
-      cursor: pointer;
-    }
-
-
-    /* =========================
-       NOTICE
-    ========================= */
-
-    .notice {
-      background: white;
-
-      border-left:
-        4px solid #ef4444;
-
-      border-radius: 12px;
-
-      padding:
-        13px 15px;
-
-      margin-bottom: 24px;
-
-      box-shadow:
-        0 5px 20px
-        rgba(15,23,42,.04);
-    }
-
-    .notice-title {
-      color: #dc2626;
-
-      font-size: 11px;
-
-      font-weight: 900;
-
-      margin-bottom: 3px;
-    }
-
-    .notice-text {
-      color: #475569;
-
-      font-size: 12px;
-
-      line-height: 1.6;
-    }
-
-
-    /* =========================
-       SECTION HEADER
-    ========================= */
-
-    .section-header {
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-      margin-bottom: 12px;
-    }
-
-    .section-header h2 {
-      color: #172554;
-
-      font-size: 19px;
-    }
-
-    .section-header span {
-      color: #64748b;
-
-      font-size: 10px;
-    }
-
-
-    /* =========================
-       CATEGORIES
-    ========================= */
-
-    .categories {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 10px;
-
-      margin-bottom: 27px;
-    }
-
-    .category {
-      background: white;
-
-      border:
-        1px solid #e7eaf0;
-
-      border-radius: 14px;
-
-      padding:
-        15px 7px;
-
-      text-align: center;
-
-      transition: .2s;
-
-      box-shadow:
-        0 4px 16px
-        rgba(15,23,42,.03);
-    }
-
-    .category:hover {
-      transform: translateY(-2px);
-
-      border-color: #c7d2fe;
-    }
-
-    .category-icon {
-      font-size: 25px;
-
-      margin-bottom: 6px;
-    }
-
-    .category-name {
-      font-size: 11px;
-
-      font-weight: 800;
-
-      color: #172033;
-    }
-
-    .category-hindi {
-      color: #94a3b8;
-
-      font-size: 9px;
-
-      margin-top: 2px;
-    }
-
-
-    /* =========================
-       FEATURE CARDS
-    ========================= */
-
-    .feature-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 12px;
-
-      margin-bottom: 27px;
-    }
-
-    .feature {
-      background: white;
-
-      border:
-        1px solid #e7eaf0;
-
-      border-radius: 16px;
-
-      padding: 18px;
-
-      box-shadow:
-        0 5px 18px
-        rgba(15,23,42,.04);
-    }
-
-    .feature-icon {
-      font-size: 28px;
-
-      margin-bottom: 7px;
-    }
-
-    .feature h3 {
-      color: #172554;
-
-      font-size: 15px;
-
-      margin-bottom: 5px;
-    }
-
-    .feature p {
-      color: #64748b;
-
-      font-size: 11px;
-
-      line-height: 1.6;
-    }
-
-
-    /* =========================
-       EMPTY JOB AREA
-    ========================= */
-
-    .jobs-empty {
-      background: white;
-
-      border:
-        1px dashed #cbd5e1;
-
-      border-radius: 17px;
-
-      padding: 30px 20px;
-
-      text-align: center;
-
-      margin-bottom: 25px;
-    }
-
-    .empty-icon {
-      font-size: 36px;
-
-      margin-bottom: 8px;
-    }
-
-    .jobs-empty h3 {
-      color: #172554;
-
-      font-size: 17px;
-
-      margin-bottom: 6px;
-    }
-
-    .jobs-empty p {
-      color: #64748b;
-
-      font-size: 12px;
-
-      line-height: 1.6;
-    }
-
-    .coming-badge {
-      display: inline-block;
-
-      margin-top: 11px;
-
-      background: #fff7ed;
-
-      color: #c2410c;
-
-      padding: 6px 12px;
-
-      border-radius: 20px;
-
-      font-size: 9px;
-
-      font-weight: 900;
-    }
-
-
-    /* =========================
-       IMPORTANT LINKS
-    ========================= */
-
-    .links {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
-      gap: 10px;
-
-      margin-bottom: 25px;
-    }
-
-    .link-card {
-      background: white;
-
-      border:
-        1px solid #e7eaf0;
-
-      border-radius: 13px;
-
-      padding: 14px;
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 10px;
-    }
-
-    .link-icon {
-      font-size: 23px;
-    }
-
-    .link-card strong {
-      display: block;
-
-      color: #172554;
-
-      font-size: 12px;
-    }
-
-    .link-card small {
-      color: #94a3b8;
-
-      font-size: 9px;
-    }
-
-
-    /* =========================
-       DISCLAIMER
-    ========================= */
-
-    .disclaimer {
-      text-align: center;
-
-      color: #94a3b8;
-
-      font-size: 9px;
-
-      line-height: 1.7;
-
-      padding:
-        5px 10px 15px;
-    }
-
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      background: #0f172a;
-
-      color: #cbd5e1;
-
-      text-align: center;
-
-      padding: 25px 15px;
-    }
-
-    footer strong {
-      color: white;
-
-      font-size: 14px;
-    }
-
-    footer p {
-      color: #94a3b8;
-
-      font-size: 9px;
-
-      margin-top: 5px;
-    }
-
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 700px) {
-
-      .hero h1 {
-        font-size: 26px;
-      }
-
-      .categories {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
-      .feature-grid {
-        grid-template-columns: 1fr;
-      }
-
-    }
-
-
-    @media (max-width: 420px) {
-
-      .logo {
-        font-size: 16px;
-      }
-
-      .hero {
-        padding: 25px 17px;
-      }
-
-      .hero h1 {
-        font-size: 24px;
-      }
-
-      .search-btn {
-        padding: 0 13px;
-      }
-
-    }
-
-  </style>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="Rajasthan Govt Vacancies - Latest Rajasthan Government Jobs, Recruitment, Admit Card, Results, Answer Key and Exam Updates.">
+
+<meta name="keywords"
+content="Rajasthan Govt Jobs, Rajasthan Vacancy, Rajasthan Government Jobs 2026, Rajasthan Recruitment, Sarkari Result Rajasthan">
+
+<title>Rajasthan Govt Vacancies | Latest Govt Jobs 2026</title>
+
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:Arial,"Noto Sans Devanagari",sans-serif;
+background:#f5f7fb;
+color:#172033;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+
+/* HEADER */
+
+header{
+background:#172554;
+color:white;
+position:sticky;
+top:0;
+z-index:100;
+box-shadow:0 3px 18px rgba(0,0,0,.12);
+}
+
+.header-inner{
+max-width:1150px;
+margin:auto;
+padding:14px 16px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+}
+
+.logo{
+font-size:19px;
+font-weight:900;
+line-height:1.2;
+color:white;
+}
+
+.logo span{
+display:block;
+color:#fbbf24;
+font-size:9px;
+margin-top:4px;
+letter-spacing:.3px;
+}
+
+.admin-btn{
+border:1px solid rgba(255,255,255,.35);
+color:white;
+padding:8px 11px;
+border-radius:8px;
+font-size:11px;
+font-weight:800;
+}
+
+
+/* CONTAINER */
+
+.container{
+max-width:1150px;
+margin:auto;
+padding:20px 14px 45px;
+}
+
+
+/* HERO */
+
+.hero{
+background:linear-gradient(135deg,#172554,#3155d9);
+color:white;
+border-radius:22px;
+padding:30px 21px;
+margin-bottom:18px;
+position:relative;
+overflow:hidden;
+}
+
+.hero::after{
+content:"📋";
+position:absolute;
+right:12px;
+bottom:-20px;
+font-size:115px;
+opacity:.07;
+}
+
+.hero-badge{
+display:inline-block;
+background:rgba(255,255,255,.13);
+padding:7px 11px;
+border-radius:20px;
+font-size:10px;
+font-weight:900;
+margin-bottom:13px;
+}
+
+.hero h1{
+font-size:29px;
+line-height:1.25;
+margin-bottom:10px;
+max-width:750px;
+}
+
+.hero h1 span{
+color:#fbbf24;
+}
+
+.hero p{
+color:#dbeafe;
+font-size:13px;
+line-height:1.7;
+max-width:700px;
+}
+
+
+/* SEARCH */
+
+.search-card{
+background:white;
+border-radius:15px;
+padding:12px;
+display:flex;
+gap:8px;
+box-shadow:0 7px 25px rgba(15,23,42,.06);
+margin-bottom:20px;
+}
+
+.search-card input{
+flex:1;
+min-width:0;
+border:1px solid #d8deea;
+outline:none;
+padding:12px 13px;
+border-radius:9px;
+font-size:13px;
+}
+
+.search-card input:focus{
+border-color:#3155d9;
+box-shadow:0 0 0 3px #eef2ff;
+}
+
+.search-btn{
+border:none;
+background:#3155d9;
+color:white;
+padding:0 17px;
+border-radius:9px;
+font-weight:800;
+cursor:pointer;
+}
+
+
+/* NOTICE */
+
+.notice{
+background:white;
+border-left:4px solid #ef4444;
+border-radius:12px;
+padding:13px 15px;
+margin-bottom:24px;
+box-shadow:0 5px 20px rgba(15,23,42,.04);
+}
+
+.notice-title{
+color:#dc2626;
+font-size:11px;
+font-weight:900;
+margin-bottom:3px;
+}
+
+.notice-text{
+color:#475569;
+font-size:12px;
+line-height:1.6;
+}
+
+
+/* SECTION HEADER */
+
+.section-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:12px;
+}
+
+.section-header h2{
+color:#172554;
+font-size:19px;
+}
+
+.section-header span{
+color:#64748b;
+font-size:10px;
+}
+
+
+/* CATEGORIES */
+
+.categories{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin-bottom:27px;
+}
+
+.category{
+background:white;
+border:1px solid #e7eaf0;
+border-radius:14px;
+padding:15px 7px;
+text-align:center;
+transition:.2s;
+box-shadow:0 4px 16px rgba(15,23,42,.03);
+}
+
+.category:hover{
+transform:translateY(-2px);
+border-color:#c7d2fe;
+}
+
+.category-icon{
+font-size:25px;
+margin-bottom:6px;
+}
+
+.category-name{
+font-size:11px;
+font-weight:800;
+color:#172033;
+}
+
+.category-hindi{
+color:#94a3b8;
+font-size:9px;
+margin-top:2px;
+}
+
+
+/* =========================
+   VACANCY AREA
+========================= */
+
+.jobs{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:14px;
+margin-bottom:28px;
+}
+
+.job-card{
+background:white;
+border:1px solid #e5e7eb;
+border-radius:17px;
+padding:18px;
+box-shadow:0 5px 18px rgba(15,23,42,.04);
+}
+
+.job-top{
+display:flex;
+justify-content:space-between;
+gap:10px;
+align-items:flex-start;
+margin-bottom:10px;
+}
+
+.job-title{
+font-size:16px;
+font-weight:900;
+color:#172554;
+line-height:1.4;
+}
+
+.new-badge{
+background:#ecfdf5;
+color:#047857;
+padding:5px 8px;
+border-radius:20px;
+font-size:8px;
+font-weight:900;
+white-space:nowrap;
+}
+
+.job-department{
+font-size:11px;
+color:#64748b;
+margin-bottom:14px;
+}
+
+.job-info{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px;
+margin-bottom:15px;
+}
+
+.info{
+background:#f8fafc;
+border-radius:9px;
+padding:9px;
+}
+
+.info-label{
+display:block;
+font-size:8px;
+color:#94a3b8;
+margin-bottom:3px;
+}
+
+.info-value{
+font-size:10px;
+font-weight:800;
+color:#334155;
+}
+
+.job-buttons{
+display:flex;
+gap:8px;
+}
+
+.job-button{
+flex:1;
+text-align:center;
+padding:10px 8px;
+border-radius:9px;
+font-size:10px;
+font-weight:900;
+}
+
+.apply{
+background:#3155d9;
+color:white;
+}
+
+.notification{
+background:#eef2ff;
+color:#3155d9;
+}
+
+.job-description{
+color:#64748b;
+font-size:10px;
+line-height:1.6;
+margin-bottom:14px;
+}
+
+.jobs-loading{
+background:white;
+border:1px dashed #cbd5e1;
+border-radius:17px;
+padding:30px;
+text-align:center;
+color:#64748b;
+font-size:12px;
+grid-column:1/-1;
+}
+
+.jobs-empty{
+background:white;
+border:1px dashed #cbd5e1;
+border-radius:17px;
+padding:30px 20px;
+text-align:center;
+margin-bottom:25px;
+grid-column:1/-1;
+}
+
+.empty-icon{
+font-size:36px;
+margin-bottom:8px;
+}
+
+.jobs-empty h3{
+color:#172554;
+font-size:17px;
+margin-bottom:6px;
+}
+
+.jobs-empty p{
+color:#64748b;
+font-size:12px;
+line-height:1.6;
+}
+
+.coming-badge{
+display:inline-block;
+margin-top:11px;
+background:#fff7ed;
+color:#c2410c;
+padding:6px 12px;
+border-radius:20px;
+font-size:9px;
+font-weight:900;
+}
+
+
+/* FEATURE */
+
+.feature-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin-bottom:27px;
+}
+
+.feature{
+background:white;
+border:1px solid #e7eaf0;
+border-radius:16px;
+padding:18px;
+box-shadow:0 5px 18px rgba(15,23,42,.04);
+}
+
+.feature-icon{
+font-size:28px;
+margin-bottom:7px;
+}
+
+.feature h3{
+color:#172554;
+font-size:15px;
+margin-bottom:5px;
+}
+
+.feature p{
+color:#64748b;
+font-size:11px;
+line-height:1.6;
+}
+
+
+/* LINKS */
+
+.links{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-bottom:25px;
+}
+
+.link-card{
+background:white;
+border:1px solid #e7eaf0;
+border-radius:13px;
+padding:14px;
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.link-icon{
+font-size:23px;
+}
+
+.link-card strong{
+display:block;
+color:#172554;
+font-size:12px;
+}
+
+.link-card small{
+color:#94a3b8;
+font-size:9px;
+}
+
+
+/* DISCLAIMER */
+
+.disclaimer{
+text-align:center;
+color:#94a3b8;
+font-size:9px;
+line-height:1.7;
+padding:5px 10px 15px;
+}
+
+
+/* FOOTER */
+
+footer{
+background:#0f172a;
+color:#cbd5e1;
+text-align:center;
+padding:25px 15px;
+}
+
+footer strong{
+color:white;
+font-size:14px;
+}
+
+footer p{
+color:#94a3b8;
+font-size:9px;
+margin-top:5px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.categories{
+grid-template-columns:repeat(2,1fr);
+}
+
+.feature-grid{
+grid-template-columns:1fr;
+}
+
+.jobs{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:26px;
+}
+
+}
+
+
+@media(max-width:420px){
+
+.logo{
+font-size:16px;
+}
+
+.hero{
+padding:25px 17px;
+}
+
+.hero h1{
+font-size:24px;
+}
+
+.search-btn{
+padding:0 13px;
+}
+
+.job-info{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+</style>
 
 </head>
 
@@ -655,567 +581,1047 @@
 <body>
 
 
-<!-- =================================
-     HEADER
-================================= -->
+<!-- HEADER -->
 
 <header>
 
-  <div class="header-inner">
+<div class="header-inner">
 
-    <a
-      href="/"
-      class="logo">
+<a href="/" class="logo">
 
-      RAJASTHAN GOVT VACANCIES
+RAJASTHAN GOVT VACANCIES
 
-      <span>
-        Latest Govt Jobs & Exam Updates
-      </span>
+<span>
+Latest Govt Jobs & Exam Updates
+</span>
 
-    </a>
+</a>
 
+<a
+href="/admin.html"
+class="admin-btn">
 
-    <a
-      href="/admin.html"
-      class="admin-btn">
+Admin
 
-      Admin
+</a>
 
-    </a>
-
-  </div>
+</div>
 
 </header>
 
 
-
-<!-- =================================
-     MAIN
-================================= -->
-
 <main class="container">
 
 
-  <!-- HERO -->
+<!-- HERO -->
 
-  <section class="hero">
+<section class="hero">
 
-    <div class="hero-badge">
+<div class="hero-badge">
 
-      🇮🇳 RAJASTHAN GOVERNMENT JOB PORTAL
+🇮🇳 RAJASTHAN GOVERNMENT JOB PORTAL
 
-    </div>
+</div>
 
-    <h1>
+<h1>
 
-      Latest Rajasthan Govt
-      <span>Jobs & Vacancies</span>
+Latest Rajasthan Govt
+<span>Jobs & Vacancies</span>
 
-    </h1>
+</h1>
 
-    <p>
+<p>
 
-      राजस्थान की सरकारी नौकरी,
-      भर्ती, Admit Card, Result,
-      Answer Key और Exam Updates
-      एक ही जगह।
+राजस्थान की सरकारी नौकरी,
+भर्ती, Admit Card, Result,
+Answer Key और Exam Updates
+एक ही जगह।
 
-    </p>
+</p>
 
-  </section>
+</section>
 
 
+<!-- SEARCH -->
 
-  <!-- SEARCH -->
+<div class="search-card">
 
-  <div class="search-card">
+<input
+id="searchInput"
+type="search"
+placeholder="🔎 Search jobs, exams, departments...">
 
-    <input
-      id="searchInput"
-      type="search"
-      placeholder="🔎 Search jobs, exams, departments...">
+<button
+class="search-btn"
+onclick="searchJobs()">
 
-    <button
-      class="search-btn"
-      onclick="searchSite()">
+Search
 
-      Search
+</button>
 
-    </button>
+</div>
 
-  </div>
 
+<!-- NOTICE -->
 
+<section class="notice">
 
-  <!-- NOTICE -->
+<div class="notice-title">
+🔴 IMPORTANT NOTICE
+</div>
 
-  <section class="notice">
+<div class="notice-text">
+नई Rajasthan Government vacancies,
+admit cards और results की जानकारी
+यहाँ अपडेट की जाएगी।
+</div>
 
-    <div class="notice-title">
+</section>
 
-      🔴 IMPORTANT NOTICE
 
-    </div>
+<!-- CATEGORIES -->
 
-    <div class="notice-text">
+<div class="section-header">
 
-      नई Rajasthan Government vacancies,
-      admit cards और results की जानकारी
-      यहाँ अपडेट की जाएगी।
+<h2>
+Explore Categories
+</h2>
 
-    </div>
+<span>
+Browse Updates
+</span>
 
-  </section>
+</div>
 
 
+<section class="categories">
 
-  <!-- =================================
-       CATEGORIES
-  ================================= -->
+<a href="#latest" class="category">
 
-  <div class="section-header">
+<div class="category-icon">🔥</div>
 
-    <h2>
-      Explore Categories
-    </h2>
+<div class="category-name">
+Latest Jobs
+</div>
 
-    <span>
-      Browse Updates
-    </span>
+<div class="category-hindi">
+नई भर्तियां
+</div>
 
-  </div>
+</a>
 
 
-  <section class="categories">
+<a href="#latest" class="category">
 
+<div class="category-icon">📝</div>
 
-    <a href="#latest"
-       class="category">
+<div class="category-name">
+Recruitment
+</div>
 
-      <div class="category-icon">
-        🔥
-      </div>
+<div class="category-hindi">
+भर्ती
+</div>
 
-      <div class="category-name">
-        Latest Jobs
-      </div>
+</a>
 
-      <div class="category-hindi">
-        नई भर्तियां
-      </div>
 
-    </a>
+<a href="#admit" class="category">
 
+<div class="category-icon">🎫</div>
 
-    <a href="#latest"
-       class="category">
+<div class="category-name">
+Admit Card
+</div>
 
-      <div class="category-icon">
-        📝
-      </div>
+<div class="category-hindi">
+प्रवेश पत्र
+</div>
 
-      <div class="category-name">
-        Recruitment
-      </div>
+</a>
 
-      <div class="category-hindi">
-        भर्ती
-      </div>
 
-    </a>
+<a href="#result" class="category">
 
+<div class="category-icon">📊</div>
 
-    <a href="#admit"
-       class="category">
+<div class="category-name">
+Results
+</div>
 
-      <div class="category-icon">
-        🎫
-      </div>
+<div class="category-hindi">
+परिणाम
+</div>
 
-      <div class="category-name">
-        Admit Card
-      </div>
+</a>
 
-      <div class="category-hindi">
-        प्रवेश पत्र
-      </div>
 
-    </a>
+<a href="#answer" class="category">
 
+<div class="category-icon">🔑</div>
 
-    <a href="#result"
-       class="category">
+<div class="category-name">
+Answer Key
+</div>
 
-      <div class="category-icon">
-        📊
-      </div>
+<div class="category-hindi">
+उत्तर कुंजी
+</div>
 
-      <div class="category-name">
-        Results
-      </div>
+</a>
 
-      <div class="category-hindi">
-        परिणाम
-      </div>
 
-    </a>
+<a href="#syllabus" class="category">
 
+<div class="category-icon">📚</div>
 
-    <a href="#answer"
-       class="category">
+<div class="category-name">
+Syllabus
+</div>
 
-      <div class="category-icon">
-        🔑
-      </div>
+<div class="category-hindi">
+पाठ्यक्रम
+</div>
 
-      <div class="category-name">
-        Answer Key
-      </div>
+</a>
 
-      <div class="category-hindi">
-        उत्तर कुंजी
-      </div>
 
-    </a>
+<a href="#calendar" class="category">
 
+<div class="category-icon">📅</div>
 
-    <a href="#syllabus"
-       class="category">
+<div class="category-name">
+Exam Calendar
+</div>
 
-      <div class="category-icon">
-        📚
-      </div>
+<div class="category-hindi">
+परीक्षा कैलेंडर
+</div>
 
-      <div class="category-name">
-        Syllabus
-      </div>
+</a>
 
-      <div class="category-hindi">
-        पाठ्यक्रम
-      </div>
 
-    </a>
+<a href="#updates" class="category">
 
+<div class="category-icon">📢</div>
 
-    <a href="#calendar"
-       class="category">
+<div class="category-name">
+Updates
+</div>
 
-      <div class="category-icon">
-        📅
-      </div>
+<div class="category-hindi">
+महत्वपूर्ण सूचना
+</div>
 
-      <div class="category-name">
-        Exam Calendar
-      </div>
+</a>
 
-      <div class="category-hindi">
-        परीक्षा कैलेंडर
-      </div>
+</section>
 
-    </a>
 
+<!-- LATEST VACANCIES -->
 
-    <a href="#updates"
-       class="category">
+<div
+class="section-header"
+id="latest">
 
-      <div class="category-icon">
-        📢
-      </div>
+<h2>
+🔥 Latest Vacancies
+</h2>
 
-      <div class="category-name">
-        Updates
-      </div>
+<span id="vacancyCount">
+Loading...
+</span>
 
-      <div class="category-hindi">
-        महत्वपूर्ण सूचना
-      </div>
+</div>
 
-    </a>
 
+<section
+class="jobs"
+id="jobsContainer">
 
-  </section>
+<div class="jobs-loading">
 
+⏳ Loading latest vacancies...
 
+</div>
 
-  <!-- =================================
-       LATEST VACANCIES
-  ================================= -->
+</section>
 
-  <div
-    class="section-header"
-    id="latest">
 
-    <h2>
-      🔥 Latest Vacancies
-    </h2>
+<!-- FEATURES -->
 
-    <span>
-      Updated Regularly
-    </span>
+<section class="feature-grid">
 
-  </div>
 
+<div
+class="feature"
+id="admit">
 
-  <section class="jobs-empty">
+<div class="feature-icon">
+🎫
+</div>
 
-    <div class="empty-icon">
-      📋
-    </div>
+<h3>
+Admit Card
+</h3>
 
-    <h3>
-      Latest vacancies will appear here
-    </h3>
+<p>
+Rajasthan government exams के
+latest admit card updates.
+</p>
 
-    <p>
+</div>
 
-      नई government vacancies publish
-      होने के बाद यहाँ job details,
-      eligibility, important dates और
-      official apply link दिखाई देगा।
 
-    </p>
+<div
+class="feature"
+id="result">
 
-    <div class="coming-badge">
+<div class="feature-icon">
+📊
+</div>
 
-      UPDATES COMING SOON
+<h3>
+Results
+</h3>
 
-    </div>
+<p>
+Government recruitment results
+और merit list updates.
+</p>
 
-  </section>
+</div>
 
 
+<div
+class="feature"
+id="answer">
 
-  <!-- =================================
-       FEATURE SECTIONS
-  ================================= -->
+<div class="feature-icon">
+🔑
+</div>
 
-  <section class="feature-grid">
+<h3>
+Answer Key
+</h3>
 
+<p>
+Exams की answer keys और
+related official updates.
+</p>
 
-    <div
-      class="feature"
-      id="admit">
+</div>
 
-      <div class="feature-icon">
-        🎫
-      </div>
 
-      <h3>
-        Admit Card
-      </h3>
+</section>
 
-      <p>
-        Rajasthan government exams के
-        latest admit card updates.
-      </p>
 
-    </div>
+<!-- MORE INFORMATION -->
 
+<div
+class="section-header"
+id="updates">
 
-    <div
-      class="feature"
-      id="result">
+<h2>
+📚 More Information
+</h2>
 
-      <div class="feature-icon">
-        📊
-      </div>
+</div>
 
-      <h3>
-        Results
-      </h3>
 
-      <p>
-        Government recruitment results
-        और merit list updates.
-      </p>
+<section class="links">
 
-    </div>
 
+<div
+class="link-card"
+id="syllabus">
 
-    <div
-      class="feature"
-      id="answer">
+<div class="link-icon">
+📚
+</div>
 
-      <div class="feature-icon">
-        🔑
-      </div>
+<div>
 
-      <h3>
-        Answer Key
-      </h3>
+<strong>
+Syllabus
+</strong>
 
-      <p>
-        Exams की answer keys और
-        related official updates.
-      </p>
+<small>
+Exam syllabus & pattern
+</small>
 
-    </div>
+</div>
 
+</div>
 
-  </section>
 
+<div
+class="link-card"
+id="calendar">
 
+<div class="link-icon">
+📅
+</div>
 
-  <!-- =================================
-       MORE INFORMATION
-  ================================= -->
+<div>
 
-  <div
-    class="section-header"
-    id="updates">
+<strong>
+Exam Calendar
+</strong>
 
-    <h2>
-      📚 More Information
-    </h2>
+<small>
+Important exam dates
+</small>
 
-  </div>
+</div>
 
+</div>
 
-  <section class="links">
 
+</section>
 
-    <div
-      class="link-card"
-      id="syllabus">
 
-      <div class="link-icon">
-        📚
-      </div>
+<div class="disclaimer">
 
-      <div>
+Rajasthan Govt Vacancies is an
+independent information portal and
+is not affiliated with any Government
+department.
 
-        <strong>
-          Syllabus
-        </strong>
+<br>
 
-        <small>
-          Exam syllabus & pattern
-        </small>
+हमेशा official notification और
+official recruitment website पर
+information verify करें।
 
-      </div>
-
-    </div>
-
-
-    <div
-      class="link-card"
-      id="calendar">
-
-      <div class="link-icon">
-        📅
-      </div>
-
-      <div>
-
-        <strong>
-          Exam Calendar
-        </strong>
-
-        <small>
-          Important exam dates
-        </small>
-
-      </div>
-
-    </div>
-
-
-  </section>
-
-
-
-  <!-- DISCLAIMER -->
-
-  <div class="disclaimer">
-
-    Rajasthan Govt Vacancies is an
-    independent information portal and
-    is not affiliated with any Government
-    department.
-
-    <br>
-
-    हमेशा official notification और
-    official recruitment website पर
-    information verify करें।
-
-  </div>
+</div>
 
 
 </main>
 
 
-
-<!-- =================================
-     FOOTER
-================================= -->
-
 <footer>
 
-  <strong>
-    RAJASTHAN GOVT VACANCIES
-  </strong>
+<strong>
+RAJASTHAN GOVT VACANCIES
+</strong>
 
-  <p>
-    Latest Govt Jobs • Recruitment • Admit Card •
-    Results • Answer Key
-  </p>
+<p>
+Latest Govt Jobs • Recruitment • Admit Card •
+Results • Answer Key
+</p>
 
-  <p>
-    © 2026 Rajasthan Govt Vacancies
-  </p>
+<p>
+© 2026 Rajasthan Govt Vacancies
+</p>
 
 </footer>
 
 
-
 <script>
 
-  function searchSite() {
 
-    const query =
-      document
-        .getElementById("searchInput")
-        .value
-        .trim()
-        .toLowerCase();
+// ==================================================
+// API
+// ==================================================
 
-
-    if (!query) {
-
-      alert(
-        "Please enter a job or exam name."
-      );
-
-      return;
-
-    }
+const API_URL =
+"https://rajasthangovtvacancie.onrender.com";
 
 
-    alert(
-      "Search system will be connected to live vacancies soon."
-    );
+// ==================================================
+// DATA
+// ==================================================
 
-  }
+let vacancies = [];
 
 
-  document
-    .getElementById("searchInput")
-    .addEventListener(
-      "keydown",
-      function(event) {
+// ==================================================
+// LOAD VACANCIES
+// ==================================================
 
-        if (
-          event.key === "Enter"
-        ) {
+async function loadVacancies(){
 
-          searchSite();
+const container =
+document.getElementById(
+"jobsContainer"
+);
 
-        }
+const count =
+document.getElementById(
+"vacancyCount"
+);
 
-      }
-    );
+
+try{
+
+
+const response =
+await fetch(
+API_URL +
+"/api/vacancies"
+);
+
+
+const result =
+await response.json();
+
+
+console.log(
+"Vacancies API:",
+result
+);
+
+
+if(
+!response.ok ||
+!result.success
+){
+
+throw new Error(
+result.message ||
+"Could not load vacancies"
+);
+
+}
+
+
+vacancies =
+result.data || [];
+
+
+count.textContent =
+vacancies.length +
+" Vacancies";
+
+
+renderVacancies(
+vacancies
+);
+
+
+}catch(error){
+
+console.error(
+"Vacancy loading error:",
+error
+);
+
+
+count.textContent =
+"Unable to load";
+
+
+container.innerHTML = `
+
+<div class="jobs-empty">
+
+<div class="empty-icon">
+⚠️
+</div>
+
+<h3>
+Vacancies could not be loaded
+</h3>
+
+<p>
+Please try again later.
+</p>
+
+</div>
+
+`;
+
+}
+
+}
+
+
+// ==================================================
+// RENDER VACANCIES
+// ==================================================
+
+function renderVacancies(data){
+
+const container =
+document.getElementById(
+"jobsContainer"
+);
+
+
+if(!data.length){
+
+container.innerHTML = `
+
+<div class="jobs-empty">
+
+<div class="empty-icon">
+📋
+</div>
+
+<h3>
+Latest vacancies will appear here
+</h3>
+
+<p>
+नई government vacancies publish
+होने के बाद यहाँ job details,
+eligibility, important dates और
+official apply link दिखाई देगा।
+</p>
+
+<div class="coming-badge">
+UPDATES COMING SOON
+</div>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+container.innerHTML =
+data.map(
+(job,index) => {
+
+
+const title =
+escapeHTML(
+job.title ||
+"Government Vacancy"
+);
+
+
+const department =
+escapeHTML(
+job.department ||
+"Rajasthan Government"
+);
+
+
+const posts =
+escapeHTML(
+job.total_posts ||
+"-"
+);
+
+
+const qualification =
+escapeHTML(
+job.qualification ||
+"-"
+);
+
+
+const age =
+escapeHTML(
+job.age_limit ||
+"-"
+);
+
+
+const salary =
+escapeHTML(
+job.salary ||
+"-"
+);
+
+
+const lastDate =
+formatDate(
+job.last_date
+);
+
+
+const description =
+escapeHTML(
+job.description ||
+"Latest Rajasthan Government vacancy."
+);
+
+
+const applyLink =
+safeURL(
+job.apply_link
+);
+
+
+const notificationLink =
+safeURL(
+job.notification_link
+);
+
+
+return `
+
+<article class="job-card">
+
+
+<div class="job-top">
+
+<div class="job-title">
+
+${title}
+
+</div>
+
+<div class="new-badge">
+${index === 0 ? "LATEST" : "JOB"}
+</div>
+
+</div>
+
+
+<div class="job-department">
+
+🏛️ ${department}
+
+</div>
+
+
+<div class="job-info">
+
+
+<div class="info">
+
+<span class="info-label">
+TOTAL POSTS
+</span>
+
+<span class="info-value">
+${posts}
+</span>
+
+</div>
+
+
+<div class="info">
+
+<span class="info-label">
+QUALIFICATION
+</span>
+
+<span class="info-value">
+${qualification}
+</span>
+
+</div>
+
+
+<div class="info">
+
+<span class="info-label">
+AGE LIMIT
+</span>
+
+<span class="info-value">
+${age}
+</span>
+
+</div>
+
+
+<div class="info">
+
+<span class="info-label">
+LAST DATE
+</span>
+
+<span class="info-value">
+${lastDate}
+</span>
+
+</div>
+
+
+</div>
+
+
+<p class="job-description">
+
+${description}
+
+</p>
+
+
+<div class="job-buttons">
+
+${
+applyLink
+?
+`
+
+<a
+href="${applyLink}"
+target="_blank"
+rel="noopener noreferrer"
+class="job-button apply">
+
+Apply Now →
+
+</a>
+
+`
+:
+`
+<div
+class="job-button apply"
+style="opacity:.5">
+
+Apply Soon
+
+</div>
+`
+}
+
+
+${
+notificationLink
+?
+`
+
+<a
+href="${notificationLink}"
+target="_blank"
+rel="noopener noreferrer"
+class="job-button notification">
+
+Notification
+
+</a>
+
+`
+:
+""
+}
+
+
+</div>
+
+
+</article>
+
+`;
+
+}
+).join("");
+
+}
+
+
+// ==================================================
+// SEARCH
+// ==================================================
+
+function searchJobs(){
+
+const input =
+document.getElementById(
+"searchInput"
+);
+
+const query =
+input.value
+.trim()
+.toLowerCase();
+
+
+if(!query){
+
+renderVacancies(
+vacancies
+);
+
+return;
+
+}
+
+
+const filtered =
+vacancies.filter(
+job => {
+
+
+const text = [
+
+job.title,
+job.department,
+job.qualification,
+job.age_limit,
+job.salary,
+job.job_type,
+job.description
+
+]
+.filter(Boolean)
+.join(" ")
+.toLowerCase();
+
+
+return text.includes(
+query
+);
+
+}
+);
+
+
+const count =
+document.getElementById(
+"vacancyCount"
+);
+
+count.textContent =
+filtered.length +
+" Found";
+
+
+renderVacancies(
+filtered
+);
+
+
+document
+.getElementById("latest")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+// ==================================================
+// ENTER SEARCH
+// ==================================================
+
+document
+.getElementById(
+"searchInput"
+)
+.addEventListener(
+"keydown",
+function(event){
+
+if(
+event.key === "Enter"
+){
+
+searchJobs();
+
+}
+
+}
+);
+
+
+// ==================================================
+// FORMAT DATE
+// ==================================================
+
+function formatDate(value){
+
+if(!value){
+return "-";
+}
+
+try{
+
+const date =
+new Date(value);
+
+if(
+isNaN(
+date.getTime()
+)
+){
+
+return value;
+
+}
+
+return date.toLocaleDateString(
+"en-IN",
+{
+day:"2-digit",
+month:"2-digit",
+year:"numeric"
+}
+);
+
+}catch{
+
+return value;
+
+}
+
+}
+
+
+// ==================================================
+// SAFE URL
+// ==================================================
+
+function safeURL(value){
+
+if(!value){
+return "";
+}
+
+try{
+
+const url =
+new URL(value);
+
+if(
+url.protocol === "http:" ||
+url.protocol === "https:"
+){
+
+return escapeHTML(
+url.href
+);
+
+}
+
+return "";
+
+}catch{
+
+return "";
+
+}
+
+}
+
+
+// ==================================================
+// ESCAPE HTML
+// ==================================================
+
+function escapeHTML(value){
+
+const div =
+document.createElement(
+"div"
+);
+
+div.textContent =
+String(value);
+
+return div.innerHTML;
+
+}
+
+
+// ==================================================
+// START
+// ==================================================
+
+loadVacancies();
+
 
 </script>
 
