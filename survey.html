@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Take Survey</title>
+
+<link rel="stylesheet"
+href="css/style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="logo">
+Janmat Survey
+</div>
+
+<a href="index.html">
+Home
+</a>
+
+</header>
+
+
+<div class="form-container">
+
+<div class="form-card">
+
+<h1>Public Opinion Survey</h1>
+
+<p>
+Please answer honestly. Required fields are marked with *.
+</p>
+
+
+<form id="surveyForm">
+
+
+<div class="form-group">
+
+<label>
+Age Group *
+</label>
+
+<select id="ageGroup" required>
+
+<option value="">
+Select age group
+</option>
+
+<option>18-25</option>
+<option>26-35</option>
+<option>36-45</option>
+<option>46-60</option>
+<option>60+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Gender
+</label>
+
+<select id="gender">
+
+<option>Prefer not to say</option>
+<option>Male</option>
+<option>Female</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+State *
+</label>
+
+<input
+type="text"
+id="state"
+placeholder="Enter state"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+District *
+</label>
+
+<input
+type="text"
+id="district"
+placeholder="Enter district"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Constituency *
+</label>
+
+<input
+type="text"
+id="constituency"
+placeholder="Enter constituency"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Village / Ward / Area
+</label>
+
+<input
+type="text"
+id="area"
+placeholder="Optional">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Most Important Issue *
+</label>
+
+<select id="importantIssue" required>
+
+<option value="">
+Select an issue
+</option>
+
+<option>Employment</option>
+<option>Education</option>
+<option>Healthcare</option>
+<option>Roads & Infrastructure</option>
+<option>Agriculture</option>
+<option>Water</option>
+<option>Electricity</option>
+<option>Law & Order</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Preferred Party *
+</label>
+
+<select id="preferredParty" required>
+
+<option value="">
+Select party
+</option>
+
+<option>Party A</option>
+<option>Party B</option>
+<option>Party C</option>
+<option>Independent</option>
+<option>Undecided</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Preferred Candidate *
+</label>
+
+<input
+type="text"
+id="candidateChoice"
+placeholder="Candidate name / Undecided"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+How likely are you to vote? *
+</label>
+
+<select id="votingLikelihood" required>
+
+<option value="">
+Select
+</option>
+
+<option>Very likely</option>
+<option>Likely</option>
+<option>Not sure</option>
+<option>Unlikely</option>
+
+</select>
+
+</div>
+
+
+<button
+type="submit"
+class="submit-btn">
+
+Submit Survey
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+
+<script src="js/survey.js"></script>
+
+</body>
+
+</html>
