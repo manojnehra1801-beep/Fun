@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0">
+
+<title>Add Vacancy | Rajasthan Govt Vacancies</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,"Noto Sans Devanagari",sans-serif;
+  background:#f5f7fb;
+  color:#172033;
+}
+
+.header{
+  background:#172554;
+  color:white;
+  padding:15px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand{
+  font-size:18px;
+  font-weight:900;
+}
+
+.back{
+  color:white;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:700;
+}
+
+.container{
+  max-width:850px;
+  margin:auto;
+  padding:25px 14px 50px;
+}
+
+.card{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 5px 20px rgba(15,23,42,.05);
+}
+
+h1{
+  margin:0;
+  color:#172554;
+  font-size:25px;
+}
+
+.subtitle{
+  color:#64748b;
+  font-size:12px;
+  margin:6px 0 25px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.field{
+  margin-bottom:15px;
+}
+
+.full{
+  grid-column:1 / -1;
+}
+
+label{
+  display:block;
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:7px;
+  color:#334155;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #d8deea;
+  border-radius:9px;
+  outline:none;
+  font-size:13px;
+  background:white;
+}
+
+textarea{
+  min-height:130px;
+  resize:vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:#3155d9;
+  box-shadow:0 0 0 3px #eef2ff;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  margin-top:8px;
+}
+
+button{
+  border:none;
+  border-radius:10px;
+  padding:13px 18px;
+  cursor:pointer;
+  font-weight:800;
+}
+
+.save{
+  background:#3155d9;
+  color:white;
+  flex:1;
+}
+
+.clear{
+  background:#e2e8f0;
+  color:#334155;
+}
+
+button:disabled{
+  opacity:.6;
+  cursor:wait;
+}
+
+.message{
+  display:none;
+  padding:12px;
+  border-radius:9px;
+  margin-bottom:18px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.success{
+  background:#ecfdf5;
+  color:#047857;
+}
+
+.error{
+  background:#fff1f2;
+  color:#be123c;
+}
+
+@media(max-width:650px){
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .full{
+    grid-column:auto;
+  }
+
+  .actions{
+    flex-direction:column;
+  }
+
+  .brand{
+    font-size:15px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<header class="header">
+
+<div class="brand">
+🏛️ Rajasthan Govt Vacancies
+</div>
+
+<a
+href="/admin-dashboard.html"
+class="back">
+
+← Dashboard
+
+</a>
+
+</header>
+
+
+<main class="container">
+
+<div class="card">
+
+<h1>
+➕ Add New Vacancy
+</h1>
+
+<div class="subtitle">
+Publish a new Rajasthan Government job vacancy
+</div>
+
+
+<div
+id="success"
+class="message success">
+</div>
+
+
+<div
+id="error"
+class="message error">
+</div>
+
+
+<form id="vacancyForm">
+
+
+<div class="grid">
+
+
+<div class="field">
+
+<label>
+Job Title *
+</label>
+
+<input
+type="text"
+id="title"
+placeholder="e.g. Rajasthan Police Constable"
+required>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Department
+</label>
+
+<input
+type="text"
+id="department"
+placeholder="e.g. Rajasthan Police">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Total Posts
+</label>
+
+<input
+type="text"
+id="total_posts"
+placeholder="e.g. 5000">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Qualification
+</label>
+
+<input
+type="text"
+id="qualification"
+placeholder="e.g. 12th Pass">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Age Limit
+</label>
+
+<input
+type="text"
+id="age_limit"
+placeholder="e.g. 18-28 Years">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Salary
+</label>
+
+<input
+type="text"
+id="salary"
+placeholder="e.g. ₹25,000 - ₹35,000">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Start Date
+</label>
+
+<input
+type="date"
+id="start_date">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Last Date
+</label>
+
+<input
+type="date"
+id="last_date">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Job Type
+</label>
+
+<select id="job_type">
+
+<option value="">
+Select Job Type
+</option>
+
+<option value="Government">
+Government
+</option>
+
+<option value="Permanent">
+Permanent
+</option>
+
+<option value="Contract">
+Contract
+</option>
+
+<option value="Temporary">
+Temporary
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Notification Link
+</label>
+
+<input
+type="url"
+id="notification_link"
+placeholder="https://...">
+
+</div>
+
+
+<div class="field full">
+
+<label>
+Apply Link
+</label>
+
+<input
+type="url"
+id="apply_link"
+placeholder="https://...">
+
+</div>
+
+
+<div class="field full">
+
+<label>
+Job Description
+</label>
+
+<textarea
+id="description"
+placeholder="Enter vacancy details, eligibility, selection process, important instructions etc."></textarea>
+
+</div>
+
+
+</div>
+
+
+<div class="actions">
+
+<button
+type="submit"
+class="save"
+id="saveBtn">
+
+🚀 Publish Vacancy
+
+</button>
+
+<button
+type="button"
+class="clear"
+onclick="clearForm()">
+
+Clear
+
+</button>
+
+</div>
+
+
+</form>
+
+</div>
+
+</main>
+
+
+<script>
+
+
+// ============================================
+// LOGIN CHECK
+// ============================================
+
+if(
+sessionStorage.getItem(
+"janmatAdminLoggedIn"
+)!=="true"
+){
+
+window.location.href =
+"/admin.html";
+
+}
+
+
+// ============================================
+// API
+// ============================================
+
+const API_URL =
+"https://rajasthangovtvacancie.onrender.com";
+
+
+// ============================================
+// ELEMENTS
+// ============================================
+
+const form =
+document.getElementById(
+"vacancyForm"
+);
+
+const saveBtn =
+document.getElementById(
+"saveBtn"
+);
+
+const successBox =
+document.getElementById(
+"success"
+);
+
+const errorBox =
+document.getElementById(
+"error"
+);
+
+
+// ============================================
+// SUBMIT
+// ============================================
+
+form.addEventListener(
+"submit",
+async function(event){
+
+event.preventDefault();
+
+successBox.style.display =
+"none";
+
+errorBox.style.display =
+"none";
+
+
+const vacancy = {
+
+title:
+document.getElementById(
+"title"
+).value.trim(),
+
+department:
+document.getElementById(
+"department"
+).value.trim(),
+
+total_posts:
+document.getElementById(
+"total_posts"
+).value.trim(),
+
+qualification:
+document.getElementById(
+"qualification"
+).value.trim(),
+
+age_limit:
+document.getElementById(
+"age_limit"
+).value.trim(),
+
+salary:
+document.getElementById(
+"salary"
+).value.trim(),
+
+start_date:
+document.getElementById(
+"start_date"
+).value || null,
+
+last_date:
+document.getElementById(
+"last_date"
+).value || null,
+
+job_type:
+document.getElementById(
+"job_type"
+).value,
+
+notification_link:
+document.getElementById(
+"notification_link"
+).value.trim(),
+
+apply_link:
+document.getElementById(
+"apply_link"
+).value.trim(),
+
+description:
+document.getElementById(
+"description"
+).value.trim()
+
+};
+
+
+saveBtn.disabled =
+true;
+
+saveBtn.textContent =
+"Publishing...";
+
+
+try{
+
+
+const response =
+await fetch(
+API_URL +
+"/api/admin/vacancies",
+{
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/json"
+},
+
+body:
+JSON.stringify(vacancy)
+
+}
+);
+
+
+const result =
+await response.json();
+
+
+console.log(
+"Vacancy response:",
+result
+);
+
+
+if(
+!response.ok ||
+!result.success
+){
+
+throw new Error(
+result.message ||
+"Vacancy could not be added."
+);
+
+}
+
+
+successBox.textContent =
+"✅ Vacancy successfully published!";
+
+successBox.style.display =
+"block";
+
+
+form.reset();
+
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+
+}catch(error){
+
+console.error(error);
+
+errorBox.textContent =
+"❌ "+
+error.message;
+
+errorBox.style.display =
+"block";
+
+}
+
+
+saveBtn.disabled =
+false;
+
+saveBtn.textContent =
+"🚀 Publish Vacancy";
+
+});
+
+
+// ============================================
+// CLEAR
+// ============================================
+
+function clearForm(){
+
+form.reset();
+
+successBox.style.display =
+"none";
+
+errorBox.style.display =
+"none";
+
+}
+
+</script>
+
+</body>
+
+</html>
