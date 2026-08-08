@@ -2,6 +2,7 @@
 <html lang="hi">
 
 <head>
+
   <meta charset="UTF-8">
 
   <meta name="viewport"
@@ -21,15 +22,18 @@
       margin: 0;
       background: #f5f7fb;
       color: #182033;
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
-    /* HEADER */
+    /* =========================
+       HEADER
+    ========================= */
 
     .candidate-header {
       background: #ffffff;
       padding: 16px 6%;
       border-bottom: 1px solid #e7ebf2;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -48,16 +52,20 @@
     }
 
 
-    /* MAIN */
+    /* =========================
+       MAIN
+    ========================= */
 
     .candidate-page {
-      max-width: 650px;
+      max-width: 680px;
       margin: auto;
       padding: 35px 16px 60px;
     }
 
 
-    /* INTRO */
+    /* =========================
+       INTRO
+    ========================= */
 
     .candidate-intro {
       text-align: center;
@@ -66,19 +74,27 @@
 
     .candidate-badge {
       display: inline-block;
+
       background: #fff4df;
       color: #9a6500;
+
       padding: 7px 13px;
+
       border-radius: 30px;
+
       font-size: 11px;
       font-weight: 800;
+
       margin-bottom: 13px;
     }
 
     .candidate-intro h1 {
       margin: 0 0 12px;
-      font-size: 34px;
+
+      font-size: 35px;
+
       line-height: 1.25;
+
       font-weight: 900;
     }
 
@@ -88,35 +104,50 @@
 
     .candidate-intro p {
       margin: 0;
+
       color: #70798a;
+
       font-size: 14px;
+
       line-height: 1.7;
     }
 
 
-    /* FORM CARD */
+    /* =========================
+       FORM CARD
+    ========================= */
 
     .form-card {
       background: white;
+
       padding: 25px;
+
       border-radius: 20px;
+
       border: 1px solid #e7ebf2;
-      box-shadow: 0 10px 35px rgba(20,30,60,.06);
+
+      box-shadow:
+        0 10px 35px rgba(20,30,60,.06);
     }
 
     .form-title {
-      font-size: 20px;
+      font-size: 21px;
+
       margin: 0 0 5px;
     }
 
     .form-subtitle {
       margin: 0 0 25px;
+
       color: #7b8494;
+
       font-size: 12px;
     }
 
 
-    /* FORM GROUP */
+    /* =========================
+       FORM GROUP
+    ========================= */
 
     .form-group {
       margin-bottom: 18px;
@@ -124,8 +155,11 @@
 
     .form-group label {
       display: block;
+
       font-size: 14px;
+
       font-weight: 700;
+
       margin-bottom: 7px;
     }
 
@@ -135,7 +169,9 @@
 
     .optional {
       color: #8a93a3;
+
       font-size: 11px;
+
       font-weight: normal;
     }
 
@@ -160,11 +196,11 @@
       outline: none;
 
       font-family: inherit;
-
     }
 
     .form-group textarea {
       min-height: 100px;
+
       resize: vertical;
     }
 
@@ -176,11 +212,12 @@
 
       box-shadow:
         0 0 0 3px #e9edff;
-
     }
 
 
-    /* TWO COLUMNS */
+    /* =========================
+       TWO COLUMN
+    ========================= */
 
     .two-column {
 
@@ -190,11 +227,101 @@
         1fr 1fr;
 
       gap: 12px;
-
     }
 
 
-    /* QUESTION */
+    /* =========================
+       CANDIDATE BOX
+    ========================= */
+
+    .candidate-list-box {
+
+      background: #f8f9fd;
+
+      border: 1px solid #e5e9f2;
+
+      border-radius: 16px;
+
+      padding: 18px;
+
+      margin: 5px 0 20px;
+    }
+
+    .candidate-list-box h3 {
+
+      margin: 0 0 5px;
+
+      font-size: 18px;
+    }
+
+    .candidate-list-box > p {
+
+      color: #747e8e;
+
+      font-size: 12px;
+
+      line-height: 1.6;
+
+      margin: 0 0 20px;
+    }
+
+    .candidate-input {
+
+      background: white;
+
+      padding: 14px;
+
+      border-radius: 11px;
+
+      border: 1px solid #e6eaf1;
+
+      margin-bottom: 12px;
+    }
+
+    .candidate-input:last-child {
+      margin-bottom: 0;
+    }
+
+    .candidate-number {
+
+      display: inline-flex;
+
+      width: 28px;
+
+      height: 28px;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background: #eef2ff;
+
+      color: #3155d8;
+
+      font-size: 13px;
+
+      font-weight: 800;
+
+      margin-right: 7px;
+    }
+
+    .candidate-label {
+
+      display: flex !important;
+
+      align-items: center;
+
+      font-size: 13px !important;
+
+      margin-bottom: 9px !important;
+    }
+
+
+    /* =========================
+       QUESTION
+    ========================= */
 
     .question-box {
 
@@ -207,7 +334,6 @@
       padding: 16px;
 
       margin-bottom: 20px;
-
     }
 
     .question-box h3 {
@@ -217,9 +343,7 @@
       font-size: 14px;
 
       line-height: 1.5;
-
     }
-
 
     .radio-row {
 
@@ -228,9 +352,7 @@
       gap: 10px;
 
       flex-wrap: wrap;
-
     }
-
 
     .radio-option {
 
@@ -249,7 +371,6 @@
       cursor: pointer;
 
       font-size: 13px;
-
     }
 
     .radio-option input {
@@ -258,10 +379,13 @@
 
       margin-right: 5px;
 
+      accent-color: #3155d8;
     }
 
 
-    /* SUBMIT */
+    /* =========================
+       SUBMIT
+    ========================= */
 
     .submit-btn {
 
@@ -284,17 +408,17 @@
       cursor: pointer;
 
       margin-top: 5px;
-
     }
 
-    .submit-btn:active {
+    .submit-btn:hover {
 
-      transform: scale(.99);
-
+      background: #2649c4;
     }
 
 
-    /* NOTE */
+    /* =========================
+       PRIVACY NOTE
+    ========================= */
 
     .privacy-note {
 
@@ -313,11 +437,12 @@
       line-height: 1.6;
 
       text-align: center;
-
     }
 
 
-    /* SUCCESS */
+    /* =========================
+       SUCCESS
+    ========================= */
 
     .success-message {
 
@@ -326,7 +451,6 @@
       text-align: center;
 
       padding: 30px 15px;
-
     }
 
     .success-icon {
@@ -334,7 +458,6 @@
       font-size: 45px;
 
       margin-bottom: 10px;
-
     }
 
     .success-message h2 {
@@ -342,7 +465,6 @@
       margin: 0 0 8px;
 
       font-size: 23px;
-
     }
 
     .success-message p {
@@ -352,7 +474,6 @@
       font-size: 13px;
 
       line-height: 1.6;
-
     }
 
     .home-btn {
@@ -374,30 +495,56 @@
       font-weight: 700;
 
       font-size: 13px;
-
     }
 
 
-    /* MOBILE */
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+
+      text-align: center;
+
+      padding: 25px;
+
+      background: #111827;
+
+      color: #aeb6c5;
+
+      font-size: 12px;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
 
     @media (max-width: 500px) {
+
+      .candidate-header {
+
+        padding: 15px 5%;
+      }
+
+      .brand {
+
+        font-size: 18px;
+      }
 
       .candidate-page {
 
         padding: 28px 13px 50px;
-
       }
 
       .candidate-intro h1 {
 
         font-size: 29px;
-
       }
 
       .form-card {
 
         padding: 20px;
-
       }
 
       .two-column {
@@ -405,13 +552,16 @@
         grid-template-columns: 1fr;
 
         gap: 0;
-
       }
 
       .radio-option {
 
         min-width: 100%;
+      }
 
+      .candidate-list-box {
+
+        padding: 15px;
       }
 
     }
@@ -424,7 +574,9 @@
 <body>
 
 
-  <!-- HEADER -->
+  <!-- =========================
+       HEADER
+  ========================= -->
 
   <header class="candidate-header">
 
@@ -443,6 +595,10 @@
   </header>
 
 
+
+  <!-- =========================
+       MAIN
+  ========================= -->
 
   <main class="candidate-page">
 
@@ -468,12 +624,14 @@
 
       <p>
 
-        अगर आपको किसी संभावित Sarpanch candidate
-        के बारे में जानकारी है, तो नीचे जानकारी साझा करें।
+        अगर आपको अपनी पंचायत के संभावित
+        Sarpanch candidates के बारे में जानकारी है,
+        तो नीचे साझा करें।
 
         <br>
 
-        Know someone who may contest the Sarpanch Election?
+        Know who may contest the Sarpanch Election
+        in your Panchayat?
 
       </p>
 
@@ -489,13 +647,13 @@
 
       <h2 class="form-title">
 
-        संभावित उम्मीदवार की जानकारी
+        📍 पंचायत की जानकारी
 
       </h2>
 
       <p class="form-subtitle">
 
-        Candidate Information / संभावित उम्मीदवार
+        Panchayat / Location Information
 
       </p>
 
@@ -504,7 +662,7 @@
       <form id="candidateForm">
 
 
-        <!-- LOCATION -->
+        <!-- STATE + DISTRICT -->
 
         <div class="two-column">
 
@@ -512,23 +670,48 @@
           <div class="form-group">
 
             <label>
+
               राज्य / State
+
               <span class="required">*</span>
+
             </label>
 
-            <select id="state" required>
+            <select
+              id="state"
+              required>
 
               <option value="">
-                राज्य चुनें
+                राज्य चुनें / Select State
               </option>
 
-              <option>Rajasthan</option>
-              <option>Haryana</option>
-              <option>Uttar Pradesh</option>
-              <option>Madhya Pradesh</option>
-              <option>Punjab</option>
-              <option>Gujarat</option>
-              <option>Maharashtra</option>
+              <option value="Rajasthan">
+                Rajasthan / राजस्थान
+              </option>
+
+              <option value="Haryana">
+                Haryana / हरियाणा
+              </option>
+
+              <option value="Uttar Pradesh">
+                Uttar Pradesh / उत्तर प्रदेश
+              </option>
+
+              <option value="Madhya Pradesh">
+                Madhya Pradesh / मध्य प्रदेश
+              </option>
+
+              <option value="Punjab">
+                Punjab / पंजाब
+              </option>
+
+              <option value="Gujarat">
+                Gujarat / गुजरात
+              </option>
+
+              <option value="Maharashtra">
+                Maharashtra / महाराष्ट्र
+              </option>
 
             </select>
 
@@ -539,14 +722,17 @@
           <div class="form-group">
 
             <label>
+
               जिला / District
+
               <span class="required">*</span>
+
             </label>
 
             <input
               type="text"
               id="district"
-              placeholder="जिले का नाम"
+              placeholder="जिले का नाम / District"
               required>
 
           </div>
@@ -561,14 +747,17 @@
         <div class="form-group">
 
           <label>
+
             गांव / Village
+
             <span class="required">*</span>
+
           </label>
 
           <input
             type="text"
             id="village"
-            placeholder="गांव का नाम लिखें"
+            placeholder="गांव का नाम / Village Name"
             required>
 
         </div>
@@ -580,88 +769,146 @@
         <div class="form-group">
 
           <label>
+
             ग्राम पंचायत / Gram Panchayat
+
             <span class="required">*</span>
+
           </label>
 
           <input
             type="text"
             id="panchayat"
-            placeholder="ग्राम पंचायत का नाम"
+            placeholder="ग्राम पंचायत का नाम / Panchayat Name"
             required>
 
         </div>
 
 
 
-        <!-- CANDIDATE NAME -->
+        <!-- CANDIDATES -->
 
-        <div class="form-group">
+        <div class="candidate-list-box">
 
-          <label>
+          <h3>
+            👥 संभावित उम्मीदवार
+          </h3>
 
-            संभावित उम्मीदवार का नाम
-            / Candidate Name
+          <p>
 
-            <span class="required">*</span>
+            आपकी पंचायत में कौन-कौन
+            सरपंच का चुनाव लड़ सकता है?
 
-          </label>
+            <br>
 
-          <input
-            type="text"
-            id="candidateName"
-            placeholder="पूरा नाम लिखें"
-            required>
+            Who may contest the Sarpanch Election?
 
-        </div>
+          </p>
 
 
+          <!-- CANDIDATE 1 -->
 
-        <!-- FATHER NAME -->
+          <div class="candidate-input">
 
-        <div class="form-group">
+            <label class="candidate-label">
 
-          <label>
+              <span class="candidate-number">
+                1
+              </span>
 
-            पिता का नाम
-            / Father's Name
+              संभावित उम्मीदवार 1
+              <span class="required">*</span>
 
-            <span class="optional">
-              (Optional)
-            </span>
+            </label>
 
-          </label>
+            <input
+              type="text"
+              id="candidate1"
+              placeholder="उम्मीदवार का नाम / Candidate Name"
+              required>
 
-          <input
-            type="text"
-            id="fatherName"
-            placeholder="पिता का नाम">
-
-        </div>
+          </div>
 
 
 
-        <!-- MOBILE -->
+          <!-- CANDIDATE 2 -->
 
-        <div class="form-group">
+          <div class="candidate-input">
 
-          <label>
+            <label class="candidate-label">
 
-            मोबाइल नंबर
-            / Mobile Number
+              <span class="candidate-number">
+                2
+              </span>
 
-            <span class="optional">
-              (Optional)
-            </span>
+              संभावित उम्मीदवार 2
 
-          </label>
+              <span class="optional">
+                (Optional)
+              </span>
 
-          <input
-            type="tel"
-            id="mobile"
-            inputmode="numeric"
-            maxlength="10"
-            placeholder="10 digit mobile number">
+            </label>
+
+            <input
+              type="text"
+              id="candidate2"
+              placeholder="उम्मीदवार का नाम / Candidate Name">
+
+          </div>
+
+
+
+          <!-- CANDIDATE 3 -->
+
+          <div class="candidate-input">
+
+            <label class="candidate-label">
+
+              <span class="candidate-number">
+                3
+              </span>
+
+              संभावित उम्मीदवार 3
+
+              <span class="optional">
+                (Optional)
+              </span>
+
+            </label>
+
+            <input
+              type="text"
+              id="candidate3"
+              placeholder="उम्मीदवार का नाम / Candidate Name">
+
+          </div>
+
+
+
+          <!-- CANDIDATE 4 -->
+
+          <div class="candidate-input">
+
+            <label class="candidate-label">
+
+              <span class="candidate-number">
+                4
+              </span>
+
+              संभावित उम्मीदवार 4
+
+              <span class="optional">
+                (Optional)
+              </span>
+
+            </label>
+
+            <input
+              type="text"
+              id="candidate4"
+              placeholder="उम्मीदवार का नाम / Candidate Name">
+
+          </div>
 
         </div>
 
@@ -673,12 +920,12 @@
 
           <h3>
 
-            क्या आपको लगता है कि यह व्यक्ति
-            Sarpanch Election लड़ने की तैयारी कर रहा है?
+            क्या आपको लगता है कि ये लोग
+            Sarpanch Election लड़ने की तैयारी कर रहे हैं?
 
             <br>
 
-            Is this person likely to contest?
+            Are these people likely to contest?
 
           </h3>
 
@@ -718,7 +965,7 @@
                 name="likely"
                 value="Unknown">
 
-              पता नहीं / Don't know
+              पता नहीं
 
             </label>
 
@@ -729,13 +976,39 @@
 
 
 
-        <!-- EXTRA INFO -->
+        <!-- MOBILE -->
+
+        <div class="form-group">
+
+          <label>
+
+            मोबाइल नंबर / Mobile Number
+
+            <span class="optional">
+              (Optional)
+            </span>
+
+          </label>
+
+          <input
+            type="tel"
+            id="mobile"
+            inputmode="numeric"
+            maxlength="10"
+            placeholder="10 digit mobile number">
+
+        </div>
+
+
+
+        <!-- EXTRA INFORMATION -->
 
         <div class="form-group">
 
           <label>
 
             अतिरिक्त जानकारी
+
             <span class="optional">
               (Optional)
             </span>
@@ -765,7 +1038,7 @@
 
 
 
-      <!-- SUCCESS -->
+      <!-- SUCCESS MESSAGE -->
 
       <div
         class="success-message"
@@ -781,8 +1054,10 @@
 
         <p>
 
-          धन्यवाद! आपकी द्वारा दी गई जानकारी
-          survey team के review के लिए भेज दी गई है।
+          धन्यवाद!
+
+          आपकी दी गई संभावित उम्मीदवारों की
+          जानकारी review के लिए प्राप्त हो गई है।
 
           <br><br>
 
@@ -806,13 +1081,13 @@
 
 
 
-    <!-- PRIVACY -->
+    <!-- PRIVACY NOTE -->
 
     <div class="privacy-note">
 
       🔒 कृपया केवल सही और सार्वजनिक रूप से उपलब्ध
-      जानकारी साझा करें। किसी व्यक्ति की अनुमति के बिना
-      उसका निजी या संवेदनशील विवरण साझा न करें।
+      जानकारी साझा करें। किसी व्यक्ति का निजी या
+      संवेदनशील विवरण बिना अनुमति के साझा न करें।
 
       <br><br>
 
@@ -826,6 +1101,20 @@
 
 
 
+  <!-- FOOTER -->
+
+  <footer>
+
+    © 2026 Janmat Survey
+
+  </footer>
+
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
   <script>
 
     const form =
@@ -833,12 +1122,7 @@
         "candidateForm"
       );
 
-    const formCard =
-      document.getElementById(
-        "formCard"
-      );
-
-    const success =
+    const successMessage =
       document.getElementById(
         "successMessage"
       );
@@ -851,13 +1135,55 @@
         event.preventDefault();
 
 
+        /* GET VALUES */
+
+        const state =
+          document.getElementById(
+            "state"
+          ).value;
+
+        const district =
+          document.getElementById(
+            "district"
+          ).value.trim();
+
+        const village =
+          document.getElementById(
+            "village"
+          ).value.trim();
+
+        const panchayat =
+          document.getElementById(
+            "panchayat"
+          ).value.trim();
+
+        const candidate1 =
+          document.getElementById(
+            "candidate1"
+          ).value.trim();
+
+        const candidate2 =
+          document.getElementById(
+            "candidate2"
+          ).value.trim();
+
+        const candidate3 =
+          document.getElementById(
+            "candidate3"
+          ).value.trim();
+
+        const candidate4 =
+          document.getElementById(
+            "candidate4"
+          ).value.trim();
+
         const mobile =
           document.getElementById(
             "mobile"
           ).value.trim();
 
 
-        /* MOBILE VALIDATION */
+        /* CHECK MOBILE */
 
         if (
           mobile &&
@@ -873,24 +1199,84 @@
         }
 
 
-        /*
-          अभी केवल demo success है.
+        /* CHECK AT LEAST ONE CANDIDATE */
 
-          अगला step:
-          Form data को POST करके
-          MongoDB में save करेंगे.
+        if (!candidate1) {
+
+          alert(
+            "कम से कम एक संभावित उम्मीदवार का नाम भरें।"
+          );
+
+          return;
+
+        }
+
+
+        /*
+          TEMPORARY DEMO
+
+          Next step में यही data
+          MongoDB में जाएगा.
         */
 
+        const candidateData = {
+
+          state: state,
+
+          district: district,
+
+          village: village,
+
+          panchayat: panchayat,
+
+          candidates: [
+
+            candidate1,
+
+            candidate2,
+
+            candidate3,
+
+            candidate4
+
+          ].filter(Boolean),
+
+          mobile: mobile,
+
+          likely: document
+            .querySelector(
+              'input[name="likely"]:checked'
+            ).value,
+
+          extraInfo:
+            document.getElementById(
+              "extraInfo"
+            ).value.trim()
+
+        };
+
+
+        console.log(
+          "Candidate information:",
+          candidateData
+        );
+
+
+        /* SHOW SUCCESS */
 
         form.style.display =
           "none";
 
-        success.style.display =
+        successMessage.style.display =
           "block";
 
+
         window.scrollTo({
+
           top: 0,
+
           behavior: "smooth"
+
         });
 
       }
