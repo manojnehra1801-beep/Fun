@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+      content="Latest Rajasthan Government Exam Results">
+
+<title>Rajasthan Govt Results | Rajasthan Govt Vacancies</title>
+
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+
+  font-family:
+    Arial,
+    "Noto Sans Devanagari",
+    sans-serif;
+
+  background: #f5f7fb;
+
+  color: #172033;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+/* HEADER */
+
+header {
+
+  background: #172554;
+
+  color: white;
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 100;
+
+  box-shadow:
+    0 3px 18px
+    rgba(0,0,0,.12);
+}
+
+.header-inner {
+
+  max-width: 1150px;
+
+  margin: auto;
+
+  padding: 14px 16px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+}
+
+.logo {
+
+  color: white;
+
+  font-size: 18px;
+
+  font-weight: 900;
+
+  line-height: 1.3;
+}
+
+.logo span {
+
+  display: block;
+
+  color: #fbbf24;
+
+  font-size: 9px;
+
+  margin-top: 3px;
+}
+
+.home-btn {
+
+  color: white;
+
+  border:
+    1px solid
+    rgba(255,255,255,.35);
+
+  padding: 8px 12px;
+
+  border-radius: 8px;
+
+  font-size: 10px;
+
+  font-weight: 800;
+}
+
+
+/* CONTAINER */
+
+.container {
+
+  max-width: 1150px;
+
+  margin: auto;
+
+  padding:
+    22px 14px 50px;
+}
+
+
+/* HERO */
+
+.hero {
+
+  background:
+    linear-gradient(
+      135deg,
+      #172554,
+      #3155d9
+    );
+
+  color: white;
+
+  border-radius: 20px;
+
+  padding:
+    27px 20px;
+
+  margin-bottom: 18px;
+}
+
+.hero-badge {
+
+  display: inline-block;
+
+  background:
+    rgba(255,255,255,.13);
+
+  padding: 6px 10px;
+
+  border-radius: 20px;
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+
+  margin: 0 0 8px;
+
+  font-size: 27px;
+
+  line-height: 1.3;
+}
+
+.hero h1 span {
+
+  color: #fbbf24;
+}
+
+.hero p {
+
+  margin: 0;
+
+  color: #dbeafe;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+}
+
+
+/* SEARCH */
+
+.search-card {
+
+  background: white;
+
+  padding: 12px;
+
+  border-radius: 14px;
+
+  margin-bottom: 18px;
+
+  box-shadow:
+    0 6px 20px
+    rgba(15,23,42,.05);
+}
+
+.search {
+
+  width: 100%;
+
+  border:
+    1px solid #d8deea;
+
+  border-radius: 9px;
+
+  padding: 12px;
+
+  outline: none;
+
+  font-size: 12px;
+}
+
+.search:focus {
+
+  border-color: #3155d9;
+
+  box-shadow:
+    0 0 0 3px #eef2ff;
+}
+
+
+/* SECTION HEADER */
+
+.section-header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 12px;
+
+  gap: 10px;
+}
+
+.section-header h2 {
+
+  margin: 0;
+
+  color: #172554;
+
+  font-size: 19px;
+}
+
+.count {
+
+  color: #64748b;
+
+  font-size: 10px;
+}
+
+
+/* CARDS */
+
+.cards {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 14px;
+}
+
+.card {
+
+  background: white;
+
+  border:
+    1px solid #e5e7eb;
+
+  border-radius: 17px;
+
+  padding: 18px;
+
+  box-shadow:
+    0 5px 18px
+    rgba(15,23,42,.04);
+}
+
+.card-top {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  margin-bottom: 8px;
+}
+
+.card-title {
+
+  color: #172554;
+
+  font-size: 16px;
+
+  font-weight: 900;
+
+  line-height: 1.4;
+}
+
+.badge {
+
+  background: #ecfdf5;
+
+  color: #047857;
+
+  padding: 5px 8px;
+
+  border-radius: 20px;
+
+  font-size: 8px;
+
+  font-weight: 900;
+
+  white-space: nowrap;
+}
+
+.department {
+
+  color: #64748b;
+
+  font-size: 10px;
+
+  margin-bottom: 14px;
+}
+
+
+/* INFO */
+
+.info {
+
+  background: #f8fafc;
+
+  border-radius: 9px;
+
+  padding: 10px;
+
+  margin-bottom: 13px;
+}
+
+.info-label {
+
+  display: block;
+
+  color: #94a3b8;
+
+  font-size: 8px;
+
+  margin-bottom: 4px;
+}
+
+.info-value {
+
+  color: #334155;
+
+  font-size: 10px;
+
+  font-weight: 800;
+}
+
+
+/* DESCRIPTION */
+
+.description {
+
+  color: #64748b;
+
+  font-size: 10px;
+
+  line-height: 1.7;
+
+  margin-bottom: 14px;
+}
+
+
+/* BUTTONS */
+
+.buttons {
+
+  display: flex;
+
+  gap: 8px;
+}
+
+.btn {
+
+  flex: 1;
+
+  text-align: center;
+
+  padding: 10px 8px;
+
+  border-radius: 9px;
+
+  font-size: 9px;
+
+  font-weight: 900;
+}
+
+.notification {
+
+  background: #eef2ff;
+
+  color: #3155d9;
+}
+
+.result {
+
+  background: #047857;
+
+  color: white;
+}
+
+
+/* EMPTY */
+
+.loading,
+.empty {
+
+  grid-column: 1 / -1;
+
+  background: white;
+
+  border:
+    1px dashed #cbd5e1;
+
+  border-radius: 17px;
+
+  padding: 40px 20px;
+
+  text-align: center;
+
+  color: #64748b;
+
+  font-size: 12px;
+}
+
+
+/* FOOTER */
+
+footer {
+
+  background: #0f172a;
+
+  color: #94a3b8;
+
+  text-align: center;
+
+  padding: 25px 15px;
+
+  font-size: 9px;
+
+  line-height: 1.7;
+}
+
+footer strong {
+
+  color: white;
+
+  font-size: 13px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+  .cards {
+
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+
+    font-size: 24px;
+  }
+
+  .logo {
+
+    font-size: 16px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+  <div class="header-inner">
+
+    <a href="/"
+       class="logo">
+
+      RAJASTHAN GOVT VACANCIES
+
+      <span>
+        Latest Govt Jobs & Exam Updates
+      </span>
+
+    </a>
+
+    <a href="/"
+       class="home-btn">
+
+      ← Home
+
+    </a>
+
+  </div>
+
+</header>
+
+
+<main class="container">
+
+
+<section class="hero">
+
+  <div class="hero-badge">
+
+    📊 RAJASTHAN GOVERNMENT RESULTS
+
+  </div>
+
+  <h1>
+
+    Latest
+    <span>Results</span>
+
+  </h1>
+
+  <p>
+
+    राजस्थान की सरकारी परीक्षाओं के
+    latest results, merit list और
+    official result links एक ही जगह।
+
+  </p>
+
+</section>
+
+
+<div class="search-card">
+
+  <input
+    id="searchInput"
+    class="search"
+    type="search"
+    placeholder="🔎 Search exam, department, result...">
+
+</div>
+
+
+<div class="section-header">
+
+  <h2>
+    📊 Latest Results
+  </h2>
+
+  <span
+    id="count"
+    class="count">
+
+    Loading...
+
+  </span>
+
+</div>
+
+
+<section
+  id="cards"
+  class="cards">
+
+  <div class="loading">
+
+    ⏳ Loading Results...
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+  <strong>
+    RAJASTHAN GOVT VACANCIES
+  </strong>
+
+  <br>
+
+  Latest Govt Jobs • Admit Card •
+  Results • Answer Key
+
+  <br>
+
+  © 2026 Rajasthan Govt Vacancies
+
+</footer>
+
+
+<script>
+
+let allResults = [];
+
+
+/* LOAD RESULTS */
+
+async function loadResults() {
+
+  const cards =
+    document.getElementById("cards");
+
+
+  try {
+
+    const response =
+      await fetch(
+        "/api/admin/results"
+      );
+
+
+    const result =
+      await response.json();
+
+
+    if (
+      !response.ok ||
+      !result.success
+    ) {
+
+      throw new Error(
+        result.message ||
+        "Could not load Results"
+      );
+
+    }
+
+
+    allResults =
+      result.data || [];
+
+
+    renderResults(
+      allResults
+    );
+
+
+  } catch (error) {
+
+    console.error(
+      "Results error:",
+      error
+    );
+
+
+    cards.innerHTML = `
+
+      <div class="empty">
+
+        ⚠️ Results अभी load नहीं हो सके।
+
+        <br><br>
+
+        Please try again later.
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* RENDER RESULTS */
+
+function renderResults(data) {
+
+  const cards =
+    document.getElementById("cards");
+
+
+  const count =
+    document.getElementById("count");
+
+
+  count.textContent =
+    data.length +
+    (
+      data.length === 1
+      ? " Result"
+      : " Results"
+    );
+
+
+  if (!data.length) {
+
+    cards.innerHTML = `
+
+      <div class="empty">
+
+        📊
+
+        <br><br>
+
+        अभी कोई Result available नहीं है।
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  cards.innerHTML =
+    data.map(
+      item => {
+
+
+        const title =
+          escapeHTML(
+            item.exam_name ||
+            "Exam Result"
+          );
+
+
+        const department =
+          escapeHTML(
+            item.department ||
+            "Rajasthan Government"
+          );
+
+
+        const resultDate =
+          escapeHTML(
+            item.result_date ||
+            "-"
+          );
+
+
+        const description =
+          escapeHTML(
+            item.description ||
+            "Result की महत्वपूर्ण जानकारी।"
+          );
+
+
+        const notification =
+          safeURL(
+            item.notification_link
+          );
+
+
+        const resultLink =
+          safeURL(
+            item.result_link
+          );
+
+
+        return `
+
+          <article class="card">
+
+
+            <div class="card-top">
+
+              <div class="card-title">
+
+                ${title}
+
+              </div>
+
+              <div class="badge">
+
+                RESULT
+
+              </div>
+
+            </div>
+
+
+            <div class="department">
+
+              🏛️ ${department}
+
+            </div>
+
+
+            <div class="info">
+
+              <span class="info-label">
+
+                RESULT DATE
+
+              </span>
+
+              <span class="info-value">
+
+                ${resultDate}
+
+              </span>
+
+            </div>
+
+
+            <div class="description">
+
+              ${description}
+
+            </div>
+
+
+            <div class="buttons">
+
+
+              ${
+                notification
+                ?
+
+                `
+
+                <a
+                  href="${notification}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn notification">
+
+                  📄 Notification
+
+                </a>
+
+                `
+
+                :
+
+                ""
+
+              }
+
+
+              ${
+                resultLink
+                ?
+
+                `
+
+                <a
+                  href="${resultLink}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn result">
+
+                  📊 View Result
+
+                </a>
+
+                `
+
+                :
+
+                ""
+
+              }
+
+
+            </div>
+
+
+          </article>
+
+        `;
+
+      }
+    ).join("");
+
+}
+
+
+/* SEARCH */
+
+document
+  .getElementById("searchInput")
+  .addEventListener(
+    "input",
+    function() {
+
+      const query =
+        this.value
+          .toLowerCase()
+          .trim();
+
+
+      if (!query) {
+
+        renderResults(allResults);
+
+        return;
+
+      }
+
+
+      const filtered =
+        allResults.filter(
+          item => {
+
+            const text = [
+
+              item.exam_name,
+              item.department,
+              item.result_date,
+              item.description
+
+            ]
+            .filter(Boolean)
+            .join(" ")
+            .toLowerCase();
+
+
+            return text.includes(
+              query
+            );
+
+          }
+        );
+
+
+      renderResults(filtered);
+
+    }
+  );
+
+
+/* SAFE URL */
+
+function safeURL(value) {
+
+  if (!value) {
+
+    return "";
+
+  }
+
+
+  try {
+
+    const url =
+      new URL(value);
+
+
+    if (
+      url.protocol === "http:" ||
+      url.protocol === "https:"
+    ) {
+
+      return escapeHTML(
+        url.href
+      );
+
+    }
+
+
+    return "";
+
+  } catch {
+
+    return "";
+
+  }
+
+}
+
+
+/* ESCAPE HTML */
+
+function escapeHTML(value) {
+
+  const div =
+    document.createElement("div");
+
+
+  div.textContent =
+    String(value || "");
+
+
+  return div.innerHTML;
+
+}
+
+
+/* START */
+
+loadResults();
+
+</script>
+
+</body>
+</html>
