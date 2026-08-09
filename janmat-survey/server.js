@@ -1118,7 +1118,126 @@ app.get(
   }
 );
 
+// ======================================================
+// GET RESULTS
+// ======================================================
 
+app.get(
+  "/api/admin/results",
+  async (req, res) => {
+
+    try {
+
+      const {
+        data,
+        error
+      } = await supabase
+        .from("results")
+        .select("*")
+        .order(
+          "created_at",
+          {
+            ascending: false
+          }
+        );
+
+      if (error) {
+        throw error;
+      }
+
+      return res.json({
+        success: true,
+        data: data || []
+      });
+
+    } catch (error) {
+
+      return res.status(500).json({
+        success: false,
+        message: error.message
+      });
+
+    }
+
+  }
+);
+
+
+// ======================================================
+// ADD RESULT
+// ======================================================
+
+app.post(
+  "/api/admin/results",
+  async (req, res) => {
+
+    try {
+
+      const {
+        exam_name,
+        department,
+        result_date,
+        result_link,
+        notification_link,
+        description
+      } = req.body;
+
+
+      if (!exam_name) {
+
+        return res.status(400).json({
+          success: false,
+          message: "Exam name is required."
+        });
+
+      }
+
+
+      const {
+        data,
+        error
+      } = await supabase
+        .from("results")
+        .insert([
+          {
+            exam_name,
+            department,
+            result_date: result_date || null,
+            result_link,
+            notification_link,
+            description
+          }
+        ])
+        .select();
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      return res.status(201).json({
+        success: true,
+        message: "Result published successfully.",
+        data
+      });
+
+    } catch (error) {
+
+      console.error(
+        "Result error:",
+        error
+      );
+
+      return res.status(500).json({
+        success: false,
+        message: error.message
+      });
+
+    }
+
+  }
+);
 // ======================================================
 // SERVE PUBLIC FOLDER
 // ======================================================
