@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Manage Results | Rajasthan Govt Vacancies</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, "Noto Sans Devanagari", sans-serif;
+  background: #f5f7fb;
+  color: #172033;
+}
+
+.header {
+  background: #172554;
+  color: white;
+  padding: 15px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.back-btn {
+  color: white;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,.35);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.container {
+  max-width: 950px;
+  margin: auto;
+  padding: 25px 14px 50px;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.title h1 {
+  margin: 0;
+  color: #172554;
+  font-size: 27px;
+}
+
+.title p {
+  color: #64748b;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 18px rgba(15,23,42,.04);
+}
+
+.card h2 {
+  margin-top: 0;
+  color: #172554;
+  font-size: 18px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+label {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid #d8deea;
+  border-radius: 9px;
+  padding: 12px;
+  outline: none;
+  font-size: 12px;
+  font-family: inherit;
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #3155d9;
+  box-shadow: 0 0 0 3px #eef2ff;
+}
+
+.publish-btn {
+  width: 100%;
+  border: none;
+  background: #3155d9;
+  color: white;
+  padding: 13px;
+  border-radius: 9px;
+  font-weight: 900;
+  cursor: pointer;
+  margin-top: 18px;
+}
+
+.publish-btn:disabled {
+  opacity: .6;
+}
+
+.message {
+  display: none;
+  margin-top: 12px;
+  padding: 11px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.success {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.error {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+}
+
+.item {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.item h3 {
+  margin: 0 0 6px;
+  color: #172554;
+  font-size: 15px;
+}
+
+.item p {
+  margin: 4px 0;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.empty {
+  text-align: center;
+  color: #64748b;
+  padding: 25px;
+  font-size: 12px;
+}
+
+@media(max-width:700px) {
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full {
+    grid-column: auto;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+  <div class="brand">
+    📊 Manage Results
+  </div>
+
+  <a href="/admin-dashboard.html"
+     class="back-btn">
+    ← Dashboard
+  </a>
+
+</header>
+
+
+<main class="container">
+
+  <div class="title">
+
+    <h1>
+      Add New Result
+    </h1>
+
+    <p>
+      Publish Rajasthan Government exam results.
+    </p>
+
+  </div>
+
+
+  <section class="card">
+
+    <h2>
+      ➕ Result Details
+    </h2>
+
+    <form id="resultForm">
+
+      <div class="grid">
+
+        <div>
+
+          <label>
+            Exam Name *
+          </label>
+
+          <input
+            type="text"
+            id="exam_name"
+            placeholder="Example: Rajasthan Police Constable 2026"
+            required>
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Department
+          </label>
+
+          <input
+            type="text"
+            id="department"
+            placeholder="Example: Rajasthan Police">
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Result Date
+          </label>
+
+          <input
+            type="date"
+            id="result_date">
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Result Link
+          </label>
+
+          <input
+            type="url"
+            id="result_link"
+            placeholder="https://...">
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Notification Link
+          </label>
+
+          <input
+            type="url"
+            id="notification_link"
+            placeholder="https://...">
+
+        </div>
+
+
+        <div class="full">
+
+          <label>
+            Description
+          </label>
+
+          <textarea
+            id="description"
+            placeholder="Enter result information..."></textarea>
+
+        </div>
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="publish-btn"
+        id="publishBtn">
+
+        📊 Publish Result
+
+      </button>
+
+
+      <div
+        id="message"
+        class="message">
+
+      </div>
+
+    </form>
+
+  </section>
+
+
+  <section class="card">
+
+    <h2>
+      📋 Published Results
+    </h2>
+
+    <div
+      id="list"
+      class="list">
+
+      <div class="empty">
+        Loading...
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<script>
+
+/* ADMIN LOGIN CHECK */
+
+if (
+  sessionStorage.getItem(
+    "janmatAdminLoggedIn"
+  ) !== "true"
+) {
+
+  alert(
+    "❌ Access Denied! Please login as admin first."
+  );
+
+  window.location.href =
+    "/admin.html";
+
+}
+
+
+/* ADD RESULT */
+
+document
+  .getElementById("resultForm")
+  .addEventListener(
+    "submit",
+    async function(event) {
+
+      event.preventDefault();
+
+
+      const button =
+        document.getElementById(
+          "publishBtn"
+        );
+
+      const message =
+        document.getElementById(
+          "message"
+        );
+
+
+      button.disabled = true;
+
+      button.textContent =
+        "Publishing...";
+
+
+      const payload = {
+
+        exam_name:
+          document
+            .getElementById("exam_name")
+            .value
+            .trim(),
+
+        department:
+          document
+            .getElementById("department")
+            .value
+            .trim(),
+
+        result_date:
+          document
+            .getElementById("result_date")
+            .value,
+
+        result_link:
+          document
+            .getElementById("result_link")
+            .value
+            .trim(),
+
+        notification_link:
+          document
+            .getElementById("notification_link")
+            .value
+            .trim(),
+
+        description:
+          document
+            .getElementById("description")
+            .value
+            .trim()
+
+      };
+
+
+      try {
+
+        const response =
+          await fetch(
+            "/api/admin/results",
+            {
+              method: "POST",
+
+              headers: {
+                "Content-Type":
+                  "application/json"
+              },
+
+              body:
+                JSON.stringify(
+                  payload
+                )
+
+            }
+          );
+
+
+        const result =
+          await response.json();
+
+
+        if (
+          !response.ok ||
+          !result.success
+        ) {
+
+          throw new Error(
+            result.message ||
+            "Could not publish Result"
+          );
+
+        }
+
+
+        message.textContent =
+          "✅ Result published successfully!";
+
+
+        message.className =
+          "message success";
+
+
+        message.style.display =
+          "block";
+
+
+        document
+          .getElementById("resultForm")
+          .reset();
+
+
+        loadResults();
+
+
+      } catch (error) {
+
+        message.textContent =
+          "❌ " + error.message;
+
+
+        message.className =
+          "message error";
+
+
+        message.style.display =
+          "block";
+
+      }
+
+
+      button.disabled = false;
+
+      button.textContent =
+        "📊 Publish Result";
+
+    }
+  );
+
+
+/* LOAD RESULTS */
+
+async function loadResults() {
+
+  const list =
+    document.getElementById("list");
+
+
+  try {
+
+    const response =
+      await fetch(
+        "/api/admin/results"
+      );
+
+
+    const result =
+      await response.json();
+
+
+    if (
+      !response.ok ||
+      !result.success
+    ) {
+
+      throw new Error();
+
+    }
+
+
+    const data =
+      result.data || [];
+
+
+    if (!data.length) {
+
+      list.innerHTML =
+        `<div class="empty">
+          No Results published yet.
+        </div>`;
+
+      return;
+
+    }
+
+
+    list.innerHTML =
+      data.map(
+        item => `
+
+          <div class="item">
+
+            <h3>
+              ${escapeHTML(
+                item.exam_name
+              )}
+            </h3>
+
+            <p>
+              🏛️
+              ${escapeHTML(
+                item.department || "-"
+              )}
+            </p>
+
+            <p>
+              📅 Result Date:
+              ${escapeHTML(
+                item.result_date || "-"
+              )}
+            </p>
+
+          </div>
+
+        `
+      )
+      .join("");
+
+
+  } catch (error) {
+
+    list.innerHTML =
+      `<div class="empty">
+        Could not load Results.
+      </div>`;
+
+  }
+
+}
+
+
+/* ESCAPE HTML */
+
+function escapeHTML(value) {
+
+  const div =
+    document.createElement("div");
+
+  div.textContent =
+    String(value || "");
+
+  return div.innerHTML;
+
+}
+
+
+/* START */
+
+loadResults();
+
+</script>
+
+</body>
+</html>
